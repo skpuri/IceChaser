@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z1EX23JWNK"></script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-Z1EX23JWNK');</script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IceChaser — NHL Playoff Odds & Playoff Race Tracker</title>
+  <meta name="description" content="Real-time NHL playoff odds and standings updated every 10 minutes. See which teams will make the playoffs, who to root for tonight, and how each game affects every team's chances. Powered by 500,000 Monte Carlo simulations.">
+  <meta name="keywords" content="NHL playoff odds, NHL playoff predictions, NHL standings, Stanley Cup playoffs, who will make playoffs NHL, NHL playoff calculator, NHL playoff scenarios, NHL bubble watch, NHL playoff probabilities">
+  <meta name="author" content="IceChaser">
+  <link rel="canonical" href="https://icechaser.com/nhl/playoff-odds">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://icechaser.com/nhl/playoff-odds">
+  <meta property="og:title" content="IceChaser — NHL Playoff Odds & Playoff Race Tracker">
+  <meta property="og:description" content="Real-time NHL playoff odds updated every 10 minutes. See which teams will make the playoffs, who to root for tonight, and how each game affects every team's chances.">
+  <meta property="og:image" content="https://icechaser.com/og-image.png">
+  <meta property="og:site_name" content="IceChaser">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@IceChaserNHL">
+  <meta name="twitter:title" content="IceChaser — NHL Playoff Odds & Playoff Race Tracker">
+  <meta name="twitter:description" content="Real-time NHL playoff odds updated every 10 minutes. See which teams will make the playoffs, who to root for tonight, and how each game affects every team's chances.">
+  <meta name="twitter:image" content="https://icechaser.com/og-image.png">
+
+  <!-- Application -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="IceChaser">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1a1a2e">
+
+  <!-- Structured Data: WebSite with SearchAction -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "IceChaser",
+    "url": "https://icechaser.com",
+    "description": "Real-time NHL playoff odds and standings powered by Monte Carlo simulation.",
+    "keywords": "NHL, playoff odds, hockey, Stanley Cup, Monte Carlo simulation",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://icechaser.com/nhl/teams/{team}/playoff-odds",
+      "query-input": "required name=team",
+      "description": "Look up NHL playoff odds for a specific team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "IceChaser",
+      "url": "https://icechaser.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://icechaser.com/icon.png"
+      }
+    }
+  }
+  </script>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "IceChaser NHL Playoff Odds",
+    "url": "https://icechaser.com/nhl/playoff-odds",
+    "description": "Real-time NHL playoff odds and playoff race tracker with Monte Carlo simulations.",
+    "applicationCategory": "SportsApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏒</text></svg>">
+</head>
+<body>
+
+<div class="site-disclaimer">⚠️ This site is in Alpha. Best/Worst case ranges in Team Deep Dive have undergone revisions and may still produce incorrect numbers — we believe the data is now correct but please bear with us as we validate.</div>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">🏒</span>
+        <span class="logo-text">IceChaser</span>
+      </a>
+      <div class="header-meta">
+        <a href="https://x.com/ChaserAnalytics" target="_blank" rel="noopener" class="twitter-link" title="Follow @ChaserAnalytics on X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          @ChaserAnalytics
+        </a>
+        <span class="sim-badge">500,000 simulations</span>
+        <span id="last-updated">Loading...</span>
+        <button class="refresh-btn" onclick="forceRefresh()">↻ Refresh</button>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">🌙 Dark</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div id="app">
+    <div class="loading-overlay">
+      <div class="spinner"></div>
+      <div>Loading playoff odds...</div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>IceChaser uses Monte Carlo simulation (500,000 runs) to estimate playoff odds. Data from the NHL public API.</p>
+    <p style="margin-top:4px;">Not affiliated with the NHL. For entertainment purposes. &bull; <a href="https://x.com/ChaserAnalytics" target="_blank" rel="noopener">@ChaserAnalytics on X</a></p>
+  </div>
+</footer>
+
+<section id="team-dive-placeholder"></section>
+<script src="app.js"></script>
+</body>
+</html>

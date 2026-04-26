@@ -1,0 +1,73 @@
+        # Outcome codes in all_outcomes: 0=home reg, 1=away reg, 2=home OT win, 3=away OT win
+        # Pre-compute per-game favorable/unfavorable outcome code sets
+        game_favorable = []   # outcome codes that help THIS team
+        game_unfavorable = [] # outcome codes that hurt THIS team
+        for game in valid_games:
+            home = game["homeTeamAbbrev"]
+            away = game["awayTeamAbbrev"]
+            home_conf = next((t["conference"] for t in teams if t["teamAbbrev"] == home), None)
+            away_conf = next((t["conference"] for t in teams if t["teamAbbrev"] == away), None)
+            is_own = abbrev in (home, away)
+            if not is_own and team_conf_name not in {home_conf, away_conf}:
+                game_favorable.append(None)
+                game_unfavorable.append(None)
+                continue
+
+            rival = None
+            if home in rivals and away in rivals:
+                rival = "both"
+            elif home in rivals:
+                rival = home
+            elif away in rivals:
+                rival = away
+
+            if is_own:
+                if home == abbrev:
+                    # Team is home: favorable = home wins (codes 0,2), unfavorable = away reg loss (code 1)
+                    game_favorable.append({0, 2})
+                    game_unfavorable.append({1})
+                else:
+                    # Team is away: favorable = away wins (codes 1,3), unfavorable = home reg win (code 0)
+                    game_favorable.append({1, 3})
+                    game_unfavorable.append({0})
+            elif rival == "both":
+                home_pct = float(team_playoff_pct[abbrev_to_idx[home]]) if home in abbrev_to_idx else 50
+                away_pct = float(team_playoff_pct[abbrev_to_idx[away]]) if away in abbrev_to_idx else 50
+                if home_pct <= away_pct:
+                    game_favorable.append({1})
+                    game_unfavorable.append({0})
+                else:
+                    game_favorable.append({0})
+                    game_unfavorable.append({1})
+            elif rival == home:
+                game_favorable.append({1})
+                game_unfavorable.append({0})
+            elif rival == away:
+                game_favorable.append({0})
+                game_unfavorable.append({1})
+            else:
+                game_favorable.append({1})
+                game_unfavorable.append({0})
+
+        # Compute favorable row mask: for each game, require outcome in favorable set
+        favorable_mask = np.ones(num_simulations, dtype=np.bool_)
+        unfavorable_mask = np.ones(num_simulations, dtype=np.bool_)
+        for ti in range(n_tonight):
+            fav = game_favorable[ti]
+            unfav = game_unfavorable[ti]
+            outcome_col = all_outcomes[:, ti]
+            if fav is not None:
+                favorable_mask &= np.isin(outcome_col, list(fav))
+                unfavorable_mask &= np.isin(outcome_col, list(unfav))
+
+        team_idx = abbrev_to_idx[abbrev]
+        playoff_col = all_playoffs[:, team_idx]
+
+        best_pct = float(playoff_col[favorable_mask].mean() * 100) if favorable_mask.sum() > 50 else baseline
+        worst_pct = float(playoff_col[unfavorable_mask].mean() * 100) if unfavorable_mask.sum() > 50 else baseline
+
+        best_worst[abbrev] = {
+            "best": round(max(best_pct, baseline), 1),
+            "worst": round(min(worst_pct, baseline), 1),
+            "has_game": abbrev in teams_playing,
+        }

@@ -1,0 +1,1212 @@
+"""
+NumPy-vectorized Monte Carlo playoff simulator.
+Runs thousands of simulations in bulk using array operations.
+
+Playoff format:
+  - Top 3 teams per division qualify
+  - Top 2 remaining teams per conference (wildcards) qualify
+  - 8 teams per conference, 16 total
+"""
+
+import numpy as np
+from collections import defaultdict
+
+HOME_WIN_PROB = 0.54
+OT_PROBABILITY = 0.24
+
+# Elo-based win probability
+_elo_ratings_cache = None
+
+def _load_elo_ratings():
+    """Load Elo ratings from file (cached)."""
+    global _elo_ratings_cache
+    if _elo_ratings_cache is not None:
+        return _elo_ratings_cache
+    try:
+        import elo_engine
+        _elo_ratings_cache = elo_engine.get_elo_ratings()
+        return _elo_ratings_cache
+    except Exception:
+        return None
+
+def _elo_win_probs(home_idxs, away_idxs, elo_array, home_bonus=100):
+    """
+    Compute per-game home win probability from Elo ratings.
+    Returns array of shape (n_games,) with probabilities clipped to [0.25, 0.75].
+    """
+    home_elo = elo_array[home_idxs] + home_bonus
+    away_elo = elo_array[away_idxs]
+    probs = 1.0 / (1.0 + np.power(10.0, (away_elo - home_elo) / 400.0))
+    return np.clip(probs, 0.25, 0.75)
+
+
+def build_remaining_schedule(teams):
+    """
+    Build a synthetic remaining schedule as arrays.
+    Returns: home_indices, away_indices (arrays of team indices per game)
+    Plus a team index lookup.
+    """
+    abbrev_to_idx = {t["teamAbbrev"]: i for i, t in enumerate(teams)}
+    n_teams = len(teams)
+    
+    # Organize by conference
+    conferences = defaultdict(list)
+    for t in teams:
+        conferences[t["conference"]].append(t["teamAbbrev"])
+    
+    games_remaining = {t["teamAbbrev"]: t.get("gamesRemaining", 0) for t in teams}
+    pts_pace = {t["teamAbbrev"]: t.get("pointsPace", 0) for t in teams}
+    
+    # Build game pairs
+    home_list = []
+    away_list = []
+    
+    rng = np.random.default_rng()
+    
+    for conf_name, conf_abbrevs in conferences.items():
+        abbrevs = list(conf_abbrevs)
+        avg_remaining = sum(games_remaining[a] for a in abbrevs) // (2 * max(len(abbrevs), 1))
+        
+        for _ in range(max(1, avg_remaining)):
+            rng.shuffle(abbrevs)
+            for i in range(0, len(abbrevs) - 1, 2):
+                h, a = abbrevs[i], abbrevs[i + 1]
+                if games_remaining.get(h, 0) > 0 or games_remaining.get(a, 0) > 0:
+                    home_list.append(abbrev_to_idx[h])
+                    away_list.append(abbrev_to_idx[a])
+    
+    # Add ~20% inter-conference games
+    all_idxs = list(range(n_teams))
+    n_inter = len(home_list) // 5
+    for _ in range(n_inter):
+        pair = rng.choice(all_idxs, 2, replace=False)
+        home_list.append(pair[0])
+        away_list.append(pair[1])
+    
+    return np.array(home_list, dtype=np.int32), np.array(away_list, dtype=np.int32)
+
+
+def run_simulations_np(teams, num_simulations=10000, real_schedule=None):
+    """
+    Vectorized Monte Carlo simulation.
+    
+    Returns dict of {teamAbbrev: {"playoff_pct": float, "clinched": bool, "eliminated": bool}}
+    """
+    if not teams:
+        return {}
+    
+    n_teams = len(teams)
+    abbrev_to_idx = {t["teamAbbrev"]: i for i, t in enumerate(teams)}
+    idx_to_abbrev = {i: t["teamAbbrev"] for i, t in enumerate(teams)}
+    
+    # Team metadata arrays
+    base_points = np.array([t["points"] for t in teams], dtype=np.float64)
+    base_reg_wins = np.array([t.get("regulationWins", 0) for t in teams], dtype=np.float64)
+    pts_pace = np.array([t.get("pointsPace", 0) for t in teams], dtype=np.float64)
+    games_remaining = np.array([t.get("gamesRemaining", 0) for t in teams], dtype=np.int32)
+
+    # Load Elo ratings for win probability
+    elo_ratings = _load_elo_ratings()
+    if elo_ratings:
+        elo_array = np.array([elo_ratings.get(t["teamAbbrev"], 1500) for t in teams], dtype=np.float64)
+        use_elo = True
+    else:
+        use_elo = False
+    
+    # Conference/division mapping
+    conf_names = sorted(set(t["conference"] for t in teams))
+    div_names = sorted(set(t["division"] for t in teams))
+    team_conf = np.array([conf_names.index(t["conference"]) for t in teams], dtype=np.int32)
+    team_div = np.array([div_names.index(t["division"]) for t in teams], dtype=np.int32)
+    
+    # Division to conference mapping
+    div_to_conf = {}
+    for t in teams:
+        div_to_conf[div_names.index(t["division"])] = conf_names.index(t["conference"])
+    
+    rng = np.random.default_rng()
+    playoff_counts = np.zeros(n_teams, dtype=np.int64)
+    
+    # Pre-compute division/conference structure for vectorized playoff determination
+    # For each conference, list of (div_idx, team_indices_in_div)
+    conf_div_structure = []
+    for conf_idx in range(len(conf_names)):
+        conf_divs = [d for d, c in div_to_conf.items() if c == conf_idx]
+        div_teams_list = []
+        for div_idx in conf_divs:
+            div_mask = (team_conf == conf_idx) & (team_div == div_idx)
+            div_team_idxs = np.where(div_mask)[0]
+            div_teams_list.append(div_team_idxs)
+        conf_div_structure.append(div_teams_list)
+    
+    # Use real schedule if provided, otherwise generate synthetic
+    if real_schedule:
+        # Convert real schedule to index arrays
+        fixed_home = np.array([abbrev_to_idx[h] for h, a in real_schedule if h in abbrev_to_idx and a in abbrev_to_idx], dtype=np.int32)
+        fixed_away = np.array([abbrev_to_idx[a] for h, a in real_schedule if h in abbrev_to_idx and a in abbrev_to_idx], dtype=np.int32)
+        use_real = True
+    else:
+        use_real = False
+    
+    # We run simulations in batches for memory efficiency
+    batch_size = min(num_simulations, 5000)
+    n_batches = (num_simulations + batch_size - 1) // batch_size
+    
+    for batch_idx in range(n_batches):
+        current_batch = min(batch_size, num_simulations - batch_idx * batch_size)
+        
+        # Use real or synthetic schedule
+        if use_real:
+            home_idxs, away_idxs = fixed_home, fixed_away
+        else:
+            home_idxs, away_idxs = build_remaining_schedule(teams)
+        n_games = len(home_idxs)
+        
+        if n_games == 0:
+            qualifiers = _determine_playoffs_single(
+                base_points, base_reg_wins, team_conf, team_div,
+                conf_names, div_names, div_to_conf, n_teams
+            )
+            playoff_counts[qualifiers] += current_batch
+            continue
+        
+        # Compute home win probabilities per game
+        if use_elo:
+            adjusted_home_prob = _elo_win_probs(home_idxs, away_idxs, elo_array)
+        else:
+            home_pace = pts_pace[home_idxs]
+            away_pace = pts_pace[away_idxs]
+            total_pace = home_pace + away_pace
+            mask = total_pace > 0
+            home_strength = np.where(mask, home_pace / total_pace, 0.5)
+            adjusted_home_prob = np.clip(home_strength * HOME_WIN_PROB / 0.5, 0.3, 0.7)
+        
+        # Random draws: (current_batch, n_games)
+        win_rolls = rng.random((current_batch, n_games))
+        ot_rolls = rng.random((current_batch, n_games))
+        
+        home_wins = win_rolls < adjusted_home_prob[np.newaxis, :]
+        goes_to_ot = ot_rolls < OT_PROBABILITY
+        
+        # Points gained
+        # OT: winner gets 2, loser gets 1 (the extra loser point)
+        home_pts = np.where(home_wins, 2, np.where(goes_to_ot, 1, 0)).astype(np.float64)
+        away_pts = np.where(~home_wins, 2, np.where(goes_to_ot, 1, 0)).astype(np.float64)
+        # OT loser gets 1 point
+        home_pts = np.where(~home_wins & goes_to_ot, 1, home_pts)
+        away_pts = np.where(home_wins & goes_to_ot, 1, away_pts)
+        
+        # Regulation wins
+        home_reg_wins = (home_wins & ~goes_to_ot).astype(np.float64)
+        away_reg_wins = (~home_wins & ~goes_to_ot).astype(np.float64)
+        
+        # Accumulate points per team: (batch, n_teams)
+        sim_points = np.tile(base_points, (current_batch, 1))
+        sim_reg = np.tile(base_reg_wins, (current_batch, 1))
+        
+        for g in range(n_games):
+            h_idx = home_idxs[g]
+            a_idx = away_idxs[g]
+            sim_points[:, h_idx] += home_pts[:, g]
+            sim_points[:, a_idx] += away_pts[:, g]
+            sim_reg[:, h_idx] += home_reg_wins[:, g]
+            sim_reg[:, a_idx] += away_reg_wins[:, g]
+        
+        # Vectorized playoff determination
+        _determine_playoffs_batch(
+            sim_points, sim_reg, conf_div_structure, playoff_counts, current_batch
+        )
+    
+    # Compute results
+    total_sims = num_simulations
+    results = {}
+    for i, team in enumerate(teams):
+        abbrev = team["teamAbbrev"]
+        playoff_pct = (playoff_counts[i] / total_sims) * 100
+        clinched = playoff_pct >= 99.5 or team.get("clinchIndicator", "") in ("x", "y", "z", "p")
+        eliminated = playoff_pct <= 0.05  # only truly eliminated if essentially 0 (< 1 in 2000 sims)
+        results[abbrev] = {
+            "playoff_pct": round(float(playoff_pct), 1),
+            "clinched": bool(clinched),
+            "eliminated": bool(eliminated),
+            "sim_count": int(playoff_counts[i]),
+        }
+    
+    return results
+
+
+def _determine_playoffs_batch(sim_points, sim_reg, conf_div_structure, playoff_counts, n_sims):
+    """
+    Vectorized playoff determination for a batch of simulations.
+    sim_points: (n_sims, n_teams)
+    sim_reg: (n_sims, n_teams)
+    conf_div_structure: list of [list of team_idx arrays per division] per conference
+    playoff_counts: (n_teams,) accumulator
+    """
+    for conf_divs in conf_div_structure:
+        # For each division, find top 3
+        wildcard_all_idxs = []
+        wildcard_all_pts = []
+        wildcard_all_reg = []
+        
+        for div_team_idxs in conf_divs:
+            if len(div_team_idxs) == 0:
+                continue
+            
+            # Get points and reg wins for this division: (n_sims, n_div_teams)
+            div_pts = sim_points[:, div_team_idxs]
+            div_reg = sim_reg[:, div_team_idxs]
+            
+            # Sort by points desc, reg wins desc (for each sim independently)
+            # Use a composite score to avoid per-sim loops
+            # Score = points * 1000 + reg_wins (ensures points is primary sort)
+            composite = div_pts * 10000 + div_reg
+            
+            # argsort descending for each sim
+            sorted_local = np.argsort(-composite, axis=1)  # (n_sims, n_div_teams)
+            
+            # Top 3 qualify from division
+            for rank in range(min(3, len(div_team_idxs))):
+                local_idxs = sorted_local[:, rank]  # (n_sims,) local index within division
+                global_idxs = div_team_idxs[local_idxs]  # (n_sims,) global team index
+                np.add.at(playoff_counts, global_idxs, 1)
+            
+            # Remaining go to wildcard pool
+            for rank in range(3, len(div_team_idxs)):
+                local_idxs = sorted_local[:, rank]
+                global_idxs = div_team_idxs[local_idxs]
+                wildcard_all_idxs.append(global_idxs)
+                # Store their points/reg for sorting
+                # Need actual values per sim
+                pts_vals = np.take_along_axis(div_pts, local_idxs[:, np.newaxis], axis=1).squeeze()
+                reg_vals = np.take_along_axis(div_reg, local_idxs[:, np.newaxis], axis=1).squeeze()
+                wildcard_all_pts.append(pts_vals)
+                wildcard_all_reg.append(reg_vals)
+        
+        if not wildcard_all_idxs:
+            continue
+        
+        # Stack wildcard candidates: (n_sims, n_wc_candidates)
+        wc_idxs = np.stack(wildcard_all_idxs, axis=1)  # (n_sims, n_candidates)
+        wc_pts = np.stack(wildcard_all_pts, axis=1)
+        wc_reg = np.stack(wildcard_all_reg, axis=1)
+        
+        # Sort wildcards by points desc, reg wins desc
+        wc_composite = wc_pts * 10000 + wc_reg
+        wc_sorted = np.argsort(-wc_composite, axis=1)
+        
+        # Top 2 wildcards qualify
+        for rank in range(min(2, wc_idxs.shape[1])):
+            wc_local = wc_sorted[:, rank]  # (n_sims,)
+            wc_global = np.take_along_axis(wc_idxs, wc_local[:, np.newaxis], axis=1).squeeze()
+            np.add.at(playoff_counts, wc_global, 1)
+
+
+def _determine_playoffs_single(points, reg_wins, team_conf, team_div,
+                                conf_names, div_names, div_to_conf, n_teams):
+    """
+    Determine playoff qualifiers for a single simulation.
+    Returns array of team indices that made playoffs.
+    """
+    qualifiers = []
+    
+    for conf_idx in range(len(conf_names)):
+        # Get divisions in this conference
+        conf_divs = [d for d, c in div_to_conf.items() if c == conf_idx]
+        
+        wildcard_pool = []
+        
+        for div_idx in conf_divs:
+            # Teams in this division
+            div_mask = (team_conf == conf_idx) & (team_div == div_idx)
+            div_team_idxs = np.where(div_mask)[0]
+            
+            if len(div_team_idxs) == 0:
+                continue
+            
+            # Sort by points desc, reg wins desc
+            div_pts = points[div_team_idxs]
+            div_reg = reg_wins[div_team_idxs]
+            # Create sort key: primary = points (desc), secondary = reg_wins (desc)
+            sort_order = np.lexsort((-div_reg, -div_pts))
+            sorted_idxs = div_team_idxs[sort_order]
+            
+            # Top 3 qualify
+            for j in range(min(3, len(sorted_idxs))):
+                qualifiers.append(sorted_idxs[j])
+            
+            # Rest go to wildcard pool
+            for j in range(3, len(sorted_idxs)):
+                wildcard_pool.append(sorted_idxs[j])
+        
+        # Top 2 wildcards by points
+        if wildcard_pool:
+            wc_idxs = np.array(wildcard_pool)
+            wc_pts = points[wc_idxs]
+            wc_reg = reg_wins[wc_idxs]
+            wc_order = np.lexsort((-wc_reg, -wc_pts))
+            for j in range(min(2, len(wc_order))):
+                qualifiers.append(wc_idxs[wc_order[j]])
+    
+    return np.array(qualifiers, dtype=np.int64)
+
+
+def run_simulations_with_forced_result(teams, forced_home_abbrev, forced_away_abbrev,
+                                        forced_winner_abbrev, ot_game=False,
+                                        num_simulations=1000, real_schedule=None):
+    """
+    Run sim with one game's result pre-applied.
+    """
+    modified_teams = []
+    for team in teams:
+        t = dict(team)
+        abbrev = t["teamAbbrev"]
+        if abbrev in (forced_home_abbrev, forced_away_abbrev):
+            if abbrev == forced_winner_abbrev:
+                t["points"] += 2
+                if not ot_game:
+                    t["regulationWins"] = t.get("regulationWins", 0) + 1
+            else:
+                if ot_game:
+                    t["points"] += 1
+            t["gamesRemaining"] = max(0, t.get("gamesRemaining", 0) - 1)
+        modified_teams.append(t)
+    
+    return run_simulations_np(modified_teams, num_simulations=num_simulations, real_schedule=getattr(run_simulations_np, "_real_schedule", None))
+
+
+def run_simulations_with_multiple_forced(teams, forced_outcomes, num_simulations=2000):
+    """
+    Run sim with multiple game results pre-applied.
+    forced_outcomes: list of dicts with {home, away, winner, ot_game}
+    """
+    modified_teams = [dict(t) for t in teams]
+    abbrev_to_idx = {t["teamAbbrev"]: i for i, t in enumerate(modified_teams)}
+    
+    for outcome in forced_outcomes:
+        if isinstance(outcome, dict):
+            home = outcome["home"]
+            away = outcome["away"]
+            winner = outcome["winner"]
+            ot_game = outcome.get("ot_game", False)
+        else:
+            home, away, winner = outcome[0], outcome[1], outcome[2]
+            ot_game = outcome[3] if len(outcome) > 3 else False
+        
+        loser = away if winner == home else home
+        
+        for abbrev in [home, away]:
+            if abbrev in abbrev_to_idx:
+                idx = abbrev_to_idx[abbrev]
+                modified_teams[idx]["gamesRemaining"] = max(
+                    0, modified_teams[idx].get("gamesRemaining", 0) - 1
+                )
+        
+        if winner in abbrev_to_idx:
+            idx = abbrev_to_idx[winner]
+            modified_teams[idx]["points"] += 2
+            if not ot_game:
+                modified_teams[idx]["regulationWins"] = (
+                    modified_teams[idx].get("regulationWins", 0) + 1
+                )
+        
+        if ot_game and loser in abbrev_to_idx:
+            idx = abbrev_to_idx[loser]
+            modified_teams[idx]["points"] += 1
+    
+    return run_simulations_np(modified_teams, num_simulations=num_simulations, real_schedule=getattr(run_simulations_np, "_real_schedule", None))
+
+
+def _run_odds_and_whatif(teams, num_simulations=100000, real_schedule=None):
+    """
+    Run a full vectorized sim with record tracking.
+    Returns (vect_odds dict, what_if_data dict).
+    Used when no games are active tonight.
+    """
+    if not teams:
+        return {}, {}
+
+    n_teams = len(teams)
+    abbrev_to_idx = {t["teamAbbrev"]: i for i, t in enumerate(teams)}
+
+    base_points   = np.array([t["points"] for t in teams], dtype=np.float64)
+    base_reg_wins = np.array([t.get("regulationWins", 0) for t in teams], dtype=np.float64)
+    pts_pace      = np.array([t.get("pointsPace", 0) for t in teams], dtype=np.float64)
+
+    # Load Elo ratings
+    elo_ratings = _load_elo_ratings()
+    if elo_ratings:
+        elo_array = np.array([elo_ratings.get(t["teamAbbrev"], 1500) for t in teams], dtype=np.float64)
+        use_elo = True
+    else:
+        use_elo = False
+
+    conf_names = sorted(set(t["conference"] for t in teams))
+    div_names  = sorted(set(t["division"] for t in teams))
+    team_conf  = np.array([conf_names.index(t["conference"]) for t in teams], dtype=np.int32)
+    team_div   = np.array([div_names.index(t["division"]) for t in teams], dtype=np.int32)
+    div_to_conf = {}
+    for t in teams:
+        div_to_conf[div_names.index(t["division"])] = conf_names.index(t["conference"])
+    conf_div_structure = []
+    for conf_idx in range(len(conf_names)):
+        conf_divs = [d for d, c in div_to_conf.items() if c == conf_idx]
+        conf_div_structure.append([np.where((team_conf == conf_idx) & (team_div == d))[0] for d in conf_divs])
+
+    if real_schedule:
+        rs_home = [abbrev_to_idx[h] for h, a in real_schedule if h in abbrev_to_idx and a in abbrev_to_idx]
+        rs_away = [abbrev_to_idx[a] for h, a in real_schedule if h in abbrev_to_idx and a in abbrev_to_idx]
+        sched_home = np.array(rs_home, dtype=np.int32)
+        sched_away = np.array(rs_away, dtype=np.int32)
+        use_real = len(rs_home) > 0
+    else:
+        use_real = False
+
+    rng = np.random.default_rng()
+    all_playoffs = np.zeros((num_simulations, n_teams), dtype=np.bool_)
+    all_records  = np.zeros((num_simulations, n_teams, 3), dtype=np.int8)
+    all_final_pts = np.zeros((num_simulations, n_teams), dtype=np.float32)
+    all_final_reg = np.zeros((num_simulations, n_teams), dtype=np.float32)
+
+    batch_size = 5000
+    sim_offset = 0
+    while sim_offset < num_simulations:
+        b = min(batch_size, num_simulations - sim_offset)
+        if use_real:
+            home_idxs, away_idxs = sched_home, sched_away
+        else:
+            home_idxs, away_idxs = build_remaining_schedule(teams)
+
+        n_games = len(home_idxs)
+        if use_elo:
+            hw_prob = _elo_win_probs(home_idxs, away_idxs, elo_array)
+        else:
+            home_pace = pts_pace[home_idxs]
+            away_pace = pts_pace[away_idxs]
+            total = home_pace + away_pace
+            hw_prob = np.clip(np.where(total > 0, home_pace / total, 0.5) * HOME_WIN_PROB / 0.5, 0.3, 0.7)
+
+        win_rolls = rng.random((b, n_games))
+        ot_rolls  = rng.random((b, n_games))
+        home_wins = win_rolls < hw_prob[np.newaxis, :]
+        goes_ot   = ot_rolls < OT_PROBABILITY
+
+        home_pts = np.where(home_wins, 2, np.where(goes_ot, 1, 0)).astype(np.float64)
+        away_pts = np.where(~home_wins, 2, np.where(goes_ot, 1, 0)).astype(np.float64)
+        home_pts = np.where(~home_wins & goes_ot, 1, home_pts)
+        away_pts = np.where(home_wins & goes_ot, 1, away_pts)
+        home_reg = (home_wins & ~goes_ot).astype(np.float64)
+        away_reg = (~home_wins & ~goes_ot).astype(np.float64)
+
+        sim_pts = np.tile(base_points, (b, 1))
+        sim_reg = np.tile(base_reg_wins, (b, 1))
+        batch_wins = np.zeros((b, n_teams), dtype=np.int8)
+        batch_otl  = np.zeros((b, n_teams), dtype=np.int8)
+        batch_loss = np.zeros((b, n_teams), dtype=np.int8)
+
+        for g in range(n_games):
+            h, a = home_idxs[g], away_idxs[g]
+            sim_pts[:, h] += home_pts[:, g]
+            sim_pts[:, a] += away_pts[:, g]
+            sim_reg[:, h] += home_reg[:, g]
+            sim_reg[:, a] += away_reg[:, g]
+            hw = home_wins[:, g]
+            ot = goes_ot[:, g]
+            batch_wins[:, h] += hw.astype(np.int8)
+            batch_otl[:, h]  += (~hw & ot).astype(np.int8)
+            batch_loss[:, h] += (~hw & ~ot).astype(np.int8)
+            batch_wins[:, a] += (~hw).astype(np.int8)
+            batch_otl[:, a]  += (hw & ot).astype(np.int8)
+            batch_loss[:, a] += (hw & ~ot).astype(np.int8)
+
+        all_records[sim_offset:sim_offset + b, :, 0] = batch_wins
+        all_records[sim_offset:sim_offset + b, :, 1] = batch_otl
+        all_records[sim_offset:sim_offset + b, :, 2] = batch_loss
+        all_final_pts[sim_offset:sim_offset + b, :] = sim_pts.astype(np.float32)
+        all_final_reg[sim_offset:sim_offset + b, :] = sim_reg.astype(np.float32)
+        _determine_playoffs_batch_flags(sim_pts, sim_reg, conf_div_structure, all_playoffs, sim_offset, b)
+        sim_offset += b
+
+    team_playoff_pct = all_playoffs.mean(axis=0) * 100
+    vect_odds = {t["teamAbbrev"]: round(float(team_playoff_pct[abbrev_to_idx[t["teamAbbrev"]]]), 1) for t in teams}
+
+    # Build What If
+    from collections import defaultdict
+    what_if_data = {}
+    for t in teams:
+        abbrev = t["teamAbbrev"]
+        team_idx = abbrev_to_idx[abbrev]
+        pct = float(team_playoff_pct[team_idx])
+        if pct >= 99.5 or pct <= 0.05:
+            continue
+        wins_arr = all_records[:, team_idx, 0]
+        otl_arr  = all_records[:, team_idx, 1]
+        loss_arr = all_records[:, team_idx, 2]
+        playoff_col = all_playoffs[:, team_idx]
+        groups = defaultdict(lambda: [0, 0])
+        for i in range(num_simulations):
+            key = (int(wins_arr[i]), int(otl_arr[i]), int(loss_arr[i]))
+            groups[key][0] += 1
+            groups[key][1] += int(playoff_col[i])
+        rows = []
+        base_pts = t["points"]
+        for (w, otl, l), (count, made) in groups.items():
+            if count < 10:
+                continue
+            rows.append({
+                "wins": w, "losses": l, "otl": otl,
+                "final_points": float(base_pts + w * 2 + otl),
+                "times": count, "made_playoffs": made,
+                "playoff_pct": round(made / count * 100, 1),
+            })
+        rows.sort(key=lambda r: (-r["wins"], -r["otl"]))
+        what_if_data[abbrev] = rows
+
+    seed_probs = _compute_seed_probs(all_final_pts, all_final_reg, teams, abbrev_to_idx, conf_div_structure, num_simulations, all_playoffs)
+    return vect_odds, what_if_data, seed_probs
+
+
+def _determine_playoffs_batch_flags(sim_points, sim_reg, conf_div_structure, out_flags, offset, n_sims):
+    """
+    Like _determine_playoffs_batch but writes bool flags into out_flags[offset:offset+n_sims, :].
+    out_flags: (total_sims, n_teams) bool array
+    """
+    for conf_divs in conf_div_structure:
+        wildcard_idxs_list = []
+        wildcard_pts_list  = []
+        wildcard_reg_list  = []
+
+        for div_team_idxs in conf_divs:
+            if len(div_team_idxs) == 0:
+                continue
+
+            div_pts = sim_points[:, div_team_idxs]  # (n_sims, n_div)
+            div_reg = sim_reg[:, div_team_idxs]
+            composite = div_pts * 10000 + div_reg
+            sorted_local = np.argsort(-composite, axis=1)  # (n_sims, n_div)
+
+            for rank in range(min(3, len(div_team_idxs))):
+                local_idxs = sorted_local[:, rank]                    # (n_sims,)
+                global_idxs = div_team_idxs[local_idxs]              # (n_sims,)
+                # Mark as playoff qualifier for each sim
+                row_idxs = np.arange(n_sims)
+                out_flags[offset:offset + n_sims, :][row_idxs, global_idxs] = True
+
+            for rank in range(3, len(div_team_idxs)):
+                local_idxs  = sorted_local[:, rank]
+                global_idxs = div_team_idxs[local_idxs]
+                pts_vals = np.take_along_axis(div_pts, local_idxs[:, np.newaxis], axis=1).squeeze(axis=1)
+                reg_vals = np.take_along_axis(div_reg, local_idxs[:, np.newaxis], axis=1).squeeze(axis=1)
+                wildcard_idxs_list.append(global_idxs)
+                wildcard_pts_list.append(pts_vals)
+                wildcard_reg_list.append(reg_vals)
+
+        if not wildcard_idxs_list:
+            continue
+
+        wc_idxs = np.stack(wildcard_idxs_list, axis=1)  # (n_sims, n_cands)
+        wc_pts  = np.stack(wildcard_pts_list,  axis=1)
+        wc_reg  = np.stack(wildcard_reg_list,  axis=1)
+        wc_comp = wc_pts * 10000 + wc_reg
+        wc_sorted = np.argsort(-wc_comp, axis=1)
+
+        row_idxs = np.arange(n_sims)
+        for rank in range(min(2, wc_idxs.shape[1])):
+            wc_local  = wc_sorted[:, rank]
+            wc_global = np.take_along_axis(wc_idxs, wc_local[:, np.newaxis], axis=1).squeeze(axis=1)
+            out_flags[offset:offset + n_sims, :][row_idxs, wc_global] = True
+
+
+def _playoff_pct_rough(team):
+    """Get a rough playoff % for a team dict (handles nested or flat playoffOdds)."""
+    po = team.get("playoffOdds")
+    if isinstance(po, dict):
+        return po.get("playoff_pct", 0.0)
+    return float(po or 0.0)
+
+
+def run_scenario_analysis_vectorized(teams, tonight_games, num_simulations=100000, real_schedule=None):
+    """
+    Vectorized scenario analysis for tonight's games.
+
+    Instead of enumerating every outcome combo (O(3^n) × sims_per_combo),
+    we run one large batch of simulations. Tonight's games are simulated
+    normally — we just *record* which outcome occurred in each sim, then
+    group results by outcome. Same math, ~100x faster.
+
+    tonight_games: list of {"homeTeamAbbrev": str, "awayTeamAbbrev": str, "gameId": str/int}
+
+    Returns:
+        best_worst: dict of {abbrev: {"best": float, "worst": float, "has_game": bool}}
+        team_scenarios: dict of {abbrev: [list of scenario dicts per tonight game]}
+    """
+    if not teams:
+        return {}, {}, {}, {}
+
+    # If no active games tonight, run a full sim for odds + what-if only (no scenarios)
+    if not tonight_games:
+        vect_odds, what_if_data, seed_probs = _run_odds_and_whatif(teams, num_simulations, real_schedule)
+        best_worst = {t["teamAbbrev"]: {"best": vect_odds.get(t["teamAbbrev"], 0),
+                                         "worst": vect_odds.get(t["teamAbbrev"], 0),
+                                         "has_game": False} for t in teams}
+        return best_worst, {}, vect_odds, what_if_data, seed_probs
+
+    n_teams = len(teams)
+    abbrev_to_idx = {t["teamAbbrev"]: i for i, t in enumerate(teams)}
+    idx_to_abbrev = {i: t["teamAbbrev"] for i, t in enumerate(teams)}
+
+    # Filter tonight's games to those with valid teams
+    valid_games = [g for g in tonight_games
+                   if g["homeTeamAbbrev"] in abbrev_to_idx
+                   and g["awayTeamAbbrev"] in abbrev_to_idx]
+    n_tonight = len(valid_games)
+
+    teams_playing = set()
+    for g in valid_games:
+        teams_playing.add(g["homeTeamAbbrev"])
+        teams_playing.add(g["awayTeamAbbrev"])
+
+    # Determine which games in the full schedule are tonight's
+    tonight_home_idx = np.array([abbrev_to_idx[g["homeTeamAbbrev"]] for g in valid_games], dtype=np.int32)
+    tonight_away_idx = np.array([abbrev_to_idx[g["awayTeamAbbrev"]] for g in valid_games], dtype=np.int32)
+
+    # Team metadata
+    base_points   = np.array([t["points"] for t in teams], dtype=np.float64)
+    base_reg_wins = np.array([t.get("regulationWins", 0) for t in teams], dtype=np.float64)
+    pts_pace      = np.array([t.get("pointsPace", 0) for t in teams], dtype=np.float64)
+
+    # Load Elo ratings
+    elo_ratings = _load_elo_ratings()
+    if elo_ratings:
+        elo_array = np.array([elo_ratings.get(t["teamAbbrev"], 1500) for t in teams], dtype=np.float64)
+        use_elo = True
+    else:
+        use_elo = False
+
+    # Conference/division structure
+    conf_names = sorted(set(t["conference"] for t in teams))
+    div_names  = sorted(set(t["division"] for t in teams))
+    team_conf  = np.array([conf_names.index(t["conference"]) for t in teams], dtype=np.int32)
+    team_div   = np.array([div_names.index(t["division"]) for t in teams], dtype=np.int32)
+    div_to_conf = {}
+    for t in teams:
+        div_to_conf[div_names.index(t["division"])] = conf_names.index(t["conference"])
+
+    conf_div_structure = []
+    for conf_idx in range(len(conf_names)):
+        conf_divs = [d for d, c in div_to_conf.items() if c == conf_idx]
+        div_teams_list = [np.where((team_conf == conf_idx) & (team_div == d))[0] for d in conf_divs]
+        conf_div_structure.append(div_teams_list)
+
+    # Build schedule: tonight's games are ALWAYS prepended so we can match them.
+    # real_schedule covers future games (tomorrow+); tonight's are separate.
+    tonight_pairs_set = {(g["homeTeamAbbrev"], g["awayTeamAbbrev"]) for g in valid_games}
+    if real_schedule:
+        # Prepend tonight's games, then append remaining (excluding tonight dupes)
+        rs_filtered = [(h, a) for h, a in real_schedule
+                       if h in abbrev_to_idx and a in abbrev_to_idx
+                       and (h, a) not in tonight_pairs_set]
+        combined_home = [abbrev_to_idx[g["homeTeamAbbrev"]] for g in valid_games] + \
+                        [abbrev_to_idx[h] for h, a in rs_filtered]
+        combined_away = [abbrev_to_idx[g["awayTeamAbbrev"]] for g in valid_games] + \
+                        [abbrev_to_idx[a] for h, a in rs_filtered]
+        sched_home = np.array(combined_home, dtype=np.int32)
+        sched_away = np.array(combined_away, dtype=np.int32)
+        use_real = True
+    else:
+        use_real = False
+
+    rng = np.random.default_rng()
+
+    # Storage: per-sim playoff flags + per-sim tonight outcomes + per-team record tracking
+    all_outcomes   = np.empty((num_simulations, n_tonight), dtype=np.int8)   # tonight outcomes
+    all_playoffs   = np.zeros((num_simulations, n_teams),   dtype=np.bool_)  # did team make playoffs
+    # Record tracking: (num_simulations, n_teams, 3) — [wins, otl, losses] for remaining games
+    all_records    = np.zeros((num_simulations, n_teams, 3), dtype=np.int8)
+    # Final points per sim for seed computation
+    all_final_pts  = np.zeros((num_simulations, n_teams),   dtype=np.float32)
+    all_final_reg  = np.zeros((num_simulations, n_teams),   dtype=np.float32)
+
+    batch_size = 5000
+    sim_offset = 0
+
+    while sim_offset < num_simulations:
+        b = min(batch_size, num_simulations - sim_offset)
+
+        if use_real:
+            home_idxs = sched_home
+            away_idxs = sched_away
+        else:
+            syn_home, syn_away = build_remaining_schedule(teams)
+            # Prepend tonight's games so they're guaranteed at known positions
+            tn_home_list = [abbrev_to_idx[g["homeTeamAbbrev"]] for g in valid_games]
+            tn_away_list = [abbrev_to_idx[g["awayTeamAbbrev"]] for g in valid_games]
+            home_idxs = np.concatenate([np.array(tn_home_list, dtype=np.int32), syn_home])
+            away_idxs = np.concatenate([np.array(tn_away_list, dtype=np.int32), syn_away])
+
+        n_games = len(home_idxs)
+
+        # Win probs
+        if use_elo:
+            hw_prob = _elo_win_probs(home_idxs, away_idxs, elo_array)
+        else:
+            home_pace = pts_pace[home_idxs]
+            away_pace = pts_pace[away_idxs]
+            total = home_pace + away_pace
+            hw_prob = np.where(total > 0, home_pace / total, 0.5)
+            hw_prob = np.clip(hw_prob * HOME_WIN_PROB / 0.5, 0.3, 0.7)
+
+        win_rolls = rng.random((b, n_games))
+        ot_rolls  = rng.random((b, n_games))
+        home_wins = win_rolls < hw_prob[np.newaxis, :]
+        goes_ot   = ot_rolls  < OT_PROBABILITY
+
+        # Points
+        # OT: winner gets 2, loser gets 1
+        home_pts = np.where(home_wins, 2, np.where(goes_ot, 1, 0)).astype(np.float64)
+        away_pts = np.where(~home_wins, 2, np.where(goes_ot, 1, 0)).astype(np.float64)
+        # OT loser gets 1 point
+        home_pts = np.where(~home_wins & goes_ot, 1, home_pts)
+        away_pts = np.where(home_wins & goes_ot, 1, away_pts)
+        home_reg = (home_wins & ~goes_ot).astype(np.float64)
+        away_reg = (~home_wins & ~goes_ot).astype(np.float64)
+
+        sim_pts = np.tile(base_points, (b, 1))
+        sim_reg = np.tile(base_reg_wins, (b, 1))
+
+        # Accumulators for record tracking this batch
+        batch_wins = np.zeros((b, n_teams), dtype=np.int8)
+        batch_otl  = np.zeros((b, n_teams), dtype=np.int8)
+        batch_loss = np.zeros((b, n_teams), dtype=np.int8)
+
+        for g in range(n_games):
+            h = home_idxs[g]
+            a = away_idxs[g]
+            sim_pts[:, h] += home_pts[:, g]
+            sim_pts[:, a] += away_pts[:, g]
+            sim_reg[:, h] += home_reg[:, g]
+            sim_reg[:, a] += away_reg[:, g]
+
+            # Record tracking
+            # OT winner still gets a W; loser gets OTL
+            # home wins reg:  hw=T ot=F → home W, away L
+            # home wins OT:   hw=T ot=T → home W, away OTL
+            # away wins reg:  hw=F ot=F → away W, home L
+            # away wins OT:   hw=F ot=T → away W, home OTL
+            hw = home_wins[:, g]
+            ot = goes_ot[:, g]
+            # Home team
+            batch_wins[:, h] += hw.astype(np.int8)           # wins reg or OT
+            batch_otl[:, h]  += (~hw & ot).astype(np.int8)   # loses in OT
+            batch_loss[:, h] += (~hw & ~ot).astype(np.int8)  # loses in reg
+            # Away team
+            batch_wins[:, a] += (~hw).astype(np.int8)         # wins reg or OT
+            batch_otl[:, a]  += (hw & ot).astype(np.int8)    # loses in OT
+            batch_loss[:, a] += (hw & ~ot).astype(np.int8)   # loses in reg
+
+        all_records[sim_offset:sim_offset + b, :, 0] = batch_wins
+        all_records[sim_offset:sim_offset + b, :, 1] = batch_otl
+        all_records[sim_offset:sim_offset + b, :, 2] = batch_loss
+        all_final_pts[sim_offset:sim_offset + b, :] = sim_pts.astype(np.float32)
+        all_final_reg[sim_offset:sim_offset + b, :] = sim_reg.astype(np.float32)
+
+        # Record tonight's outcomes — tonight's games are always at positions 0..n_tonight-1
+        # Outcome codes: 0=home reg win, 1=away reg win, 2=home OT win, 3=away OT win
+        for ti in range(n_tonight):
+            hw = home_wins[:, ti]
+            ot = goes_ot[:, ti]
+            outcome = np.where(hw & ~ot, 0,
+                      np.where(~hw & ~ot, 1,
+                      np.where(hw & ot, 2, 3))).astype(np.int8)
+            all_outcomes[sim_offset:sim_offset + b, ti] = outcome
+
+        # Determine playoffs — vectorized per-sim using argsort
+        _determine_playoffs_batch_flags(
+            sim_pts, sim_reg, conf_div_structure, all_playoffs, sim_offset, b
+        )
+
+        sim_offset += b
+
+    # --- Build results ---
+    all_abbrevs = [t["teamAbbrev"] for t in teams]
+
+    # Overall playoff % per team across all sims (used as baseline for deltas)
+    team_playoff_pct = all_playoffs.mean(axis=0) * 100  # (n_teams,)
+
+    # best/worst: group sims by each game's outcome
+    # For each team, for each game outcome: average playoff%
+    team_scenarios = {a: [] for a in all_abbrevs}
+
+    for ti, game in enumerate(valid_games):
+        home = game["homeTeamAbbrev"]
+        away = game["awayTeamAbbrev"]
+        game_id = str(game.get("gameId", f"{home}_{away}"))
+
+        outcome_col = all_outcomes[:, ti]
+        valid_mask = outcome_col >= 0
+
+        # Determine the conference(s) of teams in this game
+        home_conf = next((t["conference"] for t in teams if t["teamAbbrev"] == home), None)
+        away_conf = next((t["conference"] for t in teams if t["teamAbbrev"] == away), None)
+        game_confs = {home_conf, away_conf} - {None}
+
+        # Skip showing this game in scenarios for OTHER teams if both participants
+        # are clinched or both are eliminated — it can't affect the playoff race
+        home_pct = float(team_playoff_pct[abbrev_to_idx[home]]) if home in abbrev_to_idx else 50
+        away_pct = float(team_playoff_pct[abbrev_to_idx[away]]) if away in abbrev_to_idx else 50
+        both_clinched   = (home_pct >= 99.5 and away_pct >= 99.5)
+        both_eliminated = (home_pct <= 0.05 and away_pct <= 0.05)
+        game_irrelevant = both_clinched or both_eliminated
+
+        for abbrev in all_abbrevs:
+            team_idx = abbrev_to_idx[abbrev]
+
+            # Skip if this team is in a different conference than both game teams
+            # (cross-conference games can't affect Eastern/Western playoff races separately)
+            team_conf_name = next((t["conference"] for t in teams if t["teamAbbrev"] == abbrev), None)
+            is_own = abbrev in (home, away)
+            if not is_own and team_conf_name not in game_confs:
+                continue
+            # Skip games between two clinched or two eliminated teams
+            # (they can't affect anyone else's playoff odds)
+            if not is_own and game_irrelevant:
+                continue
+
+            playoff_col = all_playoffs[:, team_idx].astype(np.float64)
+
+            # Outcome codes: 0=home reg, 1=away reg, 2=home OT win, 3=away OT win
+            results_by_outcome = {}
+            for outcome_code, label in [(0, "home_reg"), (1, "away_reg"), (2, "home_ot"), (3, "away_ot")]:
+                mask = valid_mask & (outcome_col == outcome_code)
+                n = mask.sum()
+                results_by_outcome[label] = float(playoff_col[mask].mean() * 100) if n > 50 else None
+
+            # Merge OT outcomes into a single "if_ot" by averaging home_ot and away_ot
+            home_ot = results_by_outcome.get("home_ot")
+            away_ot = results_by_outcome.get("away_ot")
+            if home_ot is not None and away_ot is not None:
+                if_ot_home_wins = home_ot   # home wins OT
+                if_ot_away_wins = away_ot   # away wins OT
+            else:
+                if_ot_home_wins = home_ot or away_ot
+                if_ot_away_wins = home_ot or away_ot
+
+            baseline_pct = float(team_playoff_pct[abbrev_to_idx[abbrev]])
+            hr = results_by_outcome["home_reg"]
+            ar = results_by_outcome["away_reg"]
+
+            home_delta_reg = round(hr - baseline_pct, 1) if hr is not None else None
+            away_delta_reg = round(ar - baseline_pct, 1) if ar is not None else None
+            home_ot_delta  = round(if_ot_home_wins - baseline_pct, 1) if if_ot_home_wins is not None else None
+            away_ot_delta  = round(if_ot_away_wins - baseline_pct, 1) if if_ot_away_wins is not None else None
+
+            max_abs = max(
+                abs(home_delta_reg) if home_delta_reg is not None else 0,
+                abs(away_delta_reg) if away_delta_reg is not None else 0,
+                abs(home_ot_delta)  if home_ot_delta  is not None else 0,
+                abs(away_ot_delta)  if away_ot_delta  is not None else 0,
+            )
+            impact = "high" if max_abs >= 3 else ("medium" if max_abs >= 1 else "low")
+
+            # Skip games with negligible impact (sim noise on irrelevant games)
+            if max_abs < 0.3 and not is_own:
+                continue
+
+            team_scenarios[abbrev].append({
+                "game_id": game_id,
+                "home_team": home,
+                "away_team": away,
+                "home_team_name": game.get("homeTeamCommonName", home),
+                "away_team_name": game.get("awayTeamCommonName", away),
+                "is_own_game": is_own,
+                "if_home_reg_win_pct":  round(hr, 1) if hr is not None else None,
+                "if_away_reg_win_pct":  round(ar, 1) if ar is not None else None,
+                "if_home_ot_win_pct":   round(if_ot_home_wins, 1) if if_ot_home_wins is not None else None,
+                "if_away_ot_win_pct":   round(if_ot_away_wins, 1) if if_ot_away_wins is not None else None,
+                # Legacy fields — home_wins = reg win for home, away_wins = reg win for away
+                "if_home_wins_pct":     round(hr, 1) if hr is not None else None,
+                "if_away_wins_pct":    round(ar, 1) if ar is not None else None,
+                "home_delta_reg":  home_delta_reg,
+                "away_delta_reg":  away_delta_reg,
+                "home_ot_delta":   home_ot_delta,
+                "away_ot_delta":   away_ot_delta,
+                "home_delta":      home_delta_reg,
+                "away_delta":      away_delta_reg,
+                "impact":          impact,
+            })
+
+    # best/worst per team — deterministic forced-outcome simulation.
+    # For each game, determine best/worst outcome by game logic (team wins/loses,
+    # rivals win/lose), then run a forced sim with all games locked simultaneously.
+    # This captures the joint compound effect of all outcomes.
+    best_worst = {}
+
+    def _is_rival_in_game(home, away, rivals):
+        if home in rivals and away in rivals:
+            return "both"
+        if home in rivals:
+            return home
+        if away in rivals:
+            return away
+        return None
+
+
+    sched_for_forced = real_schedule if real_schedule else None
+
+    for abbrev in all_abbrevs:
+        team_idx = abbrev_to_idx[abbrev]
+        baseline = round(float(team_playoff_pct[team_idx]), 1)
+
+        if n_tonight == 0:
+            best_worst[abbrev] = {"best": baseline, "worst": baseline, "has_game": False}
+            continue
+
+        team_conf_name = next((t["conference"] for t in teams if t["teamAbbrev"] == abbrev), None)
+        rivals = {
+            t["teamAbbrev"] for t in teams
+            if t["conference"] == team_conf_name
+            and _playoff_pct_rough(t) > 1.0 and _playoff_pct_rough(t) < 99.0
+        }
+
+        # Outcome codes in all_outcomes: 0=home reg, 1=away reg, 2=home OT win, 3=away OT win
+        # Pre-compute per-game favorable/unfavorable outcome code sets for this team.
+        game_favorable = []  # outcome codes that help THIS team
+        game_unfavorable = []  # outcome codes that hurt THIS team
+        for game in valid_games:
+            home = game["homeTeamAbbrev"]
+            away = game["awayTeamAbbrev"]
+
+            home_conf = next((t["conference"] for t in teams if t["teamAbbrev"] == home), None)
+            away_conf = next((t["conference"] for t in teams if t["teamAbbrev"] == away), None)
+            is_own = abbrev in (home, away)
+            rival = _is_rival_in_game(home, away, rivals)
+
+            if not is_own and team_conf_name not in {home_conf, away_conf}:
+                game_favorable.append(None)
+                game_unfavorable.append(None)
+                continue
+
+            if is_own:
+                if home == abbrev:
+                    # Own game home: favorable=home reg+OT win {0,2}, unfavorable=away reg win {1}
+                    game_favorable.append({0, 2})
+                    game_unfavorable.append({1})
+                else:
+                    # Own game away: favorable=away reg+OT win {1,3}, unfavorable=home reg win {0}
+                    game_favorable.append({1, 3})
+                    game_unfavorable.append({0})
+            elif rival == "both":
+                home_pct = float(team_playoff_pct[abbrev_to_idx[home]]) if home in abbrev_to_idx else 50
+                away_pct = float(team_playoff_pct[abbrev_to_idx[away]]) if away in abbrev_to_idx else 50
+                if home_pct <= away_pct:
+                    game_favorable.append({1})
+                    game_unfavorable.append({0})
+                else:
+                    game_favorable.append({0})
+                    game_unfavorable.append({1})
+            elif rival == home:
+                # Rival is home: their reg win {0,2} hurts us → favorable=away reg {1}
+                game_favorable.append({1})
+                game_unfavorable.append({0})
+            elif rival == away:
+                # Rival is away: their reg win {1,3} hurts us → favorable=home reg {0}
+                game_favorable.append({0})
+                game_unfavorable.append({1})
+            else:
+                game_favorable.append({1})
+                game_unfavorable.append({0})
+
+        # Compute favorable row mask: for each game, outcome in favorable set
+        favorable_mask = np.ones(num_simulations, dtype=np.bool_)
+        unfavorable_mask = np.ones(num_simulations, dtype=np.bool_)
+        for ti in range(n_tonight):
+            fav = game_favorable[ti]
+            unfav = game_unfavorable[ti]
+            outcome_col = all_outcomes[:, ti]
+            if fav is not None:
+                favorable_mask &= np.isin(outcome_col, list(fav))
+                unfavorable_mask &= np.isin(outcome_col, list(unfav))
+
+        team_idx = abbrev_to_idx[abbrev]
+        playoff_col = all_playoffs[:, team_idx]
+
+        best_pct = float(playoff_col[favorable_mask].mean() * 100) if favorable_mask.sum() > 50 else baseline
+        worst_pct = float(playoff_col[unfavorable_mask].mean() * 100) if unfavorable_mask.sum() > 50 else baseline
+
+        best_worst[abbrev] = {
+            "best": round(max(best_pct, baseline), 1),
+            "worst": round(min(worst_pct, baseline), 1),
+            "has_game": abbrev in teams_playing,
+        }
+
+    # Also return per-team playoff pct from the 100k sim as authoritative odds
+    vect_odds = {abbrev: round(float(team_playoff_pct[abbrev_to_idx[abbrev]]), 1) for abbrev in all_abbrevs}
+
+    # Build What If tables from record tracking
+    # For each team: group sims by (wins, otl, losses), compute playoff%
+    what_if_data = {}
+    for abbrev in all_abbrevs:
+        team_idx = abbrev_to_idx[abbrev]
+        # Skip clinched/eliminated teams
+        pct = float(team_playoff_pct[team_idx])
+        if pct >= 99.5 or pct <= 0.05:
+            continue
+
+        wins_arr = all_records[:, team_idx, 0]
+        otl_arr  = all_records[:, team_idx, 1]
+        loss_arr = all_records[:, team_idx, 2]
+        playoff_col = all_playoffs[:, team_idx]
+
+        # Group by record tuple
+        from collections import defaultdict
+        groups = defaultdict(lambda: [0, 0])  # {(w,otl,l): [count, made_playoffs]}
+        for i in range(num_simulations):
+            key = (int(wins_arr[i]), int(otl_arr[i]), int(loss_arr[i]))
+            groups[key][0] += 1
+            groups[key][1] += int(playoff_col[i])
+
+        rows = []
+        base_pts = next(t["points"] for t in teams if t["teamAbbrev"] == abbrev)
+        for (w, otl, l), (count, made) in groups.items():
+            if count < 10:
+                continue
+            final_pts = base_pts + w * 2 + otl
+            rows.append({
+                "wins": w,
+                "losses": l,
+                "otl": otl,
+                "final_points": float(final_pts),
+                "times": count,
+                "made_playoffs": made,
+                "playoff_pct": round(made / count * 100, 1),
+            })
+        rows.sort(key=lambda r: (-r["wins"], -r["otl"]))
+        what_if_data[abbrev] = rows
+
+    # Seed probability distribution — per-team breakdown of how often they finish each seed
+    # Uses final pts arrays to assign conference seeds per sim
+    seed_probs = _compute_seed_probs(all_final_pts, all_final_reg, teams, abbrev_to_idx, conf_div_structure, num_simulations, all_playoffs)
+
+    return best_worst, team_scenarios, vect_odds, what_if_data, seed_probs
+
+
+def _compute_seed_probs(all_final_pts, all_final_reg, teams, abbrev_to_idx, conf_div_structure, num_simulations, all_playoffs=None):
+    """
+    For each team, compute the probability of finishing at each conference seed (1-16).
+    Uses all_playoffs to ensure seeds 1-8 sum exactly to playoff odds.
+    Playoff teams get seeds 1-8 (ranked by points among playoff qualifiers).
+    Non-playoff teams get seeds 9-16 (ranked by points among non-qualifiers).
+    Returns {abbrev: {seed: pct, ...}}
+    """
+    n_teams = len(teams)
+
+    # Get conference membership per team
+    team_conf_idx = np.full(n_teams, -1, dtype=np.int32)
+    for conf_idx, divs in enumerate(conf_div_structure):
+        for div_team_idxs in divs:
+            for idx in div_team_idxs:
+                team_conf_idx[idx] = conf_idx
+
+    max_seed = 16
+    seed_counts = np.zeros((n_teams, max_seed + 1), dtype=np.int32)  # index 0 unused
+
+    batch_size = 2000
+    for offset in range(0, num_simulations, batch_size):
+        b = min(batch_size, num_simulations - offset)
+        pts_batch = all_final_pts[offset:offset + b].astype(np.float64)
+        reg_batch = all_final_reg[offset:offset + b].astype(np.float64)
+        composite = pts_batch * 10000 + reg_batch
+
+        if all_playoffs is not None:
+            playoff_batch = all_playoffs[offset:offset + b]  # (b, n_teams) bool
+        else:
+            playoff_batch = None
+
+        for conf_idx, divs in enumerate(conf_div_structure):
+            conf_team_idxs = np.concatenate([div for div in divs])
+            if len(conf_team_idxs) == 0:
+                continue
+
+            conf_comp = composite[:, conf_team_idxs]  # (b, n_conf_teams)
+
+            if playoff_batch is not None:
+                conf_playoff = playoff_batch[:, conf_team_idxs]  # (b, n_conf_teams)
+
+                # Playoff teams: assign seeds 1-8 ranked by points among playoff qualifiers
+                # Non-playoff teams: assign seeds 9-16 ranked by points among non-qualifiers
+                for s in range(b):
+                    in_mask = conf_playoff[s]   # bool array, shape (n_conf_teams,)
+                    out_mask = ~in_mask
+
+                    in_idxs  = np.where(in_mask)[0]   # local indices that made playoffs
+                    out_idxs = np.where(out_mask)[0]  # local indices that didn't
+
+                    # Rank playoff teams by composite (descending) → seeds 1..len(in_idxs)
+                    if len(in_idxs) > 0:
+                        in_comp = conf_comp[s, in_idxs]
+                        in_ranked = in_idxs[np.argsort(-in_comp)]
+                        for rank, local_idx in enumerate(in_ranked):
+                            global_idx = conf_team_idxs[local_idx]
+                            seed = rank + 1
+                            if seed <= max_seed:
+                                seed_counts[global_idx, seed] += 1
+
+                    # Rank non-playoff teams by composite (descending) → seeds 9..len(out_idxs)+8
+                    if len(out_idxs) > 0:
+                        out_comp = conf_comp[s, out_idxs]
+                        out_ranked = out_idxs[np.argsort(-out_comp)]
+                        for rank, local_idx in enumerate(out_ranked):
+                            global_idx = conf_team_idxs[local_idx]
+                            seed = rank + 9
+                            if seed <= max_seed:
+                                seed_counts[global_idx, seed] += 1
+            else:
+                # Fallback: simple conference ranking
+                ranks = np.argsort(-conf_comp, axis=1)
+                for local_rank in range(min(max_seed, len(conf_team_idxs))):
+                    global_idxs = conf_team_idxs[ranks[:, local_rank]]
+                    np.add.at(seed_counts[:, local_rank + 1], global_idxs, 1)
+
+    seed_probs = {}
+    for i, team in enumerate(teams):
+        abbrev = team["teamAbbrev"]
+        probs = {}
+        for s in range(1, max_seed + 1):
+            pct = round(seed_counts[i, s] / num_simulations * 100, 1)
+            if pct >= 0.1:
+                probs[s] = pct
+        seed_probs[abbrev] = probs
+
+    return seed_probs
+
+
+# Aliases for backward compatibility
+run_simulations = run_simulations_np
+
+
+def get_division_leaders(teams):
+    """Return current division standings."""
+    divisions = defaultdict(list)
+    for team in teams:
+        divisions[team["division"]].append(team)
+    result = {}
+    for div_name, div_teams in divisions.items():
+        sorted_teams = sorted(div_teams, key=lambda x: (x["points"], x["regulationWins"]), reverse=True)
+        result[div_name] = sorted_teams
+    return result
+
+
+def get_conference_wildcards(teams, conference):
+    """Return the 2 wildcard teams for a conference based on current standings."""
+    conf_teams = [t for t in teams if t["conference"] == conference]
+    divisions = defaultdict(list)
+    for team in conf_teams:
+        divisions[team["division"]].append(team)
+    
+    wildcard_pool = []
+    for div_name, div_teams in divisions.items():
+        sorted_div = sorted(div_teams, key=lambda x: (x["points"], x["regulationWins"]), reverse=True)
+        wildcard_pool.extend(sorted_div[3:])
+    
+    wildcard_pool.sort(key=lambda x: (x["points"], x["regulationWins"]), reverse=True)
+    return wildcard_pool[:2]

@@ -1,0 +1,3379 @@
+{
+  "generated_at": "2026-04-04T04:26:11.140149Z",
+  "seasons_tested": [
+    20242025,
+    20232024,
+    20222023
+  ],
+  "checkpoints": [
+    30,
+    20,
+    15,
+    10,
+    5
+  ],
+  "total_predictions": 480,
+  "brier_score": 0.0631,
+  "predictions": [
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "TOR",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "WPG",
+      "predicted_pct": 97.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "DET",
+      "predicted_pct": 3.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "DAL",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "NYR",
+      "predicted_pct": 98.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "SEA",
+      "predicted_pct": 94.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "VAN",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "PHI",
+      "predicted_pct": 2.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "FLA",
+      "predicted_pct": 35.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "TBL",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "OTT",
+      "predicted_pct": 3.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "WSH",
+      "predicted_pct": 49.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "NYI",
+      "predicted_pct": 9.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "CGY",
+      "predicted_pct": 59.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "STL",
+      "predicted_pct": 1.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "VGK",
+      "predicted_pct": 90.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "COL",
+      "predicted_pct": 67.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "BUF",
+      "predicted_pct": 23.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "PIT",
+      "predicted_pct": 74.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "EDM",
+      "predicted_pct": 97.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "LAK",
+      "predicted_pct": 87.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "NSH",
+      "predicted_pct": 44.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "MIN",
+      "predicted_pct": 61.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "NJD",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 30,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "WPG",
+      "predicted_pct": 65.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "DET",
+      "predicted_pct": 3.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "DAL",
+      "predicted_pct": 98.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "NYR",
+      "predicted_pct": 98.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "SEA",
+      "predicted_pct": 98.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "VAN",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "FLA",
+      "predicted_pct": 18.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "TBL",
+      "predicted_pct": 98.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "OTT",
+      "predicted_pct": 31.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "WSH",
+      "predicted_pct": 7.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "NYI",
+      "predicted_pct": 36.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "CGY",
+      "predicted_pct": 11.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "STL",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "VGK",
+      "predicted_pct": 99.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "COL",
+      "predicted_pct": 98.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "BUF",
+      "predicted_pct": 41.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "PIT",
+      "predicted_pct": 62.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "EDM",
+      "predicted_pct": 94.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "LAK",
+      "predicted_pct": 98.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "NSH",
+      "predicted_pct": 40.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "MIN",
+      "predicted_pct": 95.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "NJD",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 20,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "WPG",
+      "predicted_pct": 62.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "DET",
+      "predicted_pct": 2.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "DAL",
+      "predicted_pct": 99.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "NYR",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "SEA",
+      "predicted_pct": 91.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "VAN",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "FLA",
+      "predicted_pct": 37.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "TBL",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "OTT",
+      "predicted_pct": 6.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "WSH",
+      "predicted_pct": 5.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "NYI",
+      "predicted_pct": 56.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "CGY",
+      "predicted_pct": 5.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "STL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "COL",
+      "predicted_pct": 96.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "BUF",
+      "predicted_pct": 16.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "PIT",
+      "predicted_pct": 75.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "EDM",
+      "predicted_pct": 96.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "LAK",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "NSH",
+      "predicted_pct": 50.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "MIN",
+      "predicted_pct": 98.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "NJD",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 15,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "WPG",
+      "predicted_pct": 76.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "DET",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "NYR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "SEA",
+      "predicted_pct": 99.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "VAN",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "FLA",
+      "predicted_pct": 49.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "TBL",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "OTT",
+      "predicted_pct": 5.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "WSH",
+      "predicted_pct": 2.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "NYI",
+      "predicted_pct": 87.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "CGY",
+      "predicted_pct": 7.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "STL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "BUF",
+      "predicted_pct": 3.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "PIT",
+      "predicted_pct": 52.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "EDM",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "LAK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "NSH",
+      "predicted_pct": 17.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "MIN",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "NJD",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 10,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "WPG",
+      "predicted_pct": 72.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "DET",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "NYR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "SEA",
+      "predicted_pct": 99.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "VAN",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "FLA",
+      "predicted_pct": 78.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "TBL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "OTT",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "WSH",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "NYI",
+      "predicted_pct": 80.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "CGY",
+      "predicted_pct": 24.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "STL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "BUF",
+      "predicted_pct": 3.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "PIT",
+      "predicted_pct": 37.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "EDM",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "LAK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "NSH",
+      "predicted_pct": 3.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "MIN",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "NJD",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2022-2023",
+      "games_remaining": 5,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "TOR",
+      "predicted_pct": 78.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "WPG",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "DET",
+      "predicted_pct": 75.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "NYR",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "SEA",
+      "predicted_pct": 6.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "VAN",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "PHI",
+      "predicted_pct": 82.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "MTL",
+      "predicted_pct": 0.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "CAR",
+      "predicted_pct": 97.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "FLA",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "ARI",
+      "predicted_pct": 2.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "TBL",
+      "predicted_pct": 89.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "OTT",
+      "predicted_pct": 0.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "WSH",
+      "predicted_pct": 2.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "NYI",
+      "predicted_pct": 5.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "CGY",
+      "predicted_pct": 27.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "STL",
+      "predicted_pct": 68.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "VGK",
+      "predicted_pct": 98.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "COL",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "BUF",
+      "predicted_pct": 0.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "PIT",
+      "predicted_pct": 24.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "EDM",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "LAK",
+      "predicted_pct": 60.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "NSH",
+      "predicted_pct": 22.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "MIN",
+      "predicted_pct": 14.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "NJD",
+      "predicted_pct": 43.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 30,
+      "team": "BOS",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "TOR",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "DET",
+      "predicted_pct": 82.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "NYR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "SEA",
+      "predicted_pct": 23.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "VAN",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "PHI",
+      "predicted_pct": 64.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "CAR",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "TBL",
+      "predicted_pct": 81.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "OTT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "WSH",
+      "predicted_pct": 15.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "NYI",
+      "predicted_pct": 35.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "CGY",
+      "predicted_pct": 16.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "STL",
+      "predicted_pct": 21.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "VGK",
+      "predicted_pct": 63.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "COL",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "BUF",
+      "predicted_pct": 1.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "PIT",
+      "predicted_pct": 15.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "EDM",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "LAK",
+      "predicted_pct": 87.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "NSH",
+      "predicted_pct": 79.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "MIN",
+      "predicted_pct": 7.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "NJD",
+      "predicted_pct": 3.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 20,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "DET",
+      "predicted_pct": 42.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "NYR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "SEA",
+      "predicted_pct": 1.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "VAN",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "PHI",
+      "predicted_pct": 64.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "TBL",
+      "predicted_pct": 97.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "OTT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "WSH",
+      "predicted_pct": 54.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "NYI",
+      "predicted_pct": 33.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "CGY",
+      "predicted_pct": 11.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "STL",
+      "predicted_pct": 23.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "VGK",
+      "predicted_pct": 60.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "BUF",
+      "predicted_pct": 3.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "PIT",
+      "predicted_pct": 1.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "EDM",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "LAK",
+      "predicted_pct": 84.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "NSH",
+      "predicted_pct": 98.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "MIN",
+      "predicted_pct": 20.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "NJD",
+      "predicted_pct": 2.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 15,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "DET",
+      "predicted_pct": 17.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "NYR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "SEA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "VAN",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "PHI",
+      "predicted_pct": 72.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "TBL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "OTT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "WSH",
+      "predicted_pct": 90.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "NYI",
+      "predicted_pct": 12.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "CGY",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "STL",
+      "predicted_pct": 12.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "VGK",
+      "predicted_pct": 83.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "BUF",
+      "predicted_pct": 0.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "PIT",
+      "predicted_pct": 1.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "EDM",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "LAK",
+      "predicted_pct": 98.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "NSH",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "MIN",
+      "predicted_pct": 4.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "NJD",
+      "predicted_pct": 5.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 10,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "DET",
+      "predicted_pct": 54.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "NYR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "SEA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "VAN",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "PHI",
+      "predicted_pct": 12.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "MTL",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "ARI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "TBL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "CBJ",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "OTT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "WSH",
+      "predicted_pct": 29.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "NYI",
+      "predicted_pct": 65.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "CGY",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "STL",
+      "predicted_pct": 0.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "VGK",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "BUF",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "PIT",
+      "predicted_pct": 38.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "EDM",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "LAK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "NSH",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "MIN",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "NJD",
+      "predicted_pct": 0.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2023-2024",
+      "games_remaining": 5,
+      "team": "BOS",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "TOR",
+      "predicted_pct": 96.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "DET",
+      "predicted_pct": 31.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "DAL",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "NYR",
+      "predicted_pct": 10.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "SEA",
+      "predicted_pct": 0.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "VAN",
+      "predicted_pct": 35.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "PHI",
+      "predicted_pct": 2.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "MTL",
+      "predicted_pct": 19.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "CAR",
+      "predicted_pct": 99.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "FLA",
+      "predicted_pct": 96.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "TBL",
+      "predicted_pct": 60.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "CBJ",
+      "predicted_pct": 67.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "OTT",
+      "predicted_pct": 87.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "WSH",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "UTA",
+      "predicted_pct": 5.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "NYI",
+      "predicted_pct": 38.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "STL",
+      "predicted_pct": 2.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "CGY",
+      "predicted_pct": 67.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "VGK",
+      "predicted_pct": 99.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "COL",
+      "predicted_pct": 93.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "ANA",
+      "predicted_pct": 1.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "BUF",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "PIT",
+      "predicted_pct": 1.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "EDM",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "LAK",
+      "predicted_pct": 96.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "NSH",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "MIN",
+      "predicted_pct": 98.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "NJD",
+      "predicted_pct": 62.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 30,
+      "team": "BOS",
+      "predicted_pct": 25.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "DET",
+      "predicted_pct": 14.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "NYR",
+      "predicted_pct": 43.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "SEA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "VAN",
+      "predicted_pct": 34.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "PHI",
+      "predicted_pct": 1.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "MTL",
+      "predicted_pct": 35.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "CAR",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "TBL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "CBJ",
+      "predicted_pct": 56.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "OTT",
+      "predicted_pct": 68.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "WSH",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "UTA",
+      "predicted_pct": 14.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "NYI",
+      "predicted_pct": 20.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "STL",
+      "predicted_pct": 21.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "CGY",
+      "predicted_pct": 36.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "COL",
+      "predicted_pct": 98.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "ANA",
+      "predicted_pct": 4.6,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "BUF",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "PIT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "EDM",
+      "predicted_pct": 98.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "LAK",
+      "predicted_pct": 93.3,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "NSH",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "MIN",
+      "predicted_pct": 99.2,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "NJD",
+      "predicted_pct": 57.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 20,
+      "team": "BOS",
+      "predicted_pct": 1.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "TOR",
+      "predicted_pct": 99.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "DET",
+      "predicted_pct": 7.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "NYR",
+      "predicted_pct": 33.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "SEA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "VAN",
+      "predicted_pct": 23.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "MTL",
+      "predicted_pct": 44.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "TBL",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "CBJ",
+      "predicted_pct": 25.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "OTT",
+      "predicted_pct": 98.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "WSH",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "UTA",
+      "predicted_pct": 13.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "NYI",
+      "predicted_pct": 17.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "STL",
+      "predicted_pct": 39.1,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "CGY",
+      "predicted_pct": 30.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "ANA",
+      "predicted_pct": 0.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "BUF",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "PIT",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "EDM",
+      "predicted_pct": 99.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "LAK",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "NSH",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "MIN",
+      "predicted_pct": 94.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "NJD",
+      "predicted_pct": 73.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 15,
+      "team": "BOS",
+      "predicted_pct": 1.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "DET",
+      "predicted_pct": 2.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "NYR",
+      "predicted_pct": 18.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "SEA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "VAN",
+      "predicted_pct": 12.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "MTL",
+      "predicted_pct": 47.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "TBL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "CBJ",
+      "predicted_pct": 21.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "OTT",
+      "predicted_pct": 99.5,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "WSH",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "UTA",
+      "predicted_pct": 0.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "NYI",
+      "predicted_pct": 24.7,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "STL",
+      "predicted_pct": 76.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "CGY",
+      "predicted_pct": 17.9,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "BUF",
+      "predicted_pct": 0.1,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "PIT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "EDM",
+      "predicted_pct": 97.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "LAK",
+      "predicted_pct": 99.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "NSH",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "MIN",
+      "predicted_pct": 95.4,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "NJD",
+      "predicted_pct": 85.6,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 10,
+      "team": "BOS",
+      "predicted_pct": 0.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "TOR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "WPG",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "CHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "DET",
+      "predicted_pct": 3.2,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "SJS",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "DAL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "NYR",
+      "predicted_pct": 1.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "SEA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "VAN",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "PHI",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "MTL",
+      "predicted_pct": 93.5,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "CAR",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "FLA",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "TBL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "CBJ",
+      "predicted_pct": 0.3,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "OTT",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "WSH",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "UTA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "NYI",
+      "predicted_pct": 2.8,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "STL",
+      "predicted_pct": 98.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "CGY",
+      "predicted_pct": 9.4,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "VGK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "COL",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "ANA",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "BUF",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "PIT",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "EDM",
+      "predicted_pct": 99.7,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "LAK",
+      "predicted_pct": 100.0,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "NSH",
+      "predicted_pct": 0.0,
+      "made_playoffs": false
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "MIN",
+      "predicted_pct": 92.8,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "NJD",
+      "predicted_pct": 98.9,
+      "made_playoffs": true
+    },
+    {
+      "season": "2024-2025",
+      "games_remaining": 5,
+      "team": "BOS",
+      "predicted_pct": 0.0,
+      "made_playoffs": true
+    }
+  ]
+}

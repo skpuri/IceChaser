@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Crawl-delay to be gentle on the server (NHL API rate limits)
+Crawl-delay: 1
+
+Sitemap: https://icechaser.com/sitemap.xml
+
+# Key pages
+User-agent: *
+Allow: /nhl/playoff-odds
+Allow: /nhl/teams
+Allow: /about
+Disallow: /data/
+Disallow: /api/
