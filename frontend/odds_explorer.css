@@ -1,0 +1,386 @@
+/* ─── Odds Explorer Overlay ─────────────────────────────────────────────────── */
+
+.explorer-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 10000;
+  background: var(--bg);
+  overflow-y: auto;
+  animation: explorerFadeIn 0.2s ease;
+}
+@keyframes explorerFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.explorer-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.explorer-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.explorer-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+.explorer-subtitle {
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.explorer-close-btn {
+  background: var(--bg-elevated);
+  color: var(--red);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.explorer-close-btn:hover {
+  background: var(--red-dim);
+  border-color: var(--red);
+}
+
+/* Expand button on existing chart */
+.odds-chart-expand-btn {
+  margin-left: auto;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.odds-chart-expand-btn:hover {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+
+/* Filter bar */
+.explorer-filters {
+  display: flex;
+  gap: 6px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  align-items: center;
+}
+.explorer-filter-btn {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.3px;
+  transition: all 0.15s;
+}
+.explorer-filter-btn:hover { border-color: var(--border); }
+.explorer-filter-btn.active {
+  background: var(--blue);
+  color: #fff;
+}
+.explorer-filter-sep {
+  display: inline-block;
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
+.explorer-div-btn {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.explorer-div-btn:hover { color: var(--text-muted); }
+.explorer-div-btn.active {
+  background: var(--blue);
+  color: #fff;
+  border-color: var(--blue);
+}
+.explorer-compare-btn {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.explorer-compare-btn.active {
+  background: var(--red-dim);
+  color: var(--red);
+  border-color: var(--red);
+}
+
+/* Compare banner */
+.explorer-compare-banner {
+  padding: 8px 16px;
+  background: var(--red-dim);
+  border-bottom: 1px solid var(--red);
+  font-size: 12px;
+  color: var(--red);
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Chart area */
+.explorer-chart-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 300px;
+  padding: 0 4px;
+  cursor: crosshair;
+}
+.explorer-chart-wrap svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+}
+.explorer-cutoff-label {
+  position: absolute;
+  top: 4px;
+  right: 16px;
+  font-size: 10px;
+  color: var(--yellow);
+  opacity: 0.65;
+}
+
+/* Tooltip */
+.explorer-tooltip {
+  position: absolute;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  pointer-events: none;
+  z-index: 100;
+  min-width: 160px;
+  max-height: 55vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow);
+}
+.explorer-tip-date {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.explorer-tip-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 0;
+}
+.explorer-tip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.explorer-tip-abbrev {
+  font-size: 12px;
+  color: var(--text-muted);
+  width: 32px;
+}
+.explorer-tip-val {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+.explorer-tip-delta {
+  border-top: 1px solid var(--border);
+  margin-top: 6px;
+  padding-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Date slider */
+.explorer-slider-wrap {
+  padding: 8px 16px 4px;
+}
+.explorer-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.explorer-slider-track {
+  position: relative;
+  height: 20px;
+  background: var(--bg-elevated);
+  border-radius: 10px;
+  cursor: pointer;
+}
+.explorer-slider-active {
+  position: absolute;
+  height: 100%;
+  background: rgba(88,166,255,0.2);
+  border-radius: 10px;
+}
+:root[data-theme="light"] .explorer-slider-active {
+  background: rgba(13,110,253,0.12);
+}
+.explorer-slider-handle {
+  position: absolute;
+  top: -2px;
+  width: 16px;
+  height: 24px;
+  background: var(--blue);
+  border-radius: 6px;
+  cursor: ew-resize;
+  transform: translateX(-50%);
+  border: 2px solid var(--bg);
+  transition: box-shadow 0.15s;
+}
+.explorer-slider-handle:hover {
+  box-shadow: 0 0 0 3px rgba(88,166,255,0.3);
+}
+
+/* Big movers */
+.explorer-movers {
+  padding: 10px 16px 0;
+}
+.explorer-movers-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.explorer-movers-list {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.explorer-mover {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.explorer-mover.up { border-color: var(--green-dim); }
+.explorer-mover.down { border-color: var(--red-dim); }
+.explorer-mover-delta { font-weight: 700; }
+.explorer-mover.up .explorer-mover-delta { color: var(--green); }
+.explorer-mover.down .explorer-mover-delta { color: var(--red); }
+.explorer-mover-date { color: var(--text-dim); }
+
+/* Team chips */
+.explorer-chips-wrap {
+  padding: 12px 16px 8px;
+}
+.explorer-chips-label {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.explorer-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.explorer-chip {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: inherit;
+}
+.explorer-chip:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--text-dim);
+}
+.explorer-chip.hidden {
+  opacity: 0.35;
+}
+.explorer-chip.compare {
+  background: var(--red-dim);
+  border-color: var(--red);
+}
+.explorer-chip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.explorer-chip-abbrev {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text);
+}
+.explorer-chip-pct {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+/* Footer */
+.explorer-footer {
+  padding: 12px 16px 20px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .explorer-header { padding: 12px 14px; }
+  .explorer-filters { padding: 8px 12px; gap: 4px; }
+  .explorer-chips-wrap { padding: 10px 12px 6px; }
+  .explorer-chart-wrap { min-height: 250px; }
+  .explorer-div-btn { font-size: 9px; padding: 2px 6px; }
+}

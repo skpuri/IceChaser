@@ -987,6 +987,26 @@ def main():
 
     print(f"✅ Done! Output written to: {OUTPUT_PATH}")
 
+    # Write separate odds_history.json for the chart explorer
+    try:
+        chart_history_path = "/var/www/icechaser/data/odds_history.json"
+        dates = set()
+        teams_chart = {}
+        for team in flat_teams:
+            ab = team.get("teamAbbrev", "")
+            if not ab: continue
+            th = {}
+            for e in team.get("odds_history", []):
+                d = e.get("date", ""); o = e.get("odds", 0)
+                if d: dates.add(d); th[d] = o
+            if th: teams_chart[ab] = th
+        chart_data = {"dates": sorted(dates), "teams": teams_chart}
+        with open(chart_history_path, "w") as f:
+            json.dump(chart_data, f)
+        print(f"📈 Chart history updated ({len(sorted(dates))} dates)")
+    except Exception as e:
+        print(f"⚠️ Chart history update failed: {e}")
+
     # Print summary
     print("\n📊 Quick Summary:")
     print(f"   Teams: {len(flat_teams)}")

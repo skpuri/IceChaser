@@ -1422,3 +1422,88 @@ body {
   color: var(--text-secondary);
   text-align: right;
 }
+
+/* ─── Odds Movement Chart ─────────────────────────────────────────────────── */
+.odds-chart-section {
+  padding: 24px 0 0;
+}
+
+.odds-chart-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.odds-chart-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.odds-chart-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.odds-chart-wrap {
+  position: relative;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+.odds-chart-canvas {
+  width: 100% !important;
+  max-height: 360px;
+}
+
+.odds-chart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.odds-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 3px 8px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+
+.odds-chart-legend-item:hover {
+  background: var(--bg-elevated);
+  border-color: var(--border);
+}
+
+.odds-chart-legend-item.active {
+  background: var(--bg-elevated);
+  border-color: var(--border);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.odds-chart-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.odds-chart-loading {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}

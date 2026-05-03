@@ -4,6 +4,7 @@
  */
 
 const DATA_URL = '../data/playoff_odds.json';
+const HISTORY_URL = '../data/odds_history.json';
 const REFRESH_INTERVAL = 5 * 60 * 1000; // 5 minutes
 const STORAGE_KEY = 'icechaser_prev_odds';
 const DIVE_TEAM_KEY = 'icechaser_dive_team';
@@ -68,7 +69,7 @@ function savePrevOdds(data) {
 
 // ─── Main Render ──────────────────────────────────────────────────────────────
 
-function render(data, prev) {
+async function render(data, prev) {
   const app = document.getElementById('app');
   const prevOdds = prev?.odds || null;
 
@@ -93,6 +94,11 @@ function render(data, prev) {
     gamesStrip.appendChild(renderTomorrowGames(data.tomorrows_games));
   }
   container.appendChild(gamesStrip);
+
+  // ── Odds Movement Chart ──
+  try {
+    container.appendChild(await renderOddsChart(data.teams || []));
+  } catch(e) { console.error('Chart render failed:', e); }
 
   container.appendChild(renderStandingsTable(data.conferences || {}, data.teams || [], data.todays_games || []));
   container.appendChild(renderTeamDeepDive(data.teams || [], data.tomorrows_games || []));
@@ -1217,3 +1223,146 @@ function selectTeamDive(abbrev) {
 
 // ─── Start ────────────────────────────────────────────────────────────────────
 init();
+
+// ─── Odds Movement Chart ───────────────────────────────────────────────────────
+const CHART_COLORS = [
+  '#003087','#BD3039','#092C5C','#134A8E','#DF4601',
+  '#00385D','#002B5C','#0C2340','#27251F','#004687',
+  '#EB6E1F','#005C5C','#003278','#BA0021','#003831',
+  '#CE1141','#E81828','#002D72','#00A3E0','#AB0003',
+  '#FFC52F','#0E3386','#C41E3A','#FFB81C','#C6011F',
+  '#005A9C','#2F241D','#FD5A1E','#A71930','#33006F',
+];
+
+let oddsChartInstance = null;
+
+async function renderOddsChart(currentTeams) {
+  const section = el('section', { class: 'section odds-chart-section' });
+
+  const titleBar = el('div', { class: 'odds-chart-header' });
+  titleBar.innerHTML = '<span class="icon">📈</span><span class="odds-chart-title">Odds Movement</span><span class="odds-chart-sub"> — daily locked odds (midnight EST)</span>';
+  var expandBtn = el('button', { class: 'odds-chart-expand-btn' });
+  expandBtn.textContent = '⛶ Expand';
+  expandBtn.addEventListener('click', function() {
+    fetch(HISTORY_URL + '?_=' + Date.now())
+    .then(function(r) { return r.json(); })
+    .then(function(history) { OddsExplorer.open(history); })
+    .catch(function(err) { console.error('Explorer load failed:', err); });
+  });
+  titleBar.appendChild(expandBtn);
+  section.appendChild(titleBar);
+
+  const wrap = el('div', { class: 'odds-chart-wrap' });
+  const loading = el('div', { class: 'odds-chart-loading' });
+  loading.textContent = 'Loading chart data...';
+  wrap.appendChild(loading);
+  section.appendChild(wrap);
+
+  fetchOddsHistory(currentTeams, wrap);
+  return section;
+}
+
+async function fetchOddsHistory(currentTeams, wrap) {
+  try {
+    const resp = await fetch(HISTORY_URL + '?_=' + Date.now());
+    if (!resp.ok) throw new Error('HTTP ' + resp.status);
+    const history = await resp.json();
+    renderChart(history, currentTeams, wrap);
+  } catch (err) {
+    wrap.innerHTML = '';
+    const empty = el('div', { class: 'odds-chart-empty' });
+    empty.textContent = 'Chart data unavailable.';
+    wrap.appendChild(empty);
+  }
+}
+
+function fmtDate(dateStr) {
+  try {
+    const d = new Date(dateStr + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  } catch { return dateStr; }
+}
+
+function renderChart(history, currentTeams, wrap) {
+  wrap.innerHTML = '';
+  const dates = history.dates || [];
+  const teamsData = history.teams || {};
+
+  if (!dates.length) {
+    const empty = el('div', { class: 'odds-chart-empty' });
+    empty.textContent = 'Not enough history yet — check back tomorrow.';
+    wrap.appendChild(empty);
+    return;
+  }
+
+  const currentOdds = {};
+  (currentTeams || []).forEach(function(t) { currentOdds[t.teamAbbrev] = t.playoffOdds || 0; });
+
+  const showTeams = Object.keys(teamsData).filter(function(abbrev) { return true; });
+  showTeams.sort(function(a, b) { return (currentOdds[b] || 0) - (currentOdds[a] || 0); });
+
+  if (!showTeams.length) {
+    const empty = el('div', { class: 'odds-chart-empty' });
+    empty.textContent = 'No teams with odds data yet.';
+    wrap.appendChild(empty);
+    return;
+  }
+
+  const canvas = el('canvas', { class: 'odds-chart-canvas', id: 'odds-line-chart' });
+  wrap.appendChild(canvas);
+
+  const datasets = showTeams.map(function(abbrev, i) {
+    var color = CHART_COLORS[i % CHART_COLORS.length];
+    var data = dates.map(function(date) { return teamsData[abbrev][date] ?? null; });
+    return {
+      label: abbrev,
+      data: data,
+      borderColor: color,
+      backgroundColor: color + '33',
+      borderWidth: 2,
+      pointRadius: 0,
+      pointHoverRadius: 4,
+      tension: 0.3,
+      fill: false,
+      spanGaps: true,
+    };
+  });
+
+  if (oddsChartInstance) { oddsChartInstance.destroy(); oddsChartInstance = null; }
+
+  var isDark = document.documentElement.dataset.theme === 'dark';
+  var gridColor = isDark ? '#30363d' : '#e9ecef';
+  var tickColor = isDark ? '#8b949e' : '#6c757d';
+
+  oddsChartInstance = new Chart(canvas, {
+    type: 'line',
+    data: { labels: dates, datasets: datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      interaction: { mode: 'nearest', intersect: false, axis: 'xy' },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            title: function(items) { return fmtDate(items[0].label); },
+            label: function(ctx) {
+              return ctx.dataset.label + ': ' + (ctx.raw != null ? ctx.raw.toFixed(1) + '%' : '—');
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { color: gridColor },
+          ticks: { color: tickColor, maxTicksLimit: 8, callback: fmtDate }
+        },
+        y: {
+          min: 0, max: 100,
+          grid: { color: gridColor },
+          ticks: { color: tickColor, callback: function(v) { return v + '%'; } }
+        }
+      }
+    }
+  });
+}
