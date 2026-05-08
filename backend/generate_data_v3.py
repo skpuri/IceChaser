@@ -839,12 +839,45 @@ def main():
             tomorrow_pairs = set((g["homeTeamAbbrev"], g["awayTeamAbbrev"]) for g in tomorrow_games)
             post_tomorrow_schedule = [g for g in (real_schedule or []) if (g[0], g[1]) not in tonight_pairs and (g[0], g[1]) not in tomorrow_pairs]
             tomorrow_full_schedule = [(g["homeTeamAbbrev"], g["awayTeamAbbrev"]) for g in tomorrow_games] + post_tomorrow_schedule
-            tmr_bw, tmr_sc, _, _tmr_wif, _ = simulator.run_scenario_analysis_vectorized(
+            tmr_bw, tmr_sc, tmr_vect_odds, _tmr_wif, _ = simulator.run_scenario_analysis_vectorized(
                 teams, tomorrow_games, num_simulations=500000, real_schedule=tomorrow_full_schedule
             )
+
+            # Rebase tomorrow scenarios against today's displayed baseline.
+            # The tomorrow sim resolves tonight's games randomly, so its internal
+            # baseline drifts from the current displayed odds. Shift to align.
+            for abbrev, scenarios in tmr_sc.items():
+                today_baseline = sim_results.get(abbrev, {}).get("playoff_pct", 0)
+                tmr_baseline = tmr_vect_odds.get(abbrev, 0)
+                shift = today_baseline - tmr_baseline
+                for s in scenarios:
+                    for key_abs, key_delta in [
+                        ("if_home_wins_pct", "home_delta"),
+                        ("if_away_wins_pct", "away_delta"),
+                        ("if_home_reg_win_pct", "home_delta_reg"),
+                        ("if_away_reg_win_pct", "away_delta_reg"),
+                    ]:
+                        if s.get(key_abs) is not None:
+                            s[key_abs] = round(s[key_abs] + shift, 1)
+                            s[key_delta] = round(s[key_abs] - today_baseline, 1)
+                    hd = abs(s.get("home_delta") or 0)
+                    ad = abs(s.get("away_delta") or 0)
+                    max_abs = max(hd, ad)
+                    s["impact"] = "high" if max_abs >= 3 else ("medium" if max_abs >= 1 else "low")
+
             tomorrow_scenarios = tmr_sc
+
+            # Rebase tomorrow best/worst too
             for abbrev, data in tmr_bw.items():
-                tomorrow_best_worst[abbrev] = data
+                today_baseline = sim_results.get(abbrev, {}).get("playoff_pct", 0)
+                tmr_baseline = tmr_vect_odds.get(abbrev, 0)
+                shift = today_baseline - tmr_baseline
+                tomorrow_best_worst[abbrev] = {
+                    "best": round(data["best"] + shift, 1),
+                    "worst": round(data["worst"] + shift, 1),
+                    "has_game": data.get("has_game", False),
+                }
+
             print(f"   ✓ Tomorrow's scenarios complete")
     except Exception as e:
         print(f"   ⚠ Could not fetch tomorrow's games: {e}")
@@ -986,26 +1019,6 @@ def main():
         pass
 
     print(f"✅ Done! Output written to: {OUTPUT_PATH}")
-
-    # Write separate odds_history.json for the chart explorer
-    try:
-        chart_history_path = "/var/www/icechaser/data/odds_history.json"
-        dates = set()
-        teams_chart = {}
-        for team in flat_teams:
-            ab = team.get("teamAbbrev", "")
-            if not ab: continue
-            th = {}
-            for e in team.get("odds_history", []):
-                d = e.get("date", ""); o = e.get("odds", 0)
-                if d: dates.add(d); th[d] = o
-            if th: teams_chart[ab] = th
-        chart_data = {"dates": sorted(dates), "teams": teams_chart}
-        with open(chart_history_path, "w") as f:
-            json.dump(chart_data, f)
-        print(f"📈 Chart history updated ({len(sorted(dates))} dates)")
-    except Exception as e:
-        print(f"⚠️ Chart history update failed: {e}")
 
     # Print summary
     print("\n📊 Quick Summary:")
