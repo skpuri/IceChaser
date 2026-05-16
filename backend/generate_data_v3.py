@@ -1032,6 +1032,118 @@ def main():
     print(f"   Bubble (20-80%): {bubble}")
     print(f"\n   Headline: {narratives['headline'][:80]}...")
 
+    # ── LLM / SEO readability ──
+    print("🤖 Generating llms.txt, SEO snapshot, and JSON-LD...")
+    import re as _re
+    _ts_display = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    _ts_iso = datetime.now(timezone.utc).isoformat()
+
+    # 1. Generate llms.txt
+    _llms = [
+        "# IceChaser — NHL Playoff Odds",
+        f"> Updated: {_ts_display}",
+        "> Source: icechaser.com",
+        "> Data: 500,000 Monte Carlo simulations per run",
+        "> API: icechaser.com/data/playoff_odds.json",
+        "",
+        "## Current Playoff Odds",
+        "",
+        "| Team | Record | Pts | Division | Playoff % | Best Tonight | Worst Tonight |",
+        "|------|--------|-----|----------|-----------|-------------|--------------|",
+    ]
+    for _t in flat_teams:
+        _rec = f"{_t.get('wins',0)}-{_t.get('losses',0)}-{_t.get('otLosses',0)}"
+        _pts = _t.get("points", 0)
+        _div = _t.get("division", "")
+        _odds = _t.get("playoffOdds", 0)
+        _best = _t.get("best_case_tonight", _odds)
+        _worst = _t.get("worst_case_tonight", _odds)
+        _llms.append(f"| {_t['teamAbbrev']} | {_rec} | {_pts} | {_div} | {_odds}% | {_best}% | {_worst}% |")
+    _llms.append("")
+    _llms.append("## Tonight's Games")
+    if enhanced_games:
+        for _g in enhanced_games:
+            _gt = _g.get("gameTime", "TBD")
+            _gs = _g.get("gameState", "")
+            if _gs in ("FINAL", "OFF"):
+                _lbl = f"{_g['awayTeamAbbrev']} {_g.get('awayScore', 0)} @ {_g['homeTeamAbbrev']} {_g.get('homeScore', 0)} (Final)"
+            elif _gs in ("LIVE", "CRIT"):
+                _lbl = f"{_g['awayTeamAbbrev']} {_g.get('awayScore', 0)} @ {_g['homeTeamAbbrev']} {_g.get('homeScore', 0)} (Live)"
+            else:
+                _lbl = f"{_g['awayTeamAbbrev']} @ {_g['homeTeamAbbrev']} ({_gt})"
+            _llms.append(f"- {_lbl}")
+    else:
+        _llms.append("- No games scheduled today")
+    _llms.append("")
+    _llms.append("## About")
+    _llms.append("IceChaser uses Monte Carlo simulation to estimate NHL playoff probabilities.")
+    _llms.append("Not affiliated with the NHL. For entertainment purposes.")
+    with open("/var/www/icechaser/llms.txt", "w") as _f:
+        _f.write("\n".join(_llms) + "\n")
+    print("   ✓ llms.txt written")
+
+    # 2 & 3. Inject <noscript> SEO snapshot and JSON-LD into index.html
+    _idx_path = "/var/www/icechaser/index.html"
+    try:
+        with open(_idx_path, "r") as _f:
+            _html = _f.read()
+
+        # Remove existing seo-snapshot noscript block
+        _html = _re.sub(r'<noscript>\s*<div class="seo-snapshot">.*?</noscript>\s*', '', _html, flags=_re.DOTALL)
+        # Remove existing JSON-LD block
+        _html = _re.sub(r'<script type="application/ld\+json">.*?</script>\s*', '', _html, flags=_re.DOTALL)
+
+        # Build noscript block
+        _rows = "".join(
+            f'<tr><td>{_t["teamAbbrev"]}</td><td>{_t.get("wins",0)}-{_t.get("losses",0)}-{_t.get("otLosses",0)}</td>'
+            f'<td>{_t.get("points",0)}</td><td>{_t.get("division","")}</td><td>{_t.get("playoffOdds",0)}%</td></tr>'
+            for _t in flat_teams
+        )
+        _noscript = (
+            '<noscript>\n<div class="seo-snapshot">\n'
+            '<h1>IceChaser — NHL Playoff Odds</h1>\n'
+            f'<p>Updated: {_ts_display}</p>\n'
+            '<table>\n<tr><th>Team</th><th>Record</th><th>Pts</th><th>Division</th><th>Playoff %</th></tr>\n'
+            f'{_rows}\n</table>\n</div>\n</noscript>\n'
+        )
+        _html = _html.replace('</body>', _noscript + '</body>')
+
+        # Build JSON-LD block
+        _jsonld = json.dumps({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "IceChaser",
+            "url": "https://icechaser.com",
+            "description": "NHL playoff odds powered by Monte Carlo simulation. Updated daily.",
+            "applicationCategory": "SportsApplication",
+            "operatingSystem": "Web",
+            "dateModified": _ts_iso,
+            "provider": {
+                "@type": "Organization",
+                "name": "IceChaser",
+                "url": "https://icechaser.com"
+            },
+            "mainEntity": {
+                "@type": "Dataset",
+                "name": "NHL Playoff Odds",
+                "description": "Playoff probability for all 32 NHL teams based on 500,000 Monte Carlo simulations",
+                "dateModified": _ts_iso,
+                "distribution": {
+                    "@type": "DataDownload",
+                    "contentUrl": "https://icechaser.com/data/playoff_odds.json",
+                    "encodingFormat": "application/json"
+                }
+            }
+        }, indent=2)
+        _ld_tag = f'<script type="application/ld+json">\n{_jsonld}\n</script>\n'
+        _html = _html.replace('</head>', _ld_tag + '</head>')
+
+        with open(_idx_path, "w") as _f:
+            _f.write(_html)
+        print("   ✓ SEO <noscript> + JSON-LD injected into index.html")
+    except Exception as _e:
+        print(f"   ⚠ Could not update index.html: {_e}")
+
     return output
 
 
