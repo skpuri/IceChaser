@@ -52,6 +52,7 @@ var OddsExplorer = (function() {
     data: null,
     allAbbrevs: [],
     visible: [],
+    filterSet: [],
     filter: 'all',
     hovered: null,
     compareMode: false,
@@ -81,6 +82,7 @@ var OddsExplorer = (function() {
     state.data = historyData;
     state.allAbbrevs = Object.keys(historyData.teams).sort(function(a,b) { return getLatest(b) - getLatest(a); });
     state.visible = state.allAbbrevs.slice();
+    state.filterSet = state.allAbbrevs.slice();
     state.filter = 'all';
     state.hovered = null;
     state.compareMode = false;
@@ -167,6 +169,7 @@ var OddsExplorer = (function() {
     else if (f === 'bubble') state.visible = all.filter(function(a){var v=getLatest(a); return v>15&&v<85;});
     else if (DIVS.indexOf(f) !== -1) state.visible = all.filter(function(a){return TEAMS[a] && TEAMS[a].div===f;});
     else state.visible = all.slice();
+    state.filterSet = state.visible.slice();
     renderFilters();
     renderChips();
     renderSVG();
@@ -178,7 +181,8 @@ var OddsExplorer = (function() {
     var wrap = state.overlay.querySelector('#explorer-chips');
     var label = state.overlay.querySelector('#explorer-chips-label');
     label.textContent = state.compareMode ? 'TEAMS — tap to compare' : 'TEAMS — tap to toggle';
-    var sorted = state.allAbbrevs.slice().sort(function(a,b){return getLatest(b)-getLatest(a);});
+    var pool = state.filterSet.length ? state.filterSet : state.allAbbrevs;
+    var sorted = pool.slice().sort(function(a,b){return getLatest(b)-getLatest(a);});
     var html = '';
     sorted.forEach(function(abbrev) {
       var t = TEAMS[abbrev] || {};
@@ -186,7 +190,7 @@ var OddsExplorer = (function() {
       var isComp = state.compareTeams.indexOf(abbrev) !== -1;
       var cls = 'explorer-chip';
       if (isComp) cls += ' compare';
-      else if (!isVis && !state.compareMode) cls += ' hidden';
+      else if (!isVis && !state.compareMode) cls += ' toggled-off';
       html += '<button class="'+cls+'" data-team="'+abbrev+'">' +
         '<span class="explorer-chip-dot" style="background:'+(t.color||'#888')+'"></span>' +
         '<span class="explorer-chip-abbrev">'+abbrev+'</span>' +
@@ -196,33 +200,44 @@ var OddsExplorer = (function() {
     wrap.innerHTML = html;
   }
 
-  // ── Big movers ──
+  // ── Render big movers (net change over last 14 days) ──
   function renderMovers() {
     var wrap = state.overlay.querySelector('#explorer-movers');
     if (!state.data) { wrap.innerHTML = ''; return; }
-    var anns = [];
     var dates = state.data.dates;
+    if (dates.length < 2) { wrap.innerHTML = ''; return; }
+    var latestDate = dates[dates.length - 1];
+    var cutoff = new Date(); cutoff.setDate(cutoff.getDate() - 14);
+    var cutoffStr = cutoff.toISOString().slice(0, 10);
+    var baseIdx = 0;
+    for (var si = 0; si < dates.length; si++) {
+      if (dates[si] >= cutoffStr) { baseIdx = si; break; }
+    }
+    var baseDate = dates[baseIdx];
+    var movers = [];
     Object.keys(state.data.teams).forEach(function(abbrev) {
-      for (var i = 1; i < dates.length; i++) {
-        var prev = state.data.teams[abbrev][dates[i-1]];
-        var curr = state.data.teams[abbrev][dates[i]];
-        if (prev != null && curr != null && Math.abs(curr - prev) > 6) {
-          anns.push({date:dates[i], team:abbrev, delta:curr-prev});
+      var baseVal = state.data.teams[abbrev][baseDate];
+      var latestVal = state.data.teams[abbrev][latestDate];
+      if (baseVal != null && latestVal != null) {
+        var delta = latestVal - baseVal;
+        if (Math.abs(delta) > 1) {
+          movers.push({ team: abbrev, delta: delta, from: baseVal, to: latestVal });
         }
       }
     });
-    anns.sort(function(a,b){return Math.abs(b.delta)-Math.abs(a.delta);});
-    anns = anns.slice(0,5);
-    if (!anns.length) { wrap.innerHTML = ''; return; }
-    var html = '<div class="explorer-movers-label">⚡ BIG MOVERS</div><div class="explorer-movers-list">';
-    anns.forEach(function(a) {
-      var t = TEAMS[a.team] || {};
-      var cls = a.delta > 0 ? 'up' : 'down';
+    movers.sort(function(a,b) { return Math.abs(b.delta) - Math.abs(a.delta); });
+    movers = movers.slice(0, 5);
+    if (!movers.length) { wrap.innerHTML = ''; return; }
+    var rangeLabel = fmtDate(baseDate) + ' → ' + fmtDate(latestDate);
+    var html = '<div class="explorer-movers-label">⚡ BIG MOVERS <span style="font-weight:400;opacity:.6;font-size:.85em">(' + rangeLabel + ')</span></div><div class="explorer-movers-list">';
+    movers.forEach(function(m) {
+      var t = TEAMS[m.team] || {};
+      var cls = m.delta > 0 ? 'up' : 'down';
       html += '<div class="explorer-mover '+cls+'">' +
         '<span class="explorer-chip-dot" style="background:'+(t.color||'#888')+'"></span>' +
-        '<strong>'+a.team+'</strong> ' +
-        '<span class="explorer-mover-delta">'+(a.delta>0?'+':'')+a.delta.toFixed(1)+'%</span> ' +
-        '<span class="explorer-mover-date">'+fmtDate(a.date)+'</span>' +
+        '<strong>'+m.team+'</strong> ' +
+        '<span class="explorer-mover-delta">'+(m.delta>0?'+':'')+m.delta.toFixed(1)+'%</span> ' +
+        '<span style="font-size:10px;color:var(--text-dim)">'+m.from.toFixed(0)+'→'+m.to.toFixed(0)+'%</span>' +
         '</div>';
     });
     html += '</div>';
@@ -488,9 +503,9 @@ var OddsExplorer = (function() {
         return;
       }
       var vi = state.visible.indexOf(abbrev);
-      if (vi !== -1) { if (state.visible.length > 1) state.visible.splice(vi, 1); }
+      if (vi !== -1) { state.visible.splice(vi, 1); }
       else state.visible.push(abbrev);
-      renderChips(); renderSVG();
+      renderChips(); renderSVG(); renderFooter();
     });
 
     state.overlay.querySelector('#explorer-chips').addEventListener('mouseenter', function(e) {

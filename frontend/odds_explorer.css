@@ -343,7 +343,7 @@
   background: var(--bg-card-hover);
   border-color: var(--text-dim);
 }
-.explorer-chip.hidden {
+.explorer-chip.toggled-off {
   opacity: 0.35;
 }
 .explorer-chip.compare {
