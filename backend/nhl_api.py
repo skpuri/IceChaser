@@ -8,9 +8,43 @@ PST = timezone(timedelta(hours=-8))
 
 BASE_URL = "https://api-web.nhle.com/v1"
 
+
+def _fetch_json(url):
+    import urllib.request, json as _json
+    req = urllib.request.Request(url, headers={"User-Agent": "IceChaser/1.0"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return _json.loads(r.read())
+
 HEADERS = {
     "User-Agent": "IceChaser/1.0 NHL Playoff Odds Tracker"
 }
+
+
+def get_season_state():
+    """Season id + whether the REGULAR season has started, derived from the API.
+
+    During the offseason /standings/now keeps serving last season's completed
+    82-game table, so anything built on it alone reports a finished season as if
+    it were live. Callers must gate on `started`.
+    """
+    raw = _fetch_json(f"{BASE_URL}/schedule/now")
+    start = raw.get("regularSeasonStartDate")
+    end = raw.get("regularSeasonEndDate")
+    seasons = {g.get("season") for d in raw.get("gameWeek", []) for g in d.get("games", []) if g.get("season")}
+    season = max(seasons) if seasons else None
+    from datetime import date as _date
+    today = _date.today().isoformat()
+    days_until = None
+    if start:
+        days_until = (_date.fromisoformat(start) - _date.fromisoformat(today)).days
+    return {
+        "season": season,
+        "regularSeasonStart": start,
+        "regularSeasonEnd": end,
+        "today": today,
+        "started": bool(start) and today >= start,
+        "daysUntilOpening": days_until,
+    }
 
 
 def get_standings():
@@ -37,7 +71,7 @@ def get_schedule_by_date(date_str):
     return resp.json()
 
 
-def parse_standings(raw):
+def parse_standings(raw, reset_records=False):
     """
     Parse raw standings JSON into a list of team dicts.
     Returns list of dicts with keys:
@@ -51,9 +85,9 @@ def parse_standings(raw):
 
     for entry in standings_data:
         # NHL regular season is 82 games
-        games_played = entry.get("gamesPlayed", 0)
+        games_played = 0 if reset_records else entry.get("gamesPlayed", 0)
         games_remaining = 82 - games_played
-        points = entry.get("points", 0)
+        points = 0 if reset_records else entry.get("points", 0)
         # Points pace over 82 games
         points_pace = (points / games_played * 82) if games_played > 0 else 0
 
@@ -64,25 +98,25 @@ def parse_standings(raw):
             "conference": entry.get("conferenceName", ""),
             "division": entry.get("divisionName", ""),
             "gamesPlayed": games_played,
-            "wins": entry.get("wins", 0),
-            "losses": entry.get("losses", 0),
-            "otLosses": entry.get("otLosses", 0),
+            "wins": 0 if reset_records else entry.get("wins", 0),
+            "losses": 0 if reset_records else entry.get("losses", 0),
+            "otLosses": 0 if reset_records else entry.get("otLosses", 0),
             "points": points,
-            "regulationWins": entry.get("regulationWins", 0),
-            "goalsFor": entry.get("goalFor", 0),
-            "goalsAgainst": entry.get("goalAgainst", 0),
+            "regulationWins": 0 if reset_records else entry.get("regulationWins", 0),
+            "goalsFor": 0 if reset_records else entry.get("goalFor", 0),
+            "goalsAgainst": 0 if reset_records else entry.get("goalAgainst", 0),
             "pointsPctg": entry.get("pointPctg", 0.0),
             "gamesRemaining": games_remaining,
             "pointsPace": round(points_pace, 1),
             "divisionSequence": entry.get("divisionSequence", 99),
             "wildcardSequence": entry.get("wildcardSequence", 99),
             "conferenceSequence": entry.get("conferenceSequence", 99),
-            "clinchIndicator": entry.get("clinchIndicator", ""),
-            "l10Wins": entry.get("l10Wins", 0),
-            "l10Losses": entry.get("l10Losses", 0),
-            "l10OtLosses": entry.get("l10OtLosses", 0),
-            "streakCode": entry.get("streakCode", ""),
-            "streakCount": entry.get("streakCount", 0),
+            "clinchIndicator": "" if reset_records else entry.get("clinchIndicator", ""),
+            "l10Wins": 0 if reset_records else entry.get("l10Wins", 0),
+            "l10Losses": 0 if reset_records else entry.get("l10Losses", 0),
+            "l10OtLosses": 0 if reset_records else entry.get("l10OtLosses", 0),
+            "streakCode": "" if reset_records else entry.get("streakCode", ""),
+            "streakCount": 0 if reset_records else entry.get("streakCount", 0),
         }
         teams.append(team)
 
@@ -114,6 +148,10 @@ def parse_schedule(raw, today_only=True):
         if today_only and day.get("date", "") != today_str:
             continue
         for game in day.get("games", []):
+            # gameType 1 = preseason. Exhibition games carry no playoff meaning
+            # and must not appear as "Tonight's Games" or feed the narratives.
+            if game.get("gameType", 2) == 1:
+                continue
             home_team = game.get("homeTeam", {})
             away_team = game.get("awayTeam", {})
 
@@ -239,6 +277,8 @@ def get_remaining_schedule():
                         continue
                     seen_game_ids.add(game_id)
                     
+                    if game.get("gameType", 2) != 2:
+                        continue  # regular season only — never simulate exhibitions
                     state = game.get("gameState", "")
                     if state in ("FUT", "PRE"):
                         found_future = True
@@ -291,6 +331,11 @@ def get_tomorrow_games():
             if day["date"] != tomorrow:
                 continue
             for g in day.get("games", []):
+                # gameType 1 = preseason. This function builds its dicts inline
+                # rather than going through parse_schedule, so it needs its own
+                # filter or exhibition games surface as "Tomorrow's Games".
+                if g.get("gameType", 2) == 1:
+                    continue
                 games.append({
                     "gameId": g.get("id", 0),
                     "gameDate": tomorrow,

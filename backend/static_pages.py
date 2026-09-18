@@ -396,6 +396,9 @@ def generate_sitemap(data):
         f"https://icechaser.com/nhl/games/{today}",
         "https://icechaser.com/nhl/eastern/playoff-odds",
         "https://icechaser.com/nhl/western/playoff-odds",
+        # Completed-season archives. The sitemap is rebuilt wholesale on every
+        # run, so anything not listed here silently disappears from it.
+        "https://icechaser.com/nhl/2025-26",
     ]
     for t in data["teams"]:
         urls.append(f"https://icechaser.com/nhl/teams/{t['teamAbbrev'].lower()}")

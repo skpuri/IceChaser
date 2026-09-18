@@ -705,7 +705,17 @@ def main():
     # Fetch data from NHL API
     print("🌐 Fetching NHL standings and schedule...")
     try:
+        season_state = nhl_api.get_season_state()
         teams, today_games = nhl_api.get_all_data()
+        if not season_state.get("started", True):
+            # Offseason/preseason: /standings/now still serves LAST season's
+            # completed 82-game table. Publishing it verbatim reports a finished
+            # season as a live playoff race. Start the new season at 0-0-0.
+            teams = nhl_api.parse_standings(nhl_api.get_standings(), reset_records=True)
+            today_games = []
+            print(f"   ⏳ {season_state['season']} regular season starts "
+                  f"{season_state['regularSeasonStart']} "
+                  f"({season_state['daysUntilOpening']} days) — standings reset to 0-0-0")
         print(f"   ✓ {len(teams)} teams loaded")
         print(f"   ✓ {len(today_games)} games today")
     except Exception as e:
@@ -810,6 +820,25 @@ def main():
         narratives = narrative.generate_all_narratives(
             teams, sim_results, today_games, previous_odds
         )
+        if not season_state.get("started", True):
+            # These strings are written from standings + today's slate. With no
+            # games played they invented lines like "Penguins are in the driver's
+            # seat with 0 games left". Replace, preserving the exact key set.
+            _sid = str(season_state.get("season") or "")
+            _label = f"{_sid[:4]}-{_sid[6:]}" if len(_sid) == 8 else _sid
+            _start = season_state.get("regularSeasonStart") or "soon"
+            _days = season_state.get("daysUntilOpening")
+            _when = f"{_start}" + (f" ({_days} days away)" if isinstance(_days, int) else "")
+            _preseason = {
+                "headline": (f"The {_label} NHL season starts {_when}. "
+                             f"No games have been played yet — the numbers below are "
+                             f"preseason projections, not a live playoff race."),
+                "biggest_movers": "No movement yet. Odds start moving on opening night.",
+                "bubble_watch": "Bubble watch returns once teams have played games.",
+                "tonight_stakes": f"No regular-season games yet. Opening night is {_start}.",
+            }
+            narratives = {k: _preseason.get(k, "") for k in narratives}
+            print(f"   ⏳ Preseason narratives substituted ({len(narratives)} keys)")
         print(f"   ✓ Narratives generated")
     except Exception as e:
         print(f"   ✗ Narrative error: {e}")
@@ -907,7 +936,8 @@ def main():
         import elo_engine as _elo
 
         # Magic/tragic numbers
-        magic_tragic = history_tracker.compute_magic_tragic_numbers(flat_teams, conferences)
+        magic_tragic = ({} if not season_state.get("started", True)
+                        else history_tracker.compute_magic_tragic_numbers(flat_teams, conferences))
         for t in flat_teams:
             mt = magic_tragic.get(t["teamAbbrev"], {})
             if mt:
@@ -995,7 +1025,8 @@ def main():
     # Build output JSON
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "season": "20252026",
+        "season": str(season_state.get("season") or ""),
+        "season_state": season_state,
         "num_simulations": NUM_SIMULATIONS,
         "narratives": narratives,
         "conferences": conferences,
