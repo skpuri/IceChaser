@@ -1,0 +1,154 @@
+Loading data...
+  MoneyPuck seasons: [2019, 2020, 2021, 2022, 2023, 2024, 2025]; result seasons: [20222023, 20232024, 20242025, 20252026]
+
+=== FITTING CONSTANTS (all seasons for the value->points map, which uses no future roster info) ===
+
+[1] ELO_PER_POINT: final engine Elo = 1205.2 + 3.234 * points   (R²=0.966, n=128 team-seasons)
+[2] points = 52.1 + 0.0542 * team GameScore + 0.2768 * team GSAx   (R²=0.786, n=128)
+    sanity: points = 91.1 + 0.311 * goal differential (R²=0.926); GSAx coefficient should be near 0.311
+[3] goalie GSAx/GP repeatability (goalies with >=20 GP in the target season):
+    pooled 1 season(s): slope=0.161  r=0.170  n=319
+    pooled 2 season(s): slope=0.242  r=0.213  n=332
+    pooled 3 season(s): slope=0.298  r=0.245  n=334
+    -> GOALIE_SEASONS=3, GOALIE_SHRINK=0.298
+[4] skater GameScore/GP repeatability (skaters with >=20 GP in the target season):
+    pooled 1 season(s): slope=0.848  r=0.821  n=3659
+    pooled 2 season(s): slope=0.892  r=0.824  n=3766
+    pooled 3 season(s): slope=0.904  r=0.817  n=3784
+    -> SKATER_SEASONS=2
+[5] REPLACEMENT_GS_RATE=0.193 GS/game (13th-14th F, 7th-8th D by TOI, 2025-2026); league avg skater = 0.465
+    STARTER_SHARE=0.607 (mean share of team games by busiest goalie, 2025-2026)
+
+[6] TEAM_SHRINK: actual points = 90.8 + 1.270 * (projected - mean)   (r=0.658, n=96, seasons [20222023, 20232024, 20242025])
+[6] TEAM_SHRINK: actual points = 91.1 + 1.172 * (projected - mean)   (r=0.618, n=128, seasons [20222023, 20232024, 20242025, 20252026])
+    per-season slope 20222023: 1.527 (r=0.718)
+    per-season slope 20232024: 1.449 (r=0.753)
+    per-season slope 20242025: 0.803 (r=0.470)
+    per-season slope 20252026: 0.764 (r=0.438)
+    -> TEAM_SHRINK=1.270 (train seasons only; all-season value 1.172)
+
+[7] Prior Elo vs realised final engine Elo (same season):
+    20222023: r=0.713   (carried previous-season Elo: r=0.625)
+    20232024: r=0.776   (carried previous-season Elo: r=0.747)
+    20242025: r=0.490   (carried previous-season Elo: r=0.611)
+    20252026: r=0.419   (carried previous-season Elo: r=0.236)
+
+[7b] Leave-one-season-out prediction of final points from preseason ratings (r / RMSE in points):
+              prior only: mean r=0.595  RMSE=12.91 pts   (per-season r: 0.72, 0.75, 0.47, 0.44)
+        carried Elo only: mean r=0.559  RMSE=13.14 pts   (per-season r: 0.62, 0.76, 0.60, 0.25)
+     prior + carried Elo: mean r=0.596  RMSE=12.73 pts   (per-season r: 0.71, 0.79, 0.52, 0.36)
+    all-season joint fit: points = -302 + 0.182*prior + 0.080*carry  (relative weight on prior = 0.70)
+
+[8] Game-level log-loss/Brier per game, TRAIN seasons [20222023, 20232024, 20242025] (lower is better)
+           variant          GP 0-10         GP 10-20         GP 20-41         GP 41-82
+--------------------------------------------------------------------------------------
+             carry 0.6816/0.2439 0.7013/0.2530 0.6960/0.2509 0.6668/0.2369   (n per window: 492, 477, 1016, 1951)
+      carry_reg1/3 0.6864/0.2465 0.7017/0.2536 0.6975/0.2518 0.6688/0.2379
+          flat1500 0.7079/0.2569 0.7086/0.2573 0.7058/0.2560 0.6753/0.2412
+   prior_only_flat 0.6921/0.2493 0.6927/0.2497 0.7018/0.2540 0.6822/0.2446
+       blend_n0=10 0.6872/0.2468 0.6961/0.2510 0.6961/0.2510 0.6677/0.2374
+      blend_n0=120 0.6913/0.2489 0.6927/0.2497 0.6992/0.2528 0.6742/0.2408
+       blend_n0=20 0.6886/0.2476 0.6945/0.2503 0.6967/0.2514 0.6687/0.2379
+       blend_n0=30 0.6894/0.2480 0.6938/0.2501 0.6971/0.2516 0.6696/0.2384
+       blend_n0=41 0.6899/0.2482 0.6934/0.2499 0.6975/0.2518 0.6704/0.2388
+        blend_n0=5 0.6855/0.2460 0.6981/0.2518 0.6959/0.2509 0.6672/0.2372
+       blend_n0=60 0.6905/0.2485 0.6931/0.2498 0.6980/0.2521 0.6717/0.2395
+       blend_n0=82 0.6909/0.2487 0.6929/0.2497 0.6986/0.2524 0.6728/0.2400
+    -> ROSTER_PRIOR_GAMES=5 (min train log-loss over GP 0-41; grid [5, 10, 20, 30, 41, 60, 82, 120])
+
+[9] OUT-OF-SAMPLE 20252026: game-level log-loss/Brier per game
+           variant          GP 0-10         GP 10-20         GP 20-41         GP 41-82
+--------------------------------------------------------------------------------------
+             carry 0.7108/0.2574 0.7371/0.2701 0.7465/0.2746 0.7005/0.2529   (n per window: 165, 158, 338, 651)
+      carry_reg1/3 0.7117/0.2582 0.7275/0.2660 0.7421/0.2729 0.7006/0.2530
+          flat1500 0.7181/0.2618 0.7157/0.2606 0.7373/0.2710 0.7016/0.2535
+   prior_only_flat 0.7129/0.2593 0.7125/0.2589 0.7300/0.2674 0.7109/0.2581
+       blend_n0=10 0.7117/0.2586 0.7255/0.2649 0.7413/0.2724 0.7013/0.2533
+      blend_n0=120 0.7126/0.2591 0.7144/0.2598 0.7324/0.2685 0.7062/0.2558
+       blend_n0=20 0.7119/0.2587 0.7209/0.2628 0.7385/0.2712 0.7021/0.2537
+       blend_n0=30 0.7121/0.2588 0.7187/0.2618 0.7368/0.2705 0.7028/0.2541
+       blend_n0=41 0.7122/0.2589 0.7174/0.2612 0.7356/0.2699 0.7034/0.2544
+        blend_n0=5 0.7111/0.2582 0.7296/0.2668 0.7435/0.2733 0.7010/0.2531
+       blend_n0=60 0.7124/0.2590 0.7160/0.2606 0.7343/0.2694 0.7044/0.2549
+       blend_n0=82 0.7125/0.2591 0.7152/0.2602 0.7334/0.2690 0.7052/0.2553
+                 carry: GP 0-41 log-loss = 0.7353
+          carry_reg1/3: GP 0-41 log-loss = 0.7311
+            blend_n0=5: GP 0-41 log-loss = 0.7321
+       prior_only_flat: GP 0-41 log-loss = 0.7215
+              flat1500: GP 0-41 log-loss = 0.7273
+
+=== CONSTANTS TO PASTE INTO roster_prior.py ===
+FIT_DATE = '2026-09-29'
+SKATER_SEASONS = 2
+GOALIE_SEASONS = 3
+PTS_PER_GS = 0.0542
+PTS_PER_GSAX = 0.2768
+REPLACEMENT_GS_RATE = 0.1929
+STARTER_SHARE = 0.6071
+GOALIE_SHRINK = 0.2982
+TEAM_SHRINK = 1.2703
+ELO_PER_POINT = 3.2339
+ROSTER_PRIOR_GAMES = 5.0
+
+=== [10] PLAYOFF-ODDS BACKTEST AT CHECKPOINTS (20000 sims, real schedules, Brier per team) ===
+    20222023 GP~ 0: flat1500=0.2494  prior_only=0.1699  carry=0.2041  carry_reg1/3=0.1933  blend_n0=10=0.1689  blend_n0=20=0.1690  blend_n0=41=0.1704  blend_n0=82=0.1697  blendflat_n0=10=0.1703  blendflat_n0=20=0.1687  blendflat_n0=41=0.1694  blendflat_n0=82=0.1695
+    20222023 GP~10: flat1500=0.1438  prior_only=0.1301  carry=0.1390  carry_reg1/3=0.1247  blend_n0=10=0.1278  blend_n0=20=0.1241  blend_n0=41=0.1238  blend_n0=82=0.1264  blendflat_n0=10=0.1228  blendflat_n0=20=0.1222  blendflat_n0=41=0.1251  blendflat_n0=82=0.1270
+    20222023 GP~20: flat1500=0.1228  prior_only=0.1163  carry=0.0999  carry_reg1/3=0.0915  blend_n0=10=0.0990  blend_n0=20=0.1000  blend_n0=41=0.1035  blend_n0=82=0.1078  blendflat_n0=10=0.1091  blendflat_n0=20=0.1069  blendflat_n0=41=0.1085  blendflat_n0=82=0.1106
+    20222023 GP~41: flat1500=0.1156  prior_only=0.1105  carry=0.1041  carry_reg1/3=0.1059  blend_n0=10=0.1042  blend_n0=20=0.1039  blend_n0=41=0.1054  blend_n0=82=0.1056  blendflat_n0=10=0.1135  blendflat_n0=20=0.1129  blendflat_n0=41=0.1100  blendflat_n0=82=0.1096
+    20232024 GP~ 0: flat1500=0.2506  prior_only=0.1776  carry=0.1583  carry_reg1/3=0.1548  blend_n0=10=0.1777  blend_n0=20=0.1775  blend_n0=41=0.1777  blend_n0=82=0.1775  blendflat_n0=10=0.1767  blendflat_n0=20=0.1772  blendflat_n0=41=0.1777  blendflat_n0=82=0.1773
+    20232024 GP~10: flat1500=0.1694  prior_only=0.1350  carry=0.1149  carry_reg1/3=0.1187  blend_n0=10=0.1174  blend_n0=20=0.1212  blend_n0=41=0.1250  blend_n0=82=0.1298  blendflat_n0=10=0.1336  blendflat_n0=20=0.1307  blendflat_n0=41=0.1310  blendflat_n0=82=0.1326
+    20232024 GP~20: flat1500=0.1325  prior_only=0.1220  carry=0.0950  carry_reg1/3=0.1000  blend_n0=10=0.0990  blend_n0=20=0.1028  blend_n0=41=0.1081  blend_n0=82=0.1137  blendflat_n0=10=0.1209  blendflat_n0=20=0.1187  blendflat_n0=41=0.1182  blendflat_n0=82=0.1191
+    20232024 GP~41: flat1500=0.0939  prior_only=0.1032  carry=0.0889  carry_reg1/3=0.0886  blend_n0=10=0.0912  blend_n0=20=0.0921  blend_n0=41=0.0940  blend_n0=82=0.0972  blendflat_n0=10=0.0940  blendflat_n0=20=0.0946  blendflat_n0=41=0.0959  blendflat_n0=82=0.0987
+    20242025 GP~ 0: flat1500=0.2500  prior_only=0.2051  carry=0.2269  carry_reg1/3=0.2133  blend_n0=10=0.2067  blend_n0=20=0.2073  blend_n0=41=0.2064  blend_n0=82=0.2057  blendflat_n0=10=0.2062  blendflat_n0=20=0.2055  blendflat_n0=41=0.2059  blendflat_n0=82=0.2061
+    20242025 GP~10: flat1500=0.1619  prior_only=0.1644  carry=0.1636  carry_reg1/3=0.1550  blend_n0=10=0.1545  blend_n0=20=0.1557  blend_n0=41=0.1581  blend_n0=82=0.1608  blendflat_n0=10=0.1500  blendflat_n0=20=0.1520  blendflat_n0=41=0.1562  blendflat_n0=82=0.1589
+    20242025 GP~20: flat1500=0.1651  prior_only=0.1562  carry=0.1659  carry_reg1/3=0.1631  blend_n0=10=0.1593  blend_n0=20=0.1568  blend_n0=41=0.1555  blend_n0=82=0.1548  blendflat_n0=10=0.1551  blendflat_n0=20=0.1532  blendflat_n0=41=0.1528  blendflat_n0=82=0.1533
+    20242025 GP~41: flat1500=0.0632  prior_only=0.0874  carry=0.0895  carry_reg1/3=0.0790  blend_n0=10=0.0886  blend_n0=20=0.0870  blend_n0=41=0.0862  blend_n0=82=0.0863  blendflat_n0=10=0.0668  blendflat_n0=20=0.0706  blendflat_n0=41=0.0744  blendflat_n0=82=0.0790
+    20252026 GP~ 0: flat1500=0.2494  prior_only=0.2258  carry=0.2984  carry_reg1/3=0.2731  blend_n0=10=0.2256  blend_n0=20=0.2256  blend_n0=41=0.2249  blend_n0=82=0.2267  blendflat_n0=10=0.2261  blendflat_n0=20=0.2253  blendflat_n0=41=0.2254  blendflat_n0=82=0.2260
+    20252026 GP~10: flat1500=0.2426  prior_only=0.2139  carry=0.2764  carry_reg1/3=0.2596  blend_n0=10=0.2456  blend_n0=20=0.2335  blend_n0=41=0.2258  blend_n0=82=0.2188  blendflat_n0=10=0.2148  blendflat_n0=20=0.2120  blendflat_n0=41=0.2118  blendflat_n0=82=0.2118
+    20252026 GP~20: flat1500=0.2506  prior_only=0.2040  carry=0.2538  carry_reg1/3=0.2476  blend_n0=10=0.2398  blend_n0=20=0.2306  blend_n0=41=0.2214  blend_n0=82=0.2141  blendflat_n0=10=0.2244  blendflat_n0=20=0.2146  blendflat_n0=41=0.2076  blendflat_n0=82=0.2059
+    20252026 GP~41: flat1500=0.1420  prior_only=0.1471  carry=0.1537  carry_reg1/3=0.1450  blend_n0=10=0.1505  blend_n0=20=0.1488  blend_n0=41=0.1485  blend_n0=82=0.1478  blendflat_n0=10=0.1397  blendflat_n0=20=0.1379  blendflat_n0=41=0.1390  blendflat_n0=82=0.1406
+
+  TRAIN [20222023, 20232024, 20242025]: mean Brier by checkpoint (games played)
+             variant      GP~0     GP~10     GP~20     GP~41      mean
+            flat1500    0.2500    0.1584    0.1401    0.0909    0.1598
+               carry    0.1964    0.1392    0.1203    0.0942    0.1375
+        carry_reg1/3    0.1871    0.1328    0.1182    0.0912    0.1323
+          prior_only    0.1842    0.1432    0.1315    0.1004    0.1398
+         blend_n0=10    0.1844    0.1332    0.1191    0.0947    0.1328
+         blend_n0=20    0.1846    0.1337    0.1199    0.0943    0.1331
+         blend_n0=41    0.1848    0.1356    0.1224    0.0952    0.1345
+         blend_n0=82    0.1843    0.1390    0.1254    0.0964    0.1363
+     blendflat_n0=10    0.1844    0.1355    0.1284    0.0914    0.1349
+     blendflat_n0=20    0.1838    0.1350    0.1263    0.0927    0.1344
+     blendflat_n0=41    0.1843    0.1374    0.1265    0.0935    0.1354
+     blendflat_n0=82    0.1843    0.1395    0.1276    0.0958    0.1368
+
+  TEST 20252026: mean Brier by checkpoint (games played)
+             variant      GP~0     GP~10     GP~20     GP~41      mean
+            flat1500    0.2494    0.2426    0.2506    0.1420    0.2212
+               carry    0.2984    0.2764    0.2538    0.1537    0.2456
+        carry_reg1/3    0.2731    0.2596    0.2476    0.1450    0.2313
+          prior_only    0.2258    0.2139    0.2040    0.1471    0.1977
+         blend_n0=10    0.2256    0.2456    0.2398    0.1505    0.2154
+         blend_n0=20    0.2256    0.2335    0.2306    0.1488    0.2096
+         blend_n0=41    0.2249    0.2258    0.2214    0.1485    0.2051
+         blend_n0=82    0.2267    0.2188    0.2141    0.1478    0.2019
+     blendflat_n0=10    0.2261    0.2148    0.2244    0.1397    0.2012
+     blendflat_n0=20    0.2253    0.2120    0.2146    0.1379    0.1974
+     blendflat_n0=41    0.2254    0.2118    0.2076    0.1390    0.1959
+     blendflat_n0=82    0.2260    0.2118    0.2059    0.1406    0.1961
+
+  ALL 4 SEASONS: mean Brier by checkpoint (games played)
+             variant      GP~0     GP~10     GP~20     GP~41      mean
+            flat1500    0.2498    0.1794    0.1677    0.1036    0.1752
+               carry    0.2219    0.1735    0.1537    0.1091    0.1645
+        carry_reg1/3    0.2086    0.1645    0.1505    0.1046    0.1571
+          prior_only    0.1946    0.1609    0.1496    0.1121    0.1543
+         blend_n0=10    0.1947    0.1613    0.1493    0.1086    0.1535
+         blend_n0=20    0.1949    0.1586    0.1476    0.1079    0.1522
+         blend_n0=41    0.1949    0.1582    0.1471    0.1085    0.1522
+         blend_n0=82    0.1949    0.1590    0.1476    0.1093    0.1527
+     blendflat_n0=10    0.1948    0.1553    0.1524    0.1035    0.1515
+     blendflat_n0=20    0.1942    0.1542    0.1483    0.1040    0.1502
+     blendflat_n0=41    0.1946    0.1560    0.1468    0.1048    0.1506
+     blendflat_n0=82    0.1947    0.1576    0.1472    0.1070    0.1516

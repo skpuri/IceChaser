@@ -32,9 +32,22 @@ TEAM_FULL_NAMES = {
 }
 
 
+# Label for the simulation count shown in copy. Set from the generated data by
+# load_data() so the published pages can never claim a count that was not run.
+SIM_LABEL = "100,000"
+
+
 def load_data():
+    global SIM_LABEL
     with open(DATA_PATH) as f:
-        return json.load(f)
+        data = json.load(f)
+    try:
+        _n = int(data.get("num_simulations") or 0)
+        if _n > 0:
+            SIM_LABEL = f"{_n:,}"
+    except (TypeError, ValueError):
+        pass
+    return data
 
 
 def html_head(title, description, canonical, og_title=None):
@@ -108,7 +121,7 @@ def html_head(title, description, canonical, og_title=None):
 def html_footer(generated_at):
     return f"""
   <footer style="text-align:center;padding:24px;color:#8b949e;font-size:0.8rem;">
-    <p>IceChaser uses Elo-rated Monte Carlo simulation (500,000 runs). Data from NHL API.</p>
+    <p>IceChaser uses Elo-rated Monte Carlo simulation ({SIM_LABEL} runs). Data from NHL API.</p>
     <p>Last updated: {generated_at} · <a href="/METHODOLOGY.md" style="color:#58a6ff">Methodology</a></p>
   </footer>
 </body>
@@ -131,7 +144,7 @@ def generate_main_page(data):
     bubble = sum(1 for t in teams if 20 < t.get("playoffOdds", 0) < 80)
     
     title = f"NHL Playoff Odds — {clinched} Clinched, {bubble} On the Bubble | IceChaser"
-    desc = f"Real-time NHL playoff probabilities from 500,000 Monte Carlo simulations. {clinched} teams clinched, {eliminated} eliminated, {bubble} on the bubble. Updated every 20 minutes."
+    desc = f"Real-time NHL playoff probabilities from {SIM_LABEL} Monte Carlo simulations. {clinched} teams clinched, {eliminated} eliminated, {bubble} on the bubble. Updated every 20 minutes."
     
     html = html_head(title, desc, "https://icechaser.com/nhl/playoff-odds")
     
@@ -139,7 +152,7 @@ def generate_main_page(data):
   <div class="static-container">
     <div class="static-header">
       <h1>🏒 NHL Playoff Odds</h1>
-      <p>Elo-Rated Monte Carlo Simulation · 500,000 Runs</p>
+      <p>Elo-Rated Monte Carlo Simulation · 100,000 Runs</p>
     </div>
     
     <div class="live-cta">
@@ -228,7 +241,7 @@ def generate_team_page(team, data):
     elif team.get("eliminated"): status = "eliminated"
     
     title = f"{full_name} Playoff Odds — {odds:.1f}% ({status}) | IceChaser"
-    desc = f"{full_name} have a {odds:.1f}% chance of making the NHL playoffs. Record: {record}, {pts} points, {gr} games remaining. Updated every 20 minutes from 500,000 Monte Carlo simulations."
+    desc = f"{full_name} have a {odds:.1f}% chance of making the NHL playoffs. Record: {record}, {pts} points, {gr} games remaining. Updated every 20 minutes from {SIM_LABEL} Monte Carlo simulations."
     
     html = html_head(title, desc, f"https://icechaser.com/nhl/teams/{abbrev.lower()}", f"{full_name} Playoff Odds — {odds:.1f}%")
     
@@ -496,7 +509,7 @@ def generate_conference_pages(data):
         slug = conf_name.lower()
         
         title = f"NHL {conf_name} Conference Playoff Odds — {clinched} Clinched | IceChaser"
-        desc = f"{conf_name} Conference playoff odds from 500,000 simulations. {clinched} clinched, {bubble} on the bubble."
+        desc = f"{conf_name} Conference playoff odds from {SIM_LABEL} simulations. {clinched} clinched, {bubble} on the bubble."
         
         html = html_head(title, desc, f"https://icechaser.com/nhl/{slug}/playoff-odds")
         html += f"""
@@ -551,7 +564,7 @@ def generate_who_to_root_for(data):
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     
     title = f"Who to Root For Tonight — NHL Playoff Implications {today} | IceChaser"
-    desc = f"Every NHL game tonight ranked by playoff impact. See which games matter most and who you should root for based on 500,000 Monte Carlo simulations."
+    desc = f"Every NHL game tonight ranked by playoff impact. See which games matter most and who you should root for based on {SIM_LABEL} Monte Carlo simulations."
     
     html = html_head(title, desc, "https://icechaser.com/nhl/who-to-root-for")
     html += """
@@ -669,7 +682,7 @@ def generate_rss_feed(data):
 <channel>
   <title>IceChaser — NHL Playoff Odds</title>
   <link>https://icechaser.com</link>
-  <description>Daily NHL playoff probability updates from 500,000 Monte Carlo simulations</description>
+  <description>Daily NHL playoff probability updates from {SIM_LABEL} Monte Carlo simulations</description>
   <language>en-us</language>
   <lastBuildDate>{gen_at}</lastBuildDate>
   <atom:link href="https://icechaser.com/rss.xml" rel="self" type="application/rss+xml" />

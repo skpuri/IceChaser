@@ -1,0 +1,6234 @@
+{
+ "season": 20262027,
+ "generated_at": "2026-09-29T17:30:05+00:00",
+ "fit_date": "2026-09-29",
+ "source": {
+  "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
+  "rosters": "cached rosters /root/.openclaw/workspace/projects/icechaser/backend/../data/rosters_20262027.json",
+  "method": "see backend/roster_prior.py docstring"
+ },
+ "constants": {
+  "SKATER_SEASONS": 2,
+  "GOALIE_SEASONS": 3,
+  "PTS_PER_GS": 0.0542,
+  "PTS_PER_GSAX": 0.2768,
+  "REPLACEMENT_GS_RATE": 0.193,
+  "STARTER_SHARE": 0.607,
+  "GOALIE_SHRINK": 0.298,
+  "TEAM_SHRINK": 1.172,
+  "ELO_PER_POINT": 3.234,
+  "ROSTER_PRIOR_GAMES": 41.0,
+  "ELO_MIN": 1380,
+  "ELO_MAX": 1620
+ },
+ "overrides_applied": {},
+ "teams": {
+  "ANA": {
+   "prior_elo": 1465.2,
+   "proj_points": 83.4,
+   "proj_points_vs_mean": -9.2,
+   "skater_gs": 587.4,
+   "goalie_gsax": -1.81,
+   "unknown_in_lineup": 2,
+   "lineup": [
+    {
+     "id": 8475798,
+     "name": "Mikael Granlund",
+     "pos": "C",
+     "gp": 141,
+     "known": true,
+     "gs_per_gp": 0.627,
+     "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8484153,
+     "name": "Leo Carlsson",
+     "pos": "C",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 0.757,
+     "toi_per_gp_min": 17.6
+    },
+    {
+     "id": 8484762,
+     "name": "Beckett Sennecke",
+     "pos": "R",
+     "gp": 82,
+     "known": true,
+     "gs_per_gp": 0.755,
+     "toi_per_gp_min": 17.4
+    },
+    {
+     "id": 8473986,
+     "name": "Alex Killorn",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.475,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8483445,
+     "name": "Cutter Gauthier",
+     "pos": "L",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.769,
+     "toi_per_gp_min": 15.6
+    },
+    {
+     "id": 8478366,
+     "name": "Frank Vatrano",
+     "pos": "R",
+     "gp": 131,
+     "known": true,
+     "gs_per_gp": 0.413,
+     "toi_per_gp_min": 15.4
+    },
+    {
+     "id": 8480068,
+     "name": "Ryan Poehling",
+     "pos": "C",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.423,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8482118,
+     "name": "Sam Colangelo",
+     "pos": "R",
+     "gp": 41,
+     "known": true,
+     "gs_per_gp": 0.129,
+     "toi_per_gp_min": 12.0
+    },
+    {
+     "id": 8485512,
+     "name": "Tim Washe",
+     "pos": "C",
+     "gp": 41,
+     "known": true,
+     "gs_per_gp": 0.167,
+     "toi_per_gp_min": 11.8
+    },
+    {
+     "id": 8481754,
+     "name": "Nikita Nesterenko",
+     "pos": "C",
+     "gp": 49,
+     "known": true,
+     "gs_per_gp": 0.246,
+     "toi_per_gp_min": 11.5
+    },
+    {
+     "id": 8478421,
+     "name": "A.J. Greer",
+     "pos": "L",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.401,
+     "toi_per_gp_min": 11.0
+    },
+    {
+     "id": 8482408,
+     "name": "Jeff Malott",
+     "pos": "L",
+     "gp": 70,
+     "known": true,
+     "gs_per_gp": 0.225,
+     "toi_per_gp_min": 9.1
+    },
+    {
+     "id": 8481605,
+     "name": "Jackson LaCombe",
+     "pos": "D",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.707,
+     "toi_per_gp_min": 23.3
+    },
+    {
+     "id": 8475324,
+     "name": "Nick Jensen",
+     "pos": "D",
+     "gp": 132,
+     "known": true,
+     "gs_per_gp": 0.309,
+     "toi_per_gp_min": 18.7
+    },
+    {
+     "id": 8483490,
+     "name": "Pavel Mintyukov",
+     "pos": "D",
+     "gp": 141,
+     "known": true,
+     "gs_per_gp": 0.22,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8481563,
+     "name": "Drew Helleson",
+     "pos": "D",
+     "gp": 116,
+     "known": true,
+     "gs_per_gp": 0.153,
+     "toi_per_gp_min": 16.7
+    },
+    {
+     "id": 8483482,
+     "name": "Tristan Luneau",
+     "pos": "D",
+     "gp": 7,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8482731,
+     "name": "Tyson Hinds",
+     "pos": "D",
+     "gp": 6,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 15.6
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8480843,
+     "name": "Lukas Dostal",
+     "gp": 154,
+     "known": true,
+     "gsax_per_gp_raw": 0.04,
+     "gsax_per_gp": 0.012,
+     "role": "starter"
+    },
+    {
+     "id": 8478024,
+     "name": "Ville Husso",
+     "gp": 52,
+     "known": true,
+     "gsax_per_gp_raw": -0.25,
+     "gsax_per_gp": -0.075,
+     "role": "backup"
+    },
+    {
+     "id": 8476316,
+     "name": "Laurent Brossoit",
+     "gp": 24,
+     "known": true,
+     "gsax_per_gp_raw": 0.447,
+     "gsax_per_gp": 0.133,
+     "role": "third"
+    }
+   ]
+  },
+  "BOS": {
+   "prior_elo": 1483.3,
+   "proj_points": 88.2,
+   "proj_points_vs_mean": -4.4,
+   "skater_gs": 648.0,
+   "goalie_gsax": 3.6,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8477956,
+     "name": "David Pastrnak",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 1.241,
+     "toi_per_gp_min": 20.4
+    },
+    {
+     "id": 8477496,
+     "name": "Elias Lindholm",
+     "pos": "C",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.568,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8478401,
+     "name": "Pavel Zacha",
+     "pos": "C",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.592,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8479987,
+     "name": "Morgan Geekie",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.75,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8482175,
+     "name": "JJ Peterka",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.712,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8479999,
+     "name": "Casey Mittelstadt",
+     "pos": "C",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.451,
+     "toi_per_gp_min": 16.2
+    },
+    {
+     "id": 8483489,
+     "name": "Fraser Minten",
+     "pos": "C",
+     "gp": 103,
+     "known": true,
+     "gs_per_gp": 0.392,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8485395,
+     "name": "James Hagens",
+     "pos": "C",
+     "gp": 2,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 14.6
+    },
+    {
+     "id": 8482177,
+     "name": "Marat Khusnutdinov",
+     "pos": "C",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.189,
+     "toi_per_gp_min": 13.3
+    },
+    {
+     "id": 8476374,
+     "name": "Sean Kuraly",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.267,
+     "toi_per_gp_min": 12.5
+    },
+    {
+     "id": 8479661,
+     "name": "Tanner Jeannot",
+     "pos": "L",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.238,
+     "toi_per_gp_min": 11.9
+    },
+    {
+     "id": 8480355,
+     "name": "Mark Kastelic",
+     "pos": "C",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.223,
+     "toi_per_gp_min": 11.8
+    },
+    {
+     "id": 8479325,
+     "name": "Charlie McAvoy",
+     "pos": "D",
+     "gp": 119,
+     "known": true,
+     "gs_per_gp": 0.672,
+     "toi_per_gp_min": 24.1
+    },
+    {
+     "id": 8476854,
+     "name": "Hampus Lindholm",
+     "pos": "D",
+     "gp": 84,
+     "known": true,
+     "gs_per_gp": 0.471,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8477507,
+     "name": "Nikita Zadorov",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.249,
+     "toi_per_gp_min": 20.7
+    },
+    {
+     "id": 8482511,
+     "name": "Mason Lohrei",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.316,
+     "toi_per_gp_min": 18.3
+    },
+    {
+     "id": 8478840,
+     "name": "Will Borgen",
+     "pos": "D",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.126,
+     "toi_per_gp_min": 17.5
+    },
+    {
+     "id": 8481219,
+     "name": "Jonathan Aspirot",
+     "pos": "D",
+     "gp": 61,
+     "known": true,
+     "gs_per_gp": 0.253,
+     "toi_per_gp_min": 16.7
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8480280,
+     "name": "Jeremy Swayman",
+     "gp": 157,
+     "known": true,
+     "gsax_per_gp_raw": 0.243,
+     "gsax_per_gp": 0.072,
+     "role": "starter"
+    },
+    {
+     "id": 8480022,
+     "name": "Michael DiPietro",
+     "gp": 1,
+     "known": false,
+     "gsax_per_gp_raw": 0.0,
+     "gsax_per_gp": 0.0,
+     "role": "backup"
+    }
+   ]
+  },
+  "BUF": {
+   "prior_elo": 1499.6,
+   "proj_points": 92.5,
+   "proj_points_vs_mean": -0.1,
+   "skater_gs": 732.3,
+   "goalie_gsax": 2.67,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8479420,
+     "name": "Tage Thompson",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.988,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8480064,
+     "name": "Josh Norris",
+     "pos": "C",
+     "gp": 100,
+     "known": true,
+     "gs_per_gp": 0.637,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8480802,
+     "name": "Ryan McLeod",
+     "pos": "C",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.569,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8484145,
+     "name": "Zach Benson",
+     "pos": "L",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.617,
+     "toi_per_gp_min": 15.3
+    },
+    {
+     "id": 8482097,
+     "name": "Jack Quinn",
+     "pos": "R",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.526,
+     "toi_per_gp_min": 15.3
+    },
+    {
+     "id": 8483468,
+     "name": "Jiri Kulich",
+     "pos": "C",
+     "gp": 74,
+     "known": true,
+     "gs_per_gp": 0.492,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8482659,
+     "name": "Josh Doan",
+     "pos": "R",
+     "gp": 133,
+     "known": true,
+     "gs_per_gp": 0.651,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8479941,
+     "name": "Justin Danforth",
+     "pos": "R",
+     "gp": 65,
+     "known": true,
+     "gs_per_gp": 0.279,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8477839,
+     "name": "Conor Sheary",
+     "pos": "L",
+     "gp": 67,
+     "known": true,
+     "gs_per_gp": 0.295,
+     "toi_per_gp_min": 13.9
+    },
+    {
+     "id": 8481522,
+     "name": "Peyton Krebs",
+     "pos": "C",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.374,
+     "toi_per_gp_min": 13.8
+    },
+    {
+     "id": 8483500,
+     "name": "Noah Ostlund",
+     "pos": "C",
+     "gp": 68,
+     "known": true,
+     "gs_per_gp": 0.405,
+     "toi_per_gp_min": 13.6
+    },
+    {
+     "id": 8484797,
+     "name": "Konsta Helenius",
+     "pos": "C",
+     "gp": 9,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 11.9
+    },
+    {
+     "id": 8480839,
+     "name": "Rasmus Dahlin",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 1.043,
+     "toi_per_gp_min": 24.2
+    },
+    {
+     "id": 8482671,
+     "name": "Owen Power",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.514,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8480807,
+     "name": "Mattias Samuelsson",
+     "pos": "D",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.357,
+     "toi_per_gp_min": 21.3
+    },
+    {
+     "id": 8476891,
+     "name": "Matt Grzelcyk",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.3,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8482803,
+     "name": "Olen Zellweger",
+     "pos": "D",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.441,
+     "toi_per_gp_min": 17.9
+    },
+    {
+     "id": 8479982,
+     "name": "Conor Timmins",
+     "pos": "D",
+     "gp": 107,
+     "known": true,
+     "gs_per_gp": 0.25,
+     "toi_per_gp_min": 17.6
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8480045,
+     "name": "Ukko-Pekka Luukkonen",
+     "gp": 144,
+     "known": true,
+     "gsax_per_gp_raw": 0.079,
+     "gsax_per_gp": 0.024,
+     "role": "starter"
+    },
+    {
+     "id": 8479312,
+     "name": "Alex Lyon",
+     "gp": 110,
+     "known": true,
+     "gsax_per_gp_raw": 0.156,
+     "gsax_per_gp": 0.046,
+     "role": "backup"
+    },
+    {
+     "id": 8481551,
+     "name": "Colten Ellis",
+     "gp": 16,
+     "known": true,
+     "gsax_per_gp_raw": 0.116,
+     "gsax_per_gp": 0.035,
+     "role": "third"
+    }
+   ]
+  },
+  "CAR": {
+   "prior_elo": 1567.8,
+   "proj_points": 110.5,
+   "proj_points_vs_mean": 17.9,
+   "skater_gs": 1069.0,
+   "goalie_gsax": 1.69,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8478427,
+     "name": "Sebastian Aho",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 1.181,
+     "toi_per_gp_min": 19.9
+    },
+    {
+     "id": 8480830,
+     "name": "Andrei Svechnikov",
+     "pos": "R",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.965,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8477940,
+     "name": "Nikolaj Ehlers",
+     "pos": "L",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 1.038,
+     "toi_per_gp_min": 16.2
+    },
+    {
+     "id": 8473533,
+     "name": "Jordan Staal",
+     "pos": "C",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.736,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8482702,
+     "name": "Logan Stankoven",
+     "pos": "C",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.769,
+     "toi_per_gp_min": 15.3
+    },
+    {
+     "id": 8482809,
+     "name": "Jackson Blake",
+     "pos": "R",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.828,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8476921,
+     "name": "Jordan Martinook",
+     "pos": "L",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.674,
+     "toi_per_gp_min": 15.1
+    },
+    {
+     "id": 8475791,
+     "name": "Taylor Hall",
+     "pos": "L",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.693,
+     "toi_per_gp_min": 14.8
+    },
+    {
+     "id": 8480829,
+     "name": "Jesperi Kotkaniemi",
+     "pos": "C",
+     "gp": 120,
+     "known": true,
+     "gs_per_gp": 0.528,
+     "toi_per_gp_min": 13.1
+    },
+    {
+     "id": 8480762,
+     "name": "Eric Robinson",
+     "pos": "L",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.548,
+     "toi_per_gp_min": 11.9
+    },
+    {
+     "id": 8476873,
+     "name": "Mark Jankowski",
+     "pos": "L",
+     "gp": 128,
+     "known": true,
+     "gs_per_gp": 0.464,
+     "toi_per_gp_min": 11.8
+    },
+    {
+     "id": 8477478,
+     "name": "William Carrier",
+     "pos": "L",
+     "gp": 113,
+     "known": true,
+     "gs_per_gp": 0.492,
+     "toi_per_gp_min": 11.1
+    },
+    {
+     "id": 8480817,
+     "name": "K'Andre Miller",
+     "pos": "D",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 0.645,
+     "toi_per_gp_min": 22.2
+    },
+    {
+     "id": 8476958,
+     "name": "Jaccob Slavin",
+     "pos": "D",
+     "gp": 119,
+     "known": true,
+     "gs_per_gp": 0.654,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8478970,
+     "name": "Jalen Chatfield",
+     "pos": "D",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.576,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8480336,
+     "name": "Sean Walker",
+     "pos": "D",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.721,
+     "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8476906,
+     "name": "Shayne Gostisbehere",
+     "pos": "D",
+     "gp": 125,
+     "known": true,
+     "gs_per_gp": 1.005,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8476422,
+     "name": "Mike Reilly",
+     "pos": "D",
+     "gp": 60,
+     "known": true,
+     "gs_per_gp": 0.521,
+     "toi_per_gp_min": 15.0
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8481611,
+     "name": "Pyotr Kochetkov",
+     "gp": 98,
+     "known": true,
+     "gsax_per_gp_raw": 0.068,
+     "gsax_per_gp": 0.02,
+     "role": "starter"
+    },
+    {
+     "id": 8483548,
+     "name": "Brandon Bussi",
+     "gp": 39,
+     "known": true,
+     "gsax_per_gp_raw": 0.071,
+     "gsax_per_gp": 0.021,
+     "role": "backup"
+    },
+    {
+     "id": 8480051,
+     "name": "Cayden Primeau",
+     "gp": 37,
+     "known": true,
+     "gsax_per_gp_raw": -0.359,
+     "gsax_per_gp": -0.107,
+     "role": "third"
+    }
+   ]
+  },
+  "CBJ": {
+   "prior_elo": 1504.6,
+   "proj_points": 93.9,
+   "proj_points_vs_mean": 1.2,
+   "skater_gs": 741.7,
+   "goalie_gsax": 5.6,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8482720,
+     "name": "Matthew Knies",
+     "pos": "L",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.603,
+     "toi_per_gp_min": 18.7
+    },
+    {
+     "id": 8477501,
+     "name": "Valeri Nichushkin",
+     "pos": "R",
+     "gp": 115,
+     "known": true,
+     "gs_per_gp": 0.907,
+     "toi_per_gp_min": 18.5
+    },
+    {
+     "id": 8484166,
+     "name": "Adam Fantilli",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.682,
+     "toi_per_gp_min": 18.2
+    },
+    {
+     "id": 8478856,
+     "name": "Conor Garland",
+     "pos": "R",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.522,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8477497,
+     "name": "Sean Monahan",
+     "pos": "C",
+     "gp": 132,
+     "known": true,
+     "gs_per_gp": 0.778,
+     "toi_per_gp_min": 17.9
+    },
+    {
+     "id": 8475745,
+     "name": "Charlie Coyle",
+     "pos": "C",
+     "gp": 165,
+     "known": true,
+     "gs_per_gp": 0.55,
+     "toi_per_gp_min": 17.5
+    },
+    {
+     "id": 8482705,
+     "name": "Cole Sillinger",
+     "pos": "C",
+     "gp": 147,
+     "known": true,
+     "gs_per_gp": 0.376,
+     "toi_per_gp_min": 16.0
+    },
+    {
+     "id": 8481716,
+     "name": "Dmitri Voronkov",
+     "pos": "L",
+     "gp": 136,
+     "known": true,
+     "gs_per_gp": 0.63,
+     "toi_per_gp_min": 15.5
+    },
+    {
+     "id": 8482660,
+     "name": "Kent Johnson",
+     "pos": "C",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.547,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8479671,
+     "name": "Mathieu Olivier",
+     "pos": "R",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.351,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8478046,
+     "name": "Danton Heinen",
+     "pos": "L",
+     "gp": 125,
+     "known": true,
+     "gs_per_gp": 0.342,
+     "toi_per_gp_min": 12.7
+    },
+    {
+     "id": 8483432,
+     "name": "Luca Del Bel Belluz",
+     "pos": "C",
+     "gp": 29,
+     "known": true,
+     "gs_per_gp": 0.122,
+     "toi_per_gp_min": 11.5
+    },
+    {
+     "id": 8478460,
+     "name": "Zach Werenski",
+     "pos": "D",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 1.209,
+     "toi_per_gp_min": 26.7
+    },
+    {
+     "id": 8478500,
+     "name": "Ivan Provorov",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.435,
+     "toi_per_gp_min": 24.1
+    },
+    {
+     "id": 8483485,
+     "name": "Denton Mateychuk",
+     "pos": "D",
+     "gp": 120,
+     "known": true,
+     "gs_per_gp": 0.392,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8479371,
+     "name": "Dante Fabbro",
+     "pos": "D",
+     "gp": 142,
+     "known": true,
+     "gs_per_gp": 0.301,
+     "toi_per_gp_min": 18.6
+    },
+    {
+     "id": 8475790,
+     "name": "Erik Gudbranson",
+     "pos": "D",
+     "gp": 53,
+     "known": true,
+     "gs_per_gp": 0.025,
+     "toi_per_gp_min": 17.8
+    },
+    {
+     "id": 8482126,
+     "name": "Emil Andrae",
+     "pos": "D",
+     "gp": 103,
+     "known": true,
+     "gs_per_gp": 0.273,
+     "toi_per_gp_min": 16.2
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8475660,
+     "name": "Cam Talbot",
+     "gp": 135,
+     "known": true,
+     "gsax_per_gp_raw": 0.077,
+     "gsax_per_gp": 0.023,
+     "role": "starter"
+    },
+    {
+     "id": 8482982,
+     "name": "Jet Greaves",
+     "gp": 75,
+     "known": true,
+     "gsax_per_gp_raw": 0.464,
+     "gsax_per_gp": 0.138,
+     "role": "backup"
+    }
+   ]
+  },
+  "CGY": {
+   "prior_elo": 1463.3,
+   "proj_points": 82.9,
+   "proj_points_vs_mean": -9.7,
+   "skater_gs": 553.9,
+   "goalie_gsax": 2.93,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8476456,
+     "name": "Jonathan Huberdeau",
+     "pos": "L",
+     "gp": 131,
+     "known": true,
+     "gs_per_gp": 0.696,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8474150,
+     "name": "Mikael Backlund",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.565,
+     "toi_per_gp_min": 18.3
+    },
+    {
+     "id": 8482679,
+     "name": "Matt Coronato",
+     "pos": "R",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.628,
+     "toi_per_gp_min": 17.1
+    },
+    {
+     "id": 8481068,
+     "name": "Yegor Sharangovich",
+     "pos": "C",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.451,
+     "toi_per_gp_min": 16.3
+    },
+    {
+     "id": 8480797,
+     "name": "Joel Farabee",
+     "pos": "L",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.417,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8480028,
+     "name": "Morgan Frost",
+     "pos": "C",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.486,
+     "toi_per_gp_min": 15.6
+    },
+    {
+     "id": 8476458,
+     "name": "Ryan Strome",
+     "pos": "C",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.381,
+     "toi_per_gp_min": 15.4
+    },
+    {
+     "id": 8484860,
+     "name": "Matvei Gridin",
+     "pos": "R",
+     "gp": 37,
+     "known": true,
+     "gs_per_gp": 0.342,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8482074,
+     "name": "Connor Zary",
+     "pos": "C",
+     "gp": 128,
+     "known": true,
+     "gs_per_gp": 0.457,
+     "toi_per_gp_min": 15.1
+    },
+    {
+     "id": 8482209,
+     "name": "Rory Kerins",
+     "pos": "C",
+     "gp": 9,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 13.5
+    },
+    {
+     "id": 8481028,
+     "name": "Martin Pospisil",
+     "pos": "C",
+     "gp": 103,
+     "known": true,
+     "gs_per_gp": 0.377,
+     "toi_per_gp_min": 13.0
+    },
+    {
+     "id": 8484958,
+     "name": "Maxim Tsyplakov",
+     "pos": "R",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 0.322,
+     "toi_per_gp_min": 12.7
+    },
+    {
+     "id": 8480860,
+     "name": "Kevin Bahl",
+     "pos": "D",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.2,
+     "toi_per_gp_min": 21.7
+    },
+    {
+     "id": 8482165,
+     "name": "Yan Kuznetsov",
+     "pos": "D",
+     "gp": 57,
+     "known": true,
+     "gs_per_gp": 0.179,
+     "toi_per_gp_min": 20.1
+    },
+    {
+     "id": 8478136,
+     "name": "Jake Middleton",
+     "pos": "D",
+     "gp": 142,
+     "known": true,
+     "gs_per_gp": 0.199,
+     "toi_per_gp_min": 19.6
+    },
+    {
+     "id": 8480727,
+     "name": "Zach Whitecloud",
+     "pos": "D",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.267,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8483495,
+     "name": "Simon Nemec",
+     "pos": "D",
+     "gp": 95,
+     "known": true,
+     "gs_per_gp": 0.277,
+     "toi_per_gp_min": 18.3
+    },
+    {
+     "id": 8484768,
+     "name": "Zayne Parekh",
+     "pos": "D",
+     "gp": 38,
+     "known": true,
+     "gs_per_gp": 0.319,
+     "toi_per_gp_min": 17.2
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8481692,
+     "name": "Dustin Wolf",
+     "gp": 127,
+     "known": true,
+     "gsax_per_gp_raw": 0.001,
+     "gsax_per_gp": 0.0,
+     "role": "starter"
+    },
+    {
+     "id": 8482445,
+     "name": "Devin Cooley",
+     "gp": 37,
+     "known": true,
+     "gsax_per_gp_raw": 0.304,
+     "gsax_per_gp": 0.091,
+     "role": "backup"
+    }
+   ]
+  },
+  "CHI": {
+   "prior_elo": 1439.2,
+   "proj_points": 76.6,
+   "proj_points_vs_mean": -16.0,
+   "skater_gs": 459.4,
+   "goalie_gsax": -1.5,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8474141,
+     "name": "Patrick Kane",
+     "pos": "R",
+     "gp": 139,
+     "known": true,
+     "gs_per_gp": 0.736,
+     "toi_per_gp_min": 17.8
+    },
+    {
+     "id": 8485391,
+     "name": "Anton Frondell",
+     "pos": "C",
+     "gp": 12,
+     "known": true,
+     "gs_per_gp": 0.473,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8476882,
+     "name": "Teuvo Teravainen",
+     "pos": "C",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.407,
+     "toi_per_gp_min": 17.4
+    },
+    {
+     "id": 8483493,
+     "name": "Frank Nazar",
+     "pos": "C",
+     "gp": 118,
+     "known": true,
+     "gs_per_gp": 0.415,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8477479,
+     "name": "Tyler Bertuzzi",
+     "pos": "L",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.484,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8483450,
+     "name": "Ryan Greene",
+     "pos": "C",
+     "gp": 82,
+     "known": true,
+     "gs_per_gp": 0.168,
+     "toi_per_gp_min": 16.7
+    },
+    {
+     "id": 8477987,
+     "name": "Ryan Donato",
+     "pos": "C",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.441,
+     "toi_per_gp_min": 15.5
+    },
+    {
+     "id": 8478413,
+     "name": "Jordan Greenway",
+     "pos": "L",
+     "gp": 74,
+     "known": true,
+     "gs_per_gp": 0.134,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8482062,
+     "name": "Cole Smith",
+     "pos": "R",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.178,
+     "toi_per_gp_min": 13.5
+    },
+    {
+     "id": 8484197,
+     "name": "Oliver Moore",
+     "pos": "C",
+     "gp": 59,
+     "known": true,
+     "gs_per_gp": 0.244,
+     "toi_per_gp_min": 13.0
+    },
+    {
+     "id": 8478233,
+     "name": "Andrew Mangiapane",
+     "pos": "L",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.331,
+     "toi_per_gp_min": 12.8
+    },
+    {
+     "id": 8484185,
+     "name": "Nick Lardis",
+     "pos": "L",
+     "gp": 41,
+     "known": true,
+     "gs_per_gp": 0.26,
+     "toi_per_gp_min": 12.7
+    },
+    {
+     "id": 8481524,
+     "name": "Bowen Byram",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.452,
+     "toi_per_gp_min": 22.5
+    },
+    {
+     "id": 8481568,
+     "name": "Alex Vlasic",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.124,
+     "toi_per_gp_min": 22.2
+    },
+    {
+     "id": 8484783,
+     "name": "Artyom Levshunov",
+     "pos": "D",
+     "gp": 85,
+     "known": true,
+     "gs_per_gp": 0.117,
+     "toi_per_gp_min": 19.7
+    },
+    {
+     "id": 8474013,
+     "name": "Ian Cole",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.334,
+     "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8482176,
+     "name": "Wyatt Kaiser",
+     "pos": "D",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.125,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8483506,
+     "name": "Sam Rinzel",
+     "pos": "D",
+     "gp": 62,
+     "known": true,
+     "gs_per_gp": 0.179,
+     "toi_per_gp_min": 18.9
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8482821,
+     "name": "Arvid Soderblom",
+     "gp": 94,
+     "known": true,
+     "gsax_per_gp_raw": -0.226,
+     "gsax_per_gp": -0.067,
+     "role": "starter"
+    },
+    {
+     "id": 8481519,
+     "name": "Spencer Knight",
+     "gp": 92,
+     "known": true,
+     "gsax_per_gp_raw": 0.193,
+     "gsax_per_gp": 0.058,
+     "role": "backup"
+    }
+   ]
+  },
+  "COL": {
+   "prior_elo": 1570.4,
+   "proj_points": 111.2,
+   "proj_points_vs_mean": 18.6,
+   "skater_gs": 1068.9,
+   "goalie_gsax": 4.2,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8477492,
+     "name": "Nathan MacKinnon",
+     "pos": "C",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 1.782,
+     "toi_per_gp_min": 22.5
+    },
+    {
+     "id": 8480039,
+     "name": "Martin Necas",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 1.301,
+     "toi_per_gp_min": 20.2
+    },
+    {
+     "id": 8477476,
+     "name": "Artturi Lehkonen",
+     "pos": "L",
+     "gp": 139,
+     "known": true,
+     "gs_per_gp": 0.905,
+     "toi_per_gp_min": 19.4
+    },
+    {
+     "id": 8475754,
+     "name": "Brock Nelson",
+     "pos": "C",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.869,
+     "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8475172,
+     "name": "Nazem Kadri",
+     "pos": "C",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.841,
+     "toi_per_gp_min": 19.2
+    },
+    {
+     "id": 8475768,
+     "name": "Jaden Schwartz",
+     "pos": "L",
+     "gp": 131,
+     "known": true,
+     "gs_per_gp": 0.532,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8476455,
+     "name": "Gabriel Landeskog",
+     "pos": "L",
+     "gp": 60,
+     "known": true,
+     "gs_per_gp": 0.771,
+     "toi_per_gp_min": 16.4
+    },
+    {
+     "id": 8478462,
+     "name": "Nicolas Roy",
+     "pos": "C",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.346,
+     "toi_per_gp_min": 14.8
+    },
+    {
+     "id": 8481186,
+     "name": "Logan O'Connor",
+     "pos": "R",
+     "gp": 93,
+     "known": true,
+     "gs_per_gp": 0.366,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8480448,
+     "name": "Parker Kelly",
+     "pos": "C",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.463,
+     "toi_per_gp_min": 12.7
+    },
+    {
+     "id": 8482742,
+     "name": "Zachary L'Heureux",
+     "pos": "L",
+     "gp": 87,
+     "known": true,
+     "gs_per_gp": 0.238,
+     "toi_per_gp_min": 12.4
+    },
+    {
+     "id": 8482768,
+     "name": "Fedor Svechkov",
+     "pos": "C",
+     "gp": 122,
+     "known": true,
+     "gs_per_gp": 0.254,
+     "toi_per_gp_min": 12.4
+    },
+    {
+     "id": 8480069,
+     "name": "Cale Makar",
+     "pos": "D",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 1.316,
+     "toi_per_gp_min": 25.3
+    },
+    {
+     "id": 8478038,
+     "name": "Devon Toews",
+     "pos": "D",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.789,
+     "toi_per_gp_min": 23.5
+    },
+    {
+     "id": 8470613,
+     "name": "Brent Burns",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.711,
+     "toi_per_gp_min": 19.9
+    },
+    {
+     "id": 8476967,
+     "name": "Brett Kulak",
+     "pos": "D",
+     "gp": 165,
+     "known": true,
+     "gs_per_gp": 0.316,
+     "toi_per_gp_min": 19.7
+    },
+    {
+     "id": 8476312,
+     "name": "Josh Manson",
+     "pos": "D",
+     "gp": 127,
+     "known": true,
+     "gs_per_gp": 0.575,
+     "toi_per_gp_min": 17.9
+    },
+    {
+     "id": 8484258,
+     "name": "Sam Malinski",
+     "pos": "D",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.66,
+     "toi_per_gp_min": 16.8
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478406,
+     "name": "Mackenzie Blackwood",
+     "gp": 138,
+     "known": true,
+     "gsax_per_gp_raw": 0.174,
+     "gsax_per_gp": 0.052,
+     "role": "starter"
+    },
+    {
+     "id": 8475809,
+     "name": "Scott Wedgewood",
+     "gp": 101,
+     "known": true,
+     "gsax_per_gp_raw": 0.168,
+     "gsax_per_gp": 0.05,
+     "role": "backup"
+    }
+   ]
+  },
+  "DAL": {
+   "prior_elo": 1510.0,
+   "proj_points": 95.3,
+   "proj_points_vs_mean": 2.6,
+   "skater_gs": 773.2,
+   "goalie_gsax": 4.54,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8478420,
+     "name": "Mikko Rantanen",
+     "pos": "R",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 1.009,
+     "toi_per_gp_min": 20.8
+    },
+    {
+     "id": 8482740,
+     "name": "Wyatt Johnston",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.8,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8480027,
+     "name": "Jason Robertson",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 1.053,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8478449,
+     "name": "Roope Hintz",
+     "pos": "C",
+     "gp": 129,
+     "known": true,
+     "gs_per_gp": 0.818,
+     "toi_per_gp_min": 17.1
+    },
+    {
+     "id": 8475168,
+     "name": "Matt Duchene",
+     "pos": "C",
+     "gp": 139,
+     "known": true,
+     "gs_per_gp": 0.742,
+     "toi_per_gp_min": 16.9
+    },
+    {
+     "id": 8475794,
+     "name": "Tyler Seguin",
+     "pos": "C",
+     "gp": 47,
+     "known": true,
+     "gs_per_gp": 0.743,
+     "toi_per_gp_min": 16.4
+    },
+    {
+     "id": 8479351,
+     "name": "Sam Steel",
+     "pos": "C",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.341,
+     "toi_per_gp_min": 15.1
+    },
+    {
+     "id": 8473994,
+     "name": "Jamie Benn",
+     "pos": "L",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.457,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8484829,
+     "name": "Justin Hryckowian",
+     "pos": "C",
+     "gp": 86,
+     "known": true,
+     "gs_per_gp": 0.326,
+     "toi_per_gp_min": 13.0
+    },
+    {
+     "id": 8476889,
+     "name": "Radek Faksa",
+     "pos": "C",
+     "gp": 128,
+     "known": true,
+     "gs_per_gp": 0.213,
+     "toi_per_gp_min": 12.4
+    },
+    {
+     "id": 8480840,
+     "name": "Oskar B\u00e4ck",
+     "pos": "C",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.212,
+     "toi_per_gp_min": 12.0
+    },
+    {
+     "id": 8481641,
+     "name": "Joel Kiviranta",
+     "pos": "L",
+     "gp": 130,
+     "known": true,
+     "gs_per_gp": 0.362,
+     "toi_per_gp_min": 11.7
+    },
+    {
+     "id": 8480036,
+     "name": "Miro Heiskanen",
+     "pos": "D",
+     "gp": 127,
+     "known": true,
+     "gs_per_gp": 0.738,
+     "toi_per_gp_min": 25.3
+    },
+    {
+     "id": 8481581,
+     "name": "Thomas Harley",
+     "pos": "D",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.636,
+     "toi_per_gp_min": 23.2
+    },
+    {
+     "id": 8476902,
+     "name": "Esa Lindell",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.376,
+     "toi_per_gp_min": 22.7
+    },
+    {
+     "id": 8474574,
+     "name": "Tyler Myers",
+     "pos": "D",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.181,
+     "toi_per_gp_min": 20.1
+    },
+    {
+     "id": 8480878,
+     "name": "Nils Lundkvist",
+     "pos": "D",
+     "gp": 91,
+     "known": true,
+     "gs_per_gp": 0.264,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8483425,
+     "name": "Lian Bichsel",
+     "pos": "D",
+     "gp": 88,
+     "known": true,
+     "gs_per_gp": 0.159,
+     "toi_per_gp_min": 15.3
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8479979,
+     "name": "Jake Oettinger",
+     "gp": 166,
+     "known": true,
+     "gsax_per_gp_raw": 0.11,
+     "gsax_per_gp": 0.033,
+     "role": "starter"
+    },
+    {
+     "id": 8479193,
+     "name": "Casey DeSmith",
+     "gp": 86,
+     "known": true,
+     "gsax_per_gp_raw": 0.302,
+     "gsax_per_gp": 0.09,
+     "role": "backup"
+    }
+   ]
+  },
+  "DET": {
+   "prior_elo": 1477.6,
+   "proj_points": 86.7,
+   "proj_points_vs_mean": -5.9,
+   "skater_gs": 632.3,
+   "goalie_gsax": 1.21,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8477946,
+     "name": "Dylan Larkin",
+     "pos": "C",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.902,
+     "toi_per_gp_min": 20.1
+    },
+    {
+     "id": 8482078,
+     "name": "Lucas Raymond",
+     "pos": "L",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.894,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8479337,
+     "name": "Alex DeBrincat",
+     "pos": "R",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.979,
+     "toi_per_gp_min": 18.2
+    },
+    {
+     "id": 8477456,
+     "name": "J.T. Compher",
+     "pos": "L",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.26,
+     "toi_per_gp_min": 16.2
+    },
+    {
+     "id": 8477429,
+     "name": "Andrew Copp",
+     "pos": "C",
+     "gp": 135,
+     "known": true,
+     "gs_per_gp": 0.45,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8484471,
+     "name": "Emmitt Finnie",
+     "pos": "C",
+     "gp": 82,
+     "known": true,
+     "gs_per_gp": 0.387,
+     "toi_per_gp_min": 15.5
+    },
+    {
+     "id": 8478042,
+     "name": "Viktor Arvidsson",
+     "pos": "L",
+     "gp": 136,
+     "known": true,
+     "gs_per_gp": 0.718,
+     "toi_per_gp_min": 14.8
+    },
+    {
+     "id": 8483464,
+     "name": "Marco Kasper",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.397,
+     "toi_per_gp_min": 14.6
+    },
+    {
+     "id": 8478891,
+     "name": "Mason Appleton",
+     "pos": "C",
+     "gp": 136,
+     "known": true,
+     "gs_per_gp": 0.261,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8479992,
+     "name": "Michael Rasmussen",
+     "pos": "C",
+     "gp": 141,
+     "known": true,
+     "gs_per_gp": 0.202,
+     "toi_per_gp_min": 13.1
+    },
+    {
+     "id": 8484794,
+     "name": "Michael Brandsegg-Nyg\u00e5rd",
+     "pos": "R",
+     "gp": 14,
+     "known": true,
+     "gs_per_gp": 0.288,
+     "toi_per_gp_min": 12.5
+    },
+    {
+     "id": 8478434,
+     "name": "Keegan Kolesar",
+     "pos": "R",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.28,
+     "toi_per_gp_min": 12.4
+    },
+    {
+     "id": 8481542,
+     "name": "Moritz Seider",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.748,
+     "toi_per_gp_min": 25.4
+    },
+    {
+     "id": 8475753,
+     "name": "Justin Faulk",
+     "pos": "D",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.361,
+     "toi_per_gp_min": 22.2
+    },
+    {
+     "id": 8475279,
+     "name": "Ben Chiarot",
+     "pos": "D",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.077,
+     "toi_per_gp_min": 21.0
+    },
+    {
+     "id": 8484223,
+     "name": "Axel Sandin-Pellikka",
+     "pos": "D",
+     "gp": 68,
+     "known": true,
+     "gs_per_gp": 0.282,
+     "toi_per_gp_min": 16.2
+    },
+    {
+     "id": 8481607,
+     "name": "Albert Johansson",
+     "pos": "D",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.11,
+     "toi_per_gp_min": 16.1
+    },
+    {
+     "id": 8480879,
+     "name": "Jacob Bernard-Docker",
+     "pos": "D",
+     "gp": 103,
+     "known": true,
+     "gs_per_gp": 0.116,
+     "toi_per_gp_min": 14.3
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8476434,
+     "name": "John Gibson",
+     "gp": 132,
+     "known": true,
+     "gsax_per_gp_raw": 0.132,
+     "gsax_per_gp": 0.039,
+     "role": "starter"
+    },
+    {
+     "id": 8480193,
+     "name": "Daniil Tarasov",
+     "gp": 77,
+     "known": true,
+     "gsax_per_gp_raw": -0.079,
+     "gsax_per_gp": -0.024,
+     "role": "backup"
+    }
+   ]
+  },
+  "EDM": {
+   "prior_elo": 1516.2,
+   "proj_points": 96.9,
+   "proj_points_vs_mean": 4.3,
+   "skater_gs": 818.6,
+   "goalie_gsax": 1.58,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8478402,
+     "name": "Connor McDavid",
+     "pos": "C",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 1.65,
+     "toi_per_gp_min": 22.6
+    },
+    {
+     "id": 8477934,
+     "name": "Leon Draisaitl",
+     "pos": "C",
+     "gp": 136,
+     "known": true,
+     "gs_per_gp": 1.544,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8475786,
+     "name": "Zach Hyman",
+     "pos": "L",
+     "gp": 131,
+     "known": true,
+     "gs_per_gp": 0.945,
+     "toi_per_gp_min": 19.4
+    },
+    {
+     "id": 8476454,
+     "name": "Ryan Nugent-Hopkins",
+     "pos": "C",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.684,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8483512,
+     "name": "Matt Savoie",
+     "pos": "C",
+     "gp": 86,
+     "known": true,
+     "gs_per_gp": 0.45,
+     "toi_per_gp_min": 14.7
+    },
+    {
+     "id": 8481617,
+     "name": "Vasily Podkolzin",
+     "pos": "R",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.532,
+     "toi_per_gp_min": 14.3
+    },
+    {
+     "id": 8477953,
+     "name": "Kasperi Kapanen",
+     "pos": "R",
+     "gp": 108,
+     "known": true,
+     "gs_per_gp": 0.253,
+     "toi_per_gp_min": 12.9
+    },
+    {
+     "id": 8477406,
+     "name": "Mattias Janmark",
+     "pos": "C",
+     "gp": 123,
+     "known": true,
+     "gs_per_gp": 0.119,
+     "toi_per_gp_min": 12.8
+    },
+    {
+     "id": 8479365,
+     "name": "Trent Frederic",
+     "pos": "C",
+     "gp": 132,
+     "known": true,
+     "gs_per_gp": 0.137,
+     "toi_per_gp_min": 12.2
+    },
+    {
+     "id": 8478472,
+     "name": "Mathieu Joseph",
+     "pos": "R",
+     "gp": 111,
+     "known": true,
+     "gs_per_gp": 0.227,
+     "toi_per_gp_min": 11.9
+    },
+    {
+     "id": 8482703,
+     "name": "Colton Dach",
+     "pos": "C",
+     "gp": 86,
+     "known": true,
+     "gs_per_gp": 0.14,
+     "toi_per_gp_min": 11.7
+    },
+    {
+     "id": 8483455,
+     "name": "Isaac Howard",
+     "pos": "L",
+     "gp": 29,
+     "known": true,
+     "gs_per_gp": 0.069,
+     "toi_per_gp_min": 10.3
+    },
+    {
+     "id": 8480803,
+     "name": "Evan Bouchard",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 1.195,
+     "toi_per_gp_min": 24.1
+    },
+    {
+     "id": 8475218,
+     "name": "Mattias Ekholm",
+     "pos": "D",
+     "gp": 147,
+     "known": true,
+     "gs_per_gp": 0.806,
+     "toi_per_gp_min": 21.3
+    },
+    {
+     "id": 8478013,
+     "name": "Jake Walman",
+     "pos": "D",
+     "gp": 118,
+     "known": true,
+     "gs_per_gp": 0.553,
+     "toi_per_gp_min": 21.0
+    },
+    {
+     "id": 8476473,
+     "name": "Connor Murphy",
+     "pos": "D",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.163,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8478854,
+     "name": "Ryan Shea",
+     "pos": "D",
+     "gp": 119,
+     "known": true,
+     "gs_per_gp": 0.34,
+     "toi_per_gp_min": 18.2
+    },
+    {
+     "id": 8482166,
+     "name": "Shakir Mukhamadullin",
+     "pos": "D",
+     "gp": 80,
+     "known": true,
+     "gs_per_gp": 0.175,
+     "toi_per_gp_min": 17.5
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8477465,
+     "name": "Tristan Jarry",
+     "gp": 120,
+     "known": true,
+     "gsax_per_gp_raw": -0.052,
+     "gsax_per_gp": -0.015,
+     "role": "starter"
+    },
+    {
+     "id": 8475883,
+     "name": "Frederik Andersen",
+     "gp": 73,
+     "known": true,
+     "gsax_per_gp_raw": 0.244,
+     "gsax_per_gp": 0.073,
+     "role": "backup"
+    },
+    {
+     "id": 8482221,
+     "name": "Devon Levi",
+     "gp": 32,
+     "known": true,
+     "gsax_per_gp_raw": 0.082,
+     "gsax_per_gp": 0.024,
+     "role": "third"
+    }
+   ]
+  },
+  "FLA": {
+   "prior_elo": 1543.8,
+   "proj_points": 104.2,
+   "proj_points_vs_mean": 11.6,
+   "skater_gs": 959.8,
+   "goalie_gsax": 0.27,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8477933,
+     "name": "Sam Reinhart",
+     "pos": "C",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 1.067,
+     "toi_per_gp_min": 20.9
+    },
+    {
+     "id": 8477493,
+     "name": "Aleksander Barkov",
+     "pos": "C",
+     "gp": 67,
+     "known": true,
+     "gs_per_gp": 1.25,
+     "toi_per_gp_min": 20.3
+    },
+    {
+     "id": 8479314,
+     "name": "Matthew Tkachuk",
+     "pos": "L",
+     "gp": 83,
+     "known": true,
+     "gs_per_gp": 1.198,
+     "toi_per_gp_min": 18.3
+    },
+    {
+     "id": 8473419,
+     "name": "Brad Marchand",
+     "pos": "L",
+     "gp": 123,
+     "known": true,
+     "gs_per_gp": 0.809,
+     "toi_per_gp_min": 18.1
+    },
+    {
+     "id": 8477935,
+     "name": "Sam Bennett",
+     "pos": "C",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.806,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8482113,
+     "name": "Anton Lundell",
+     "pos": "C",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.714,
+     "toi_per_gp_min": 17.8
+    },
+    {
+     "id": 8477409,
+     "name": "Carter Verhaeghe",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.84,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8480801,
+     "name": "Brady Tkachuk",
+     "pos": "L",
+     "gp": 132,
+     "known": true,
+     "gs_per_gp": 1.063,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8480185,
+     "name": "Eetu Luostarinen",
+     "pos": "C",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.472,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8474189,
+     "name": "Lars Eller",
+     "pos": "C",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.288,
+     "toi_per_gp_min": 12.4
+    },
+    {
+     "id": 8477903,
+     "name": "Garnet Hathaway",
+     "pos": "R",
+     "gp": 133,
+     "known": true,
+     "gs_per_gp": 0.15,
+     "toi_per_gp_min": 11.1
+    },
+    {
+     "id": 8483771,
+     "name": "Sandis Vilmanis",
+     "pos": "L",
+     "gp": 19,
+     "known": true,
+     "gs_per_gp": 0.337,
+     "toi_per_gp_min": 10.4
+    },
+    {
+     "id": 8477495,
+     "name": "Seth Jones",
+     "pos": "D",
+     "gp": 115,
+     "known": true,
+     "gs_per_gp": 0.574,
+     "toi_per_gp_min": 24.2
+    },
+    {
+     "id": 8477932,
+     "name": "Aaron Ekblad",
+     "pos": "D",
+     "gp": 128,
+     "known": true,
+     "gs_per_gp": 0.591,
+     "toi_per_gp_min": 22.9
+    },
+    {
+     "id": 8478055,
+     "name": "Gustav Forsling",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.624,
+     "toi_per_gp_min": 22.8
+    },
+    {
+     "id": 8478859,
+     "name": "Niko Mikkola",
+     "pos": "D",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.385,
+     "toi_per_gp_min": 20.3
+    },
+    {
+     "id": 8475179,
+     "name": "Dmitry Kulikov",
+     "pos": "D",
+     "gp": 89,
+     "known": true,
+     "gs_per_gp": 0.295,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8475462,
+     "name": "Radko Gudas",
+     "pos": "D",
+     "gp": 137,
+     "known": true,
+     "gs_per_gp": 0.242,
+     "toi_per_gp_min": 18.4
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8474593,
+     "name": "Jacob Markstrom",
+     "gp": 141,
+     "known": true,
+     "gsax_per_gp_raw": 0.037,
+     "gsax_per_gp": 0.011,
+     "role": "starter"
+    },
+    {
+     "id": 8481033,
+     "name": "Akira Schmid",
+     "gp": 58,
+     "known": true,
+     "gsax_per_gp_raw": -0.029,
+     "gsax_per_gp": -0.009,
+     "role": "backup"
+    }
+   ]
+  },
+  "LAK": {
+   "prior_elo": 1516.4,
+   "proj_points": 97.0,
+   "proj_points_vs_mean": 4.3,
+   "skater_gs": 818.6,
+   "goalie_gsax": 1.76,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8478550,
+     "name": "Artemi Panarin",
+     "pos": "L",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 1.125,
+     "toi_per_gp_min": 20.3
+    },
+    {
+     "id": 8482124,
+     "name": "Quinton Byfield",
+     "pos": "R",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.759,
+     "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8477960,
+     "name": "Adrian Kempe",
+     "pos": "R",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.946,
+     "toi_per_gp_min": 19.2
+    },
+    {
+     "id": 8475692,
+     "name": "Mats Zuccarello",
+     "pos": "R",
+     "gp": 128,
+     "known": true,
+     "gs_per_gp": 0.743,
+     "toi_per_gp_min": 19.2
+    },
+    {
+     "id": 8477942,
+     "name": "Kevin Fiala",
+     "pos": "L",
+     "gp": 137,
+     "known": true,
+     "gs_per_gp": 0.89,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8482155,
+     "name": "Alex Laferriere",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.75,
+     "toi_per_gp_min": 17.4
+    },
+    {
+     "id": 8479675,
+     "name": "Trevor Moore",
+     "pos": "L",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.681,
+     "toi_per_gp_min": 16.8
+    },
+    {
+     "id": 8475287,
+     "name": "Erik Haula",
+     "pos": "L",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.342,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8476872,
+     "name": "Scott Laughton",
+     "pos": "C",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.242,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8476469,
+     "name": "Joel Armia",
+     "pos": "R",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.303,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8470621,
+     "name": "Corey Perry",
+     "pos": "R",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.491,
+     "toi_per_gp_min": 12.8
+    },
+    {
+     "id": 8481532,
+     "name": "Alex Turcotte",
+     "pos": "C",
+     "gp": 130,
+     "known": true,
+     "gs_per_gp": 0.398,
+     "toi_per_gp_min": 11.3
+    },
+    {
+     "id": 8474563,
+     "name": "Drew Doughty",
+     "pos": "D",
+     "gp": 102,
+     "known": true,
+     "gs_per_gp": 0.501,
+     "toi_per_gp_min": 23.4
+    },
+    {
+     "id": 8479998,
+     "name": "Mikey Anderson",
+     "pos": "D",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.385,
+     "toi_per_gp_min": 21.6
+    },
+    {
+     "id": 8476441,
+     "name": "Joel Edmundson",
+     "pos": "D",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.39,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8476879,
+     "name": "Cody Ceci",
+     "pos": "D",
+     "gp": 167,
+     "known": true,
+     "gs_per_gp": 0.134,
+     "toi_per_gp_min": 19.4
+    },
+    {
+     "id": 8475208,
+     "name": "Brian Dumoulin",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.22,
+     "toi_per_gp_min": 18.6
+    },
+    {
+     "id": 8482730,
+     "name": "Brandt Clarke",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.682,
+     "toi_per_gp_min": 18.1
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8475311,
+     "name": "Darcy Kuemper",
+     "gp": 133,
+     "known": true,
+     "gsax_per_gp_raw": 0.09,
+     "gsax_per_gp": 0.027,
+     "role": "starter"
+    },
+    {
+     "id": 8476341,
+     "name": "Anton Forsberg",
+     "gp": 96,
+     "known": true,
+     "gsax_per_gp_raw": 0.045,
+     "gsax_per_gp": 0.013,
+     "role": "backup"
+    }
+   ]
+  },
+  "MIN": {
+   "prior_elo": 1498.6,
+   "proj_points": 92.3,
+   "proj_points_vs_mean": -0.4,
+   "skater_gs": 752.7,
+   "goalie_gsax": -2.29,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8478864,
+     "name": "Kirill Kaprizov",
+     "pos": "L",
+     "gp": 119,
+     "known": true,
+     "gs_per_gp": 1.23,
+     "toi_per_gp_min": 22.3
+    },
+    {
+     "id": 8481557,
+     "name": "Matt Boldy",
+     "pos": "L",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 1.034,
+     "toi_per_gp_min": 20.4
+    },
+    {
+     "id": 8478493,
+     "name": "Joel Eriksson Ek",
+     "pos": "C",
+     "gp": 116,
+     "known": true,
+     "gs_per_gp": 0.789,
+     "toi_per_gp_min": 19.4
+    },
+    {
+     "id": 8476399,
+     "name": "Blake Coleman",
+     "pos": "L",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.637,
+     "toi_per_gp_min": 17.5
+    },
+    {
+     "id": 8477451,
+     "name": "Ryan Hartman",
+     "pos": "R",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.54,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8481553,
+     "name": "Bobby Brink",
+     "pos": "R",
+     "gp": 147,
+     "known": true,
+     "gs_per_gp": 0.421,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8473422,
+     "name": "Nick Foligno",
+     "pos": "L",
+     "gp": 131,
+     "known": true,
+     "gs_per_gp": 0.285,
+     "toi_per_gp_min": 14.6
+    },
+    {
+     "id": 8477446,
+     "name": "Michael McCarron",
+     "pos": "C",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.187,
+     "toi_per_gp_min": 13.9
+    },
+    {
+     "id": 8475220,
+     "name": "Marcus Foligno",
+     "pos": "L",
+     "gp": 133,
+     "known": true,
+     "gs_per_gp": 0.345,
+     "toi_per_gp_min": 13.8
+    },
+    {
+     "id": 8485702,
+     "name": "Maxim Shabanov",
+     "pos": "R",
+     "gp": 44,
+     "known": true,
+     "gs_per_gp": 0.269,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8483525,
+     "name": "Danila Yurov",
+     "pos": "R",
+     "gp": 73,
+     "known": true,
+     "gs_per_gp": 0.247,
+     "toi_per_gp_min": 13.3
+    },
+    {
+     "id": 8478508,
+     "name": "Yakov Trenin",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.18,
+     "toi_per_gp_min": 12.9
+    },
+    {
+     "id": 8480800,
+     "name": "Quinn Hughes",
+     "pos": "D",
+     "gp": 142,
+     "known": true,
+     "gs_per_gp": 1.156,
+     "toi_per_gp_min": 26.8
+    },
+    {
+     "id": 8482122,
+     "name": "Brock Faber",
+     "pos": "D",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.488,
+     "toi_per_gp_min": 25.1
+    },
+    {
+     "id": 8476463,
+     "name": "Jonas Brodin",
+     "pos": "D",
+     "gp": 112,
+     "known": true,
+     "gs_per_gp": 0.404,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8486166,
+     "name": "Viking Gustafsson Nyberg",
+     "pos": "D",
+     "gp": 2,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 21.3
+    },
+    {
+     "id": 8474716,
+     "name": "Jared Spurgeon",
+     "pos": "D",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.424,
+     "toi_per_gp_min": 20.0
+    },
+    {
+     "id": 8476874,
+     "name": "Olli Maatta",
+     "pos": "D",
+     "gp": 120,
+     "known": true,
+     "gs_per_gp": 0.351,
+     "toi_per_gp_min": 18.7
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8475717,
+     "name": "Calvin Pickard",
+     "gp": 75,
+     "known": true,
+     "gsax_per_gp_raw": -0.167,
+     "gsax_per_gp": -0.05,
+     "role": "starter"
+    },
+    {
+     "id": 8482661,
+     "name": "Jesper Wallstedt",
+     "gp": 40,
+     "known": true,
+     "gsax_per_gp_raw": 0.02,
+     "gsax_per_gp": 0.006,
+     "role": "backup"
+    }
+   ]
+  },
+  "MTL": {
+   "prior_elo": 1501.3,
+   "proj_points": 93.0,
+   "proj_points_vs_mean": 0.4,
+   "skater_gs": 718.8,
+   "goalie_gsax": 6.95,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8480018,
+     "name": "Nick Suzuki",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 1.112,
+     "toi_per_gp_min": 20.4
+    },
+    {
+     "id": 8481540,
+     "name": "Cole Caufield",
+     "pos": "R",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 1.037,
+     "toi_per_gp_min": 18.1
+    },
+    {
+     "id": 8483515,
+     "name": "Juraj Slafkovsk\u00fd",
+     "pos": "L",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.717,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8475184,
+     "name": "Chris Kreider",
+     "pos": "L",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.58,
+     "toi_per_gp_min": 16.9
+    },
+    {
+     "id": 8476479,
+     "name": "Phillip Danault",
+     "pos": "C",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.524,
+     "toi_per_gp_min": 16.7
+    },
+    {
+     "id": 8478133,
+     "name": "Jake Evans",
+     "pos": "C",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.344,
+     "toi_per_gp_min": 15.5
+    },
+    {
+     "id": 8484984,
+     "name": "Ivan Demidov",
+     "pos": "R",
+     "gp": 84,
+     "known": true,
+     "gs_per_gp": 0.56,
+     "toi_per_gp_min": 15.5
+    },
+    {
+     "id": 8481618,
+     "name": "Alex Newhook",
+     "pos": "C",
+     "gp": 124,
+     "known": true,
+     "gs_per_gp": 0.285,
+     "toi_per_gp_min": 14.9
+    },
+    {
+     "id": 8481523,
+     "name": "Kirby Dach",
+     "pos": "C",
+     "gp": 94,
+     "known": true,
+     "gs_per_gp": 0.268,
+     "toi_per_gp_min": 14.9
+    },
+    {
+     "id": 8476981,
+     "name": "Josh Anderson",
+     "pos": "R",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.245,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8482775,
+     "name": "Oliver Kapanen",
+     "pos": "C",
+     "gp": 100,
+     "known": true,
+     "gs_per_gp": 0.255,
+     "toi_per_gp_min": 13.8
+    },
+    {
+     "id": 8482737,
+     "name": "Zachary Bolduc",
+     "pos": "R",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.461,
+     "toi_per_gp_min": 13.2
+    },
+    {
+     "id": 8476875,
+     "name": "Mike Matheson",
+     "pos": "D",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.365,
+     "toi_per_gp_min": 24.6
+    },
+    {
+     "id": 8483457,
+     "name": "Lane Hutson",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.85,
+     "toi_per_gp_min": 23.3
+    },
+    {
+     "id": 8480865,
+     "name": "Noah Dobson",
+     "pos": "D",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.659,
+     "toi_per_gp_min": 22.9
+    },
+    {
+     "id": 8478851,
+     "name": "Alexandre Carrier",
+     "pos": "D",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.259,
+     "toi_per_gp_min": 19.9
+    },
+    {
+     "id": 8481593,
+     "name": "Jayden Struble",
+     "pos": "D",
+     "gp": 115,
+     "known": true,
+     "gs_per_gp": 0.235,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8482964,
+     "name": "Arber Xhekaj",
+     "pos": "D",
+     "gp": 135,
+     "known": true,
+     "gs_per_gp": 0.012,
+     "toi_per_gp_min": 13.1
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478470,
+     "name": "Samuel Montembeault",
+     "gp": 128,
+     "known": true,
+     "gsax_per_gp_raw": 0.18,
+     "gsax_per_gp": 0.054,
+     "role": "starter"
+    },
+    {
+     "id": 8482487,
+     "name": "Jakub Dobes",
+     "gp": 59,
+     "known": true,
+     "gsax_per_gp_raw": 0.446,
+     "gsax_per_gp": 0.133,
+     "role": "backup"
+    }
+   ]
+  },
+  "NJD": {
+   "prior_elo": 1538.9,
+   "proj_points": 102.9,
+   "proj_points_vs_mean": 10.3,
+   "skater_gs": 915.6,
+   "goalie_gsax": 4.22,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8481559,
+     "name": "Jack Hughes",
+     "pos": "C",
+     "gp": 123,
+     "known": true,
+     "gs_per_gp": 1.313,
+     "toi_per_gp_min": 21.1
+    },
+    {
+     "id": 8480002,
+     "name": "Nico Hischier",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.998,
+     "toi_per_gp_min": 20.6
+    },
+    {
+     "id": 8479407,
+     "name": "Jesper Bratt",
+     "pos": "L",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.968,
+     "toi_per_gp_min": 18.9
+    },
+    {
+     "id": 8478414,
+     "name": "Timo Meier",
+     "pos": "R",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.831,
+     "toi_per_gp_min": 18.2
+    },
+    {
+     "id": 8482110,
+     "name": "Dawson Mercer",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.527,
+     "toi_per_gp_min": 18.1
+    },
+    {
+     "id": 8478542,
+     "name": "Evan Rodrigues",
+     "pos": "C",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.6,
+     "toi_per_gp_min": 16.0
+    },
+    {
+     "id": 8477015,
+     "name": "Connor Brown",
+     "pos": "R",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.452,
+     "toi_per_gp_min": 15.7
+    },
+    {
+     "id": 8482146,
+     "name": "Luke Evangelista",
+     "pos": "R",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.733,
+     "toi_per_gp_min": 15.4
+    },
+    {
+     "id": 8481721,
+     "name": "Arseny Gritsyuk",
+     "pos": "R",
+     "gp": 66,
+     "known": true,
+     "gs_per_gp": 0.72,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8477511,
+     "name": "Anthony Mantha",
+     "pos": "R",
+     "gp": 94,
+     "known": true,
+     "gs_per_gp": 0.667,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8476474,
+     "name": "Stefan Noesen",
+     "pos": "R",
+     "gp": 116,
+     "known": true,
+     "gs_per_gp": 0.446,
+     "toi_per_gp_min": 14.6
+    },
+    {
+     "id": 8479996,
+     "name": "Cody Glass",
+     "pos": "C",
+     "gp": 135,
+     "known": true,
+     "gs_per_gp": 0.471,
+     "toi_per_gp_min": 13.6
+    },
+    {
+     "id": 8482684,
+     "name": "Luke Hughes",
+     "pos": "D",
+     "gp": 139,
+     "known": true,
+     "gs_per_gp": 0.647,
+     "toi_per_gp_min": 22.1
+    },
+    {
+     "id": 8477488,
+     "name": "Brett Pesce",
+     "pos": "D",
+     "gp": 109,
+     "known": true,
+     "gs_per_gp": 0.392,
+     "toi_per_gp_min": 21.0
+    },
+    {
+     "id": 8476462,
+     "name": "Dougie Hamilton",
+     "pos": "D",
+     "gp": 141,
+     "known": true,
+     "gs_per_gp": 0.718,
+     "toi_per_gp_min": 20.8
+    },
+    {
+     "id": 8478399,
+     "name": "Jonas Siegenthaler",
+     "pos": "D",
+     "gp": 137,
+     "known": true,
+     "gs_per_gp": 0.24,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8475455,
+     "name": "Brenden Dillon",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.188,
+     "toi_per_gp_min": 18.3
+    },
+    {
+     "id": 8480990,
+     "name": "Declan Chisholm",
+     "pos": "D",
+     "gp": 92,
+     "known": true,
+     "gs_per_gp": 0.255,
+     "toi_per_gp_min": 16.1
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8474596,
+     "name": "Jake Allen",
+     "gp": 102,
+     "known": true,
+     "gsax_per_gp_raw": 0.224,
+     "gsax_per_gp": 0.067,
+     "role": "starter"
+    },
+    {
+     "id": 8482076,
+     "name": "Nico Daws",
+     "gp": 30,
+     "known": true,
+     "gsax_per_gp_raw": 0.093,
+     "gsax_per_gp": 0.028,
+     "role": "backup"
+    },
+    {
+     "id": 8482465,
+     "name": "R\u00e9mi Poirier",
+     "gp": 0,
+     "known": false,
+     "gsax_per_gp_raw": 0.0,
+     "gsax_per_gp": 0.0,
+     "role": "third"
+    }
+   ]
+  },
+  "NSH": {
+   "prior_elo": 1479.0,
+   "proj_points": 87.1,
+   "proj_points_vs_mean": -5.5,
+   "skater_gs": 646.8,
+   "goalie_gsax": -0.26,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8475158,
+     "name": "Ryan O'Reilly",
+     "pos": "C",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.825,
+     "toi_per_gp_min": 19.7
+    },
+    {
+     "id": 8476887,
+     "name": "Filip Forsberg",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.948,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8474564,
+     "name": "Steven Stamkos",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.659,
+     "toi_per_gp_min": 17.9
+    },
+    {
+     "id": 8476539,
+     "name": "Jonathan Marchessault",
+     "pos": "C",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.51,
+     "toi_per_gp_min": 17.4
+    },
+    {
+     "id": 8477021,
+     "name": "Alexander Kerfoot",
+     "pos": "C",
+     "gp": 115,
+     "known": true,
+     "gs_per_gp": 0.45,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8482145,
+     "name": "Mavrik Bourque",
+     "pos": "C",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.481,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8480835,
+     "name": "Jack Drury",
+     "pos": "C",
+     "gp": 154,
+     "known": true,
+     "gs_per_gp": 0.516,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8479525,
+     "name": "Ross Colton",
+     "pos": "C",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.634,
+     "toi_per_gp_min": 13.4
+    },
+    {
+     "id": 8484241,
+     "name": "Matthew Wood",
+     "pos": "R",
+     "gp": 77,
+     "known": true,
+     "gs_per_gp": 0.402,
+     "toi_per_gp_min": 12.3
+    },
+    {
+     "id": 8481535,
+     "name": "Nils Hoglander",
+     "pos": "L",
+     "gp": 110,
+     "known": true,
+     "gs_per_gp": 0.292,
+     "toi_per_gp_min": 11.9
+    },
+    {
+     "id": 8483513,
+     "name": "Reid Schaefer",
+     "pos": "L",
+     "gp": 47,
+     "known": true,
+     "gs_per_gp": 0.048,
+     "toi_per_gp_min": 9.6
+    },
+    {
+     "id": 8481726,
+     "name": "Adam Edstrom",
+     "pos": "C",
+     "gp": 86,
+     "known": true,
+     "gs_per_gp": 0.137,
+     "toi_per_gp_min": 9.3
+    },
+    {
+     "id": 8474600,
+     "name": "Roman Josi",
+     "pos": "D",
+     "gp": 121,
+     "known": true,
+     "gs_per_gp": 0.856,
+     "toi_per_gp_min": 24.9
+    },
+    {
+     "id": 8476869,
+     "name": "Brady Skjei",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.328,
+     "toi_per_gp_min": 22.3
+    },
+    {
+     "id": 8479980,
+     "name": "Nicolas Hague",
+     "pos": "D",
+     "gp": 130,
+     "known": true,
+     "gs_per_gp": 0.19,
+     "toi_per_gp_min": 18.3
+    },
+    {
+     "id": 8482482,
+     "name": "Adam Wilsby",
+     "pos": "D",
+     "gp": 81,
+     "known": true,
+     "gs_per_gp": 0.297,
+     "toi_per_gp_min": 17.3
+    },
+    {
+     "id": 8480246,
+     "name": "Nick Perbix",
+     "pos": "D",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.224,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8480950,
+     "name": "Ilya Lyubushkin",
+     "pos": "D",
+     "gp": 133,
+     "known": true,
+     "gs_per_gp": 0.092,
+     "toi_per_gp_min": 16.7
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8477424,
+     "name": "Juuse Saros",
+     "gp": 181,
+     "known": true,
+     "gsax_per_gp_raw": -0.109,
+     "gsax_per_gp": -0.032,
+     "role": "starter"
+    },
+    {
+     "id": 8481020,
+     "name": "Justus Annunen",
+     "gp": 76,
+     "known": true,
+     "gsax_per_gp_raw": 0.141,
+     "gsax_per_gp": 0.042,
+     "role": "backup"
+    }
+   ]
+  },
+  "NYI": {
+   "prior_elo": 1480.2,
+   "proj_points": 87.4,
+   "proj_points_vs_mean": -5.2,
+   "skater_gs": 621.1,
+   "goalie_gsax": 5.96,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8477500,
+     "name": "Bo Horvat",
+     "pos": "C",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.882,
+     "toi_per_gp_min": 20.4
+    },
+    {
+     "id": 8475151,
+     "name": "Kyle Palmieri",
+     "pos": "C",
+     "gp": 107,
+     "known": true,
+     "gs_per_gp": 0.551,
+     "toi_per_gp_min": 18.6
+    },
+    {
+     "id": 8475170,
+     "name": "Brayden Schenn",
+     "pos": "C",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.446,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8481601,
+     "name": "Simon Holmstrom",
+     "pos": "R",
+     "gp": 154,
+     "known": true,
+     "gs_per_gp": 0.525,
+     "toi_per_gp_min": 16.8
+    },
+    {
+     "id": 8476419,
+     "name": "Jean-Gabriel Pageau",
+     "pos": "C",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.508,
+     "toi_per_gp_min": 16.4
+    },
+    {
+     "id": 8485388,
+     "name": "Victor Eklund",
+     "pos": "R",
+     "gp": 1,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 15.5
+    },
+    {
+     "id": 8482476,
+     "name": "Emil Heineman",
+     "pos": "L",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.372,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8481711,
+     "name": "Matias Maccelli",
+     "pos": "L",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 0.419,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8477407,
+     "name": "Anthony Duclair",
+     "pos": "L",
+     "gp": 106,
+     "known": true,
+     "gs_per_gp": 0.279,
+     "toi_per_gp_min": 14.0
+    },
+    {
+     "id": 8484221,
+     "name": "Calum Ritchie",
+     "pos": "C",
+     "gp": 72,
+     "known": true,
+     "gs_per_gp": 0.264,
+     "toi_per_gp_min": 13.4
+    },
+    {
+     "id": 8476292,
+     "name": "Ondrej Palat",
+     "pos": "L",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.292,
+     "toi_per_gp_min": 13.3
+    },
+    {
+     "id": 8475231,
+     "name": "Casey Cizikas",
+     "pos": "C",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.248,
+     "toi_per_gp_min": 12.4
+    },
+    {
+     "id": 8485366,
+     "name": "Matthew Schaefer",
+     "pos": "D",
+     "gp": 82,
+     "known": true,
+     "gs_per_gp": 0.809,
+     "toi_per_gp_min": 24.7
+    },
+    {
+     "id": 8481014,
+     "name": "Alexander Romanov",
+     "pos": "D",
+     "gp": 79,
+     "known": true,
+     "gs_per_gp": 0.317,
+     "toi_per_gp_min": 21.8
+    },
+    {
+     "id": 8476917,
+     "name": "Adam Pelech",
+     "pos": "D",
+     "gp": 142,
+     "known": true,
+     "gs_per_gp": 0.482,
+     "toi_per_gp_min": 21.0
+    },
+    {
+     "id": 8477506,
+     "name": "Ryan Pulock",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.293,
+     "toi_per_gp_min": 20.9
+    },
+    {
+     "id": 8477950,
+     "name": "Tony DeAngelo",
+     "pos": "D",
+     "gp": 111,
+     "known": true,
+     "gs_per_gp": 0.573,
+     "toi_per_gp_min": 20.5
+    },
+    {
+     "id": 8476429,
+     "name": "Scott Mayfield",
+     "pos": "D",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 0.123,
+     "toi_per_gp_min": 16.7
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478009,
+     "name": "Ilya Sorokin",
+     "gp": 172,
+     "known": true,
+     "gsax_per_gp_raw": 0.257,
+     "gsax_per_gp": 0.077,
+     "role": "starter"
+    },
+    {
+     "id": 8473575,
+     "name": "Semyon Varlamov",
+     "gp": 38,
+     "known": true,
+     "gsax_per_gp_raw": 0.223,
+     "gsax_per_gp": 0.067,
+     "role": "backup"
+    }
+   ]
+  },
+  "NYR": {
+   "prior_elo": 1492.5,
+   "proj_points": 90.7,
+   "proj_points_vs_mean": -2.0,
+   "skater_gs": 694.5,
+   "goalie_gsax": 3.29,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8476459,
+     "name": "Mika Zibanejad",
+     "pos": "C",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.775,
+     "toi_per_gp_min": 19.8
+    },
+    {
+     "id": 8476468,
+     "name": "J.T. Miller",
+     "pos": "C",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.78,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8482109,
+     "name": "Alexis Lafreni\u00e8re",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.67,
+     "toi_per_gp_min": 17.3
+    },
+    {
+     "id": 8481604,
+     "name": "Pavel Dorofeyev",
+     "pos": "R",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.864,
+     "toi_per_gp_min": 17.1
+    },
+    {
+     "id": 8482157,
+     "name": "Will Cuylle",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.507,
+     "toi_per_gp_min": 16.0
+    },
+    {
+     "id": 8484210,
+     "name": "Gabe Perreault",
+     "pos": "R",
+     "gp": 54,
+     "known": true,
+     "gs_per_gp": 0.407,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8480009,
+     "name": "Eeli Tolvanen",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.345,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8477416,
+     "name": "Oliver Bjorkstrand",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.531,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8483690,
+     "name": "Noah Laba",
+     "pos": "C",
+     "gp": 74,
+     "known": true,
+     "gs_per_gp": 0.238,
+     "toi_per_gp_min": 13.5
+    },
+    {
+     "id": 8480813,
+     "name": "Joseph Veleno",
+     "pos": "C",
+     "gp": 135,
+     "known": true,
+     "gs_per_gp": 0.091,
+     "toi_per_gp_min": 12.1
+    },
+    {
+     "id": 8483669,
+     "name": "Adam Sykora",
+     "pos": "L",
+     "gp": 11,
+     "known": true,
+     "gs_per_gp": 0.357,
+     "toi_per_gp_min": 11.2
+    },
+    {
+     "id": 8481789,
+     "name": "Tye Kartye",
+     "pos": "L",
+     "gp": 127,
+     "known": true,
+     "gs_per_gp": 0.222,
+     "toi_per_gp_min": 10.8
+    },
+    {
+     "id": 8479323,
+     "name": "Adam Fox",
+     "pos": "D",
+     "gp": 129,
+     "known": true,
+     "gs_per_gp": 0.999,
+     "toi_per_gp_min": 23.4
+    },
+    {
+     "id": 8478882,
+     "name": "Vladislav Gavrikov",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.517,
+     "toi_per_gp_min": 23.4
+    },
+    {
+     "id": 8477969,
+     "name": "Marcus Pettersson",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.191,
+     "toi_per_gp_min": 21.6
+    },
+    {
+     "id": 8480434,
+     "name": "Sean Durzi",
+     "pos": "D",
+     "gp": 90,
+     "known": true,
+     "gs_per_gp": 0.559,
+     "toi_per_gp_min": 19.7
+    },
+    {
+     "id": 8482073,
+     "name": "Braden Schneider",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.183,
+     "toi_per_gp_min": 19.2
+    },
+    {
+     "id": 8481525,
+     "name": "Matthew Robertson",
+     "pos": "D",
+     "gp": 74,
+     "known": true,
+     "gs_per_gp": 0.232,
+     "toi_per_gp_min": 17.4
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478048,
+     "name": "Igor Shesterkin",
+     "gp": 167,
+     "known": true,
+     "gsax_per_gp_raw": 0.329,
+     "gsax_per_gp": 0.098,
+     "role": "starter"
+    },
+    {
+     "id": 8476914,
+     "name": "Joonas Korpisalo",
+     "gp": 113,
+     "known": true,
+     "gsax_per_gp_raw": -0.165,
+     "gsax_per_gp": -0.049,
+     "role": "backup"
+    }
+   ]
+  },
+  "OTT": {
+   "prior_elo": 1509.1,
+   "proj_points": 95.0,
+   "proj_points_vs_mean": 2.4,
+   "skater_gs": 798.5,
+   "goalie_gsax": -1.26,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8482116,
+     "name": "Tim St\u00fctzle",
+     "pos": "C",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 1.025,
+     "toi_per_gp_min": 20.0
+    },
+    {
+     "id": 8482667,
+     "name": "William Eklund",
+     "pos": "L",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.685,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8481596,
+     "name": "Shane Pinto",
+     "pos": "C",
+     "gp": 142,
+     "known": true,
+     "gs_per_gp": 0.601,
+     "toi_per_gp_min": 18.1
+    },
+    {
+     "id": 8480208,
+     "name": "Drake Batherson",
+     "pos": "R",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.838,
+     "toi_per_gp_min": 17.8
+    },
+    {
+     "id": 8473512,
+     "name": "Claude Giroux",
+     "pos": "R",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.677,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8481528,
+     "name": "Dylan Cozens",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.706,
+     "toi_per_gp_min": 17.1
+    },
+    {
+     "id": 8482092,
+     "name": "Ridly Greig",
+     "pos": "C",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.447,
+     "toi_per_gp_min": 16.9
+    },
+    {
+     "id": 8477444,
+     "name": "Andre Burakovsky",
+     "pos": "L",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.325,
+     "toi_per_gp_min": 15.4
+    },
+    {
+     "id": 8478020,
+     "name": "Michael Amadio",
+     "pos": "R",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.418,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8480188,
+     "name": "Fabian Zetterlund",
+     "pos": "L",
+     "gp": 166,
+     "known": true,
+     "gs_per_gp": 0.482,
+     "toi_per_gp_min": 14.6
+    },
+    {
+     "id": 8476393,
+     "name": "Nick Cousins",
+     "pos": "C",
+     "gp": 131,
+     "known": true,
+     "gs_per_gp": 0.344,
+     "toi_per_gp_min": 11.6
+    },
+    {
+     "id": 8483676,
+     "name": "Stephen Halliday",
+     "pos": "C",
+     "gp": 30,
+     "known": true,
+     "gs_per_gp": 0.447,
+     "toi_per_gp_min": 8.5
+    },
+    {
+     "id": 8482105,
+     "name": "Jake Sanderson",
+     "pos": "D",
+     "gp": 147,
+     "known": true,
+     "gs_per_gp": 0.855,
+     "toi_per_gp_min": 24.6
+    },
+    {
+     "id": 8478469,
+     "name": "Thomas Chabot",
+     "pos": "D",
+     "gp": 137,
+     "known": true,
+     "gs_per_gp": 0.71,
+     "toi_per_gp_min": 22.8
+    },
+    {
+     "id": 8481606,
+     "name": "Jordan Spence",
+     "pos": "D",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.665,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8482095,
+     "name": "Tyler Kleven",
+     "pos": "D",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.255,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8484759,
+     "name": "Carter Yakemchuk",
+     "pos": "D",
+     "gp": 4,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8484321,
+     "name": "Nikolas Matinpalo",
+     "pos": "D",
+     "gp": 91,
+     "known": true,
+     "gs_per_gp": 0.066,
+     "toi_per_gp_min": 14.3
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8476999,
+     "name": "Linus Ullmark",
+     "gp": 133,
+     "known": true,
+     "gsax_per_gp_raw": 0.119,
+     "gsax_per_gp": 0.035,
+     "role": "starter"
+    },
+    {
+     "id": 8481035,
+     "name": "Samuel Ersson",
+     "gp": 131,
+     "known": true,
+     "gsax_per_gp_raw": -0.314,
+     "gsax_per_gp": -0.094,
+     "role": "backup"
+    }
+   ]
+  },
+  "PHI": {
+   "prior_elo": 1468.3,
+   "proj_points": 84.3,
+   "proj_points_vs_mean": -8.4,
+   "skater_gs": 580.1,
+   "goalie_gsax": 2.64,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8478439,
+     "name": "Travis Konecny",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.733,
+     "toi_per_gp_min": 19.9
+    },
+    {
+     "id": 8481533,
+     "name": "Trevor Zegras",
+     "pos": "C",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.586,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8485406,
+     "name": "Porter Martone",
+     "pos": "R",
+     "gp": 9,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8482159,
+     "name": "Tyson Foerster",
+     "pos": "R",
+     "gp": 110,
+     "known": true,
+     "gs_per_gp": 0.498,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8476461,
+     "name": "Sean Couturier",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.496,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8477989,
+     "name": "Christian Dvorak",
+     "pos": "C",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.429,
+     "toi_per_gp_min": 16.8
+    },
+    {
+     "id": 8480015,
+     "name": "Owen Tippett",
+     "pos": "R",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.643,
+     "toi_per_gp_min": 16.4
+    },
+    {
+     "id": 8480220,
+     "name": "Noah Cates",
+     "pos": "L",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.483,
+     "toi_per_gp_min": 16.1
+    },
+    {
+     "id": 8484387,
+     "name": "Matvei Michkov",
+     "pos": "R",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.631,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8478569,
+     "name": "Noel Acciari",
+     "pos": "C",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 0.242,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8484142,
+     "name": "Denver Barkey",
+     "pos": "C",
+     "gp": 43,
+     "known": true,
+     "gs_per_gp": 0.361,
+     "toi_per_gp_min": 13.4
+    },
+    {
+     "id": 8483731,
+     "name": "Alex Bump",
+     "pos": "L",
+     "gp": 17,
+     "known": true,
+     "gs_per_gp": 0.388,
+     "toi_per_gp_min": 12.6
+    },
+    {
+     "id": 8477948,
+     "name": "Travis Sanheim",
+     "pos": "D",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.416,
+     "toi_per_gp_min": 24.4
+    },
+    {
+     "id": 8481546,
+     "name": "Cam York",
+     "pos": "D",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.272,
+     "toi_per_gp_min": 21.7
+    },
+    {
+     "id": 8477499,
+     "name": "Rasmus Ristolainen",
+     "pos": "D",
+     "gp": 107,
+     "known": true,
+     "gs_per_gp": 0.333,
+     "toi_per_gp_min": 20.9
+    },
+    {
+     "id": 8482142,
+     "name": "Jamie Drysdale",
+     "pos": "D",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.258,
+     "toi_per_gp_min": 20.8
+    },
+    {
+     "id": 8476372,
+     "name": "Nick Seeler",
+     "pos": "D",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 17.5
+    },
+    {
+     "id": 8481122,
+     "name": "Simon Benoit",
+     "pos": "D",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": -0.082,
+     "toi_per_gp_min": 16.9
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8479361,
+     "name": "Joseph Woll",
+     "gp": 106,
+     "known": true,
+     "gsax_per_gp_raw": 0.164,
+     "gsax_per_gp": 0.049,
+     "role": "starter"
+    },
+    {
+     "id": 8478435,
+     "name": "Dan Vladar",
+     "gp": 102,
+     "known": true,
+     "gsax_per_gp_raw": 0.021,
+     "gsax_per_gp": 0.006,
+     "role": "backup"
+    }
+   ]
+  },
+  "PIT": {
+   "prior_elo": 1502.3,
+   "proj_points": 93.2,
+   "proj_points_vs_mean": 0.6,
+   "skater_gs": 790.7,
+   "goalie_gsax": -6.18,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8471675,
+     "name": "Sidney Crosby",
+     "pos": "C",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 1.066,
+     "toi_per_gp_min": 19.8
+    },
+    {
+     "id": 8475810,
+     "name": "Bryan Rust",
+     "pos": "R",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.844,
+     "toi_per_gp_min": 19.8
+    },
+    {
+     "id": 8476483,
+     "name": "Rickard Rakell",
+     "pos": "R",
+     "gp": 141,
+     "known": true,
+     "gs_per_gp": 0.874,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8471215,
+     "name": "Evgeni Malkin",
+     "pos": "C",
+     "gp": 124,
+     "known": true,
+     "gs_per_gp": 0.777,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8483808,
+     "name": "Andrei Kuzmenko",
+     "pos": "L",
+     "gp": 118,
+     "known": true,
+     "gs_per_gp": 0.536,
+     "toi_per_gp_min": 15.3
+    },
+    {
+     "id": 8485414,
+     "name": "Ben Kindel",
+     "pos": "C",
+     "gp": 77,
+     "known": true,
+     "gs_per_gp": 0.564,
+     "toi_per_gp_min": 15.1
+    },
+    {
+     "id": 8482475,
+     "name": "Egor Chinakhov",
+     "pos": "R",
+     "gp": 102,
+     "known": true,
+     "gs_per_gp": 0.592,
+     "toi_per_gp_min": 14.1
+    },
+    {
+     "id": 8478438,
+     "name": "Tommy Novak",
+     "pos": "C",
+     "gp": 136,
+     "known": true,
+     "gs_per_gp": 0.526,
+     "toi_per_gp_min": 13.9
+    },
+    {
+     "id": 8482758,
+     "name": "Ville Koivunen",
+     "pos": "R",
+     "gp": 47,
+     "known": true,
+     "gs_per_gp": 0.409,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8481481,
+     "name": "Blake Lizotte",
+     "pos": "C",
+     "gp": 114,
+     "known": true,
+     "gs_per_gp": 0.308,
+     "toi_per_gp_min": 13.3
+    },
+    {
+     "id": 8480842,
+     "name": "Filip Hallander",
+     "pos": "C",
+     "gp": 13,
+     "known": true,
+     "gs_per_gp": 0.36,
+     "toi_per_gp_min": 13.1
+    },
+    {
+     "id": 8480980,
+     "name": "Connor Dewar",
+     "pos": "C",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 0.351,
+     "toi_per_gp_min": 13.0
+    },
+    {
+     "id": 8474578,
+     "name": "Erik Karlsson",
+     "pos": "D",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.818,
+     "toi_per_gp_min": 23.4
+    },
+    {
+     "id": 8471724,
+     "name": "Kris Letang",
+     "pos": "D",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.411,
+     "toi_per_gp_min": 22.6
+    },
+    {
+     "id": 8479398,
+     "name": "Samuel Girard",
+     "pos": "D",
+     "gp": 133,
+     "known": true,
+     "gs_per_gp": 0.476,
+     "toi_per_gp_min": 19.6
+    },
+    {
+     "id": 8477845,
+     "name": "Trevor van Riemsdyk",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.254,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8481527,
+     "name": "Kaedan Korczak",
+     "pos": "D",
+     "gp": 118,
+     "known": true,
+     "gs_per_gp": 0.301,
+     "toi_per_gp_min": 15.7
+    },
+    {
+     "id": 8483398,
+     "name": "Declan Carlile",
+     "pos": "D",
+     "gp": 45,
+     "known": true,
+     "gs_per_gp": 0.176,
+     "toi_per_gp_min": 14.7
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8481668,
+     "name": "Arturs Silovs",
+     "gp": 53,
+     "known": true,
+     "gsax_per_gp_raw": -0.417,
+     "gsax_per_gp": -0.124,
+     "role": "starter"
+    },
+    {
+     "id": 8483703,
+     "name": "Sergei Murashov",
+     "gp": 5,
+     "known": false,
+     "gsax_per_gp_raw": 0.0,
+     "gsax_per_gp": 0.0,
+     "role": "backup"
+    }
+   ]
+  },
+  "SEA": {
+   "prior_elo": 1457.7,
+   "proj_points": 81.5,
+   "proj_points_vs_mean": -11.2,
+   "skater_gs": 542.3,
+   "goalie_gsax": -0.08,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8476905,
+     "name": "Chandler Stephenson",
+     "pos": "C",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.325,
+     "toi_per_gp_min": 19.4
+    },
+    {
+     "id": 8482665,
+     "name": "Matty Beniers",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.54,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8474586,
+     "name": "Jordan Eberle",
+     "pos": "R",
+     "gp": 122,
+     "known": true,
+     "gs_per_gp": 0.575,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8477955,
+     "name": "Jared McCann",
+     "pos": "L",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.719,
+     "toi_per_gp_min": 16.9
+    },
+    {
+     "id": 8477919,
+     "name": "Frederick Gaudreau",
+     "pos": "C",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.226,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8482259,
+     "name": "Bobby McMann",
+     "pos": "C",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.498,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8481554,
+     "name": "Kaapo Kakko",
+     "pos": "R",
+     "gp": 144,
+     "known": true,
+     "gs_per_gp": 0.484,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8483524,
+     "name": "Shane Wright",
+     "pos": "C",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.374,
+     "toi_per_gp_min": 13.9
+    },
+    {
+     "id": 8482713,
+     "name": "Mackie Samoskevich",
+     "pos": "R",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.616,
+     "toi_per_gp_min": 13.9
+    },
+    {
+     "id": 8484800,
+     "name": "Berkly Catton",
+     "pos": "C",
+     "gp": 66,
+     "known": true,
+     "gs_per_gp": 0.206,
+     "toi_per_gp_min": 12.9
+    },
+    {
+     "id": 8482751,
+     "name": "Ryan Winterton",
+     "pos": "C",
+     "gp": 80,
+     "known": true,
+     "gs_per_gp": 0.178,
+     "toi_per_gp_min": 11.8
+    },
+    {
+     "id": 8483570,
+     "name": "Ben Meyers",
+     "pos": "C",
+     "gp": 60,
+     "known": true,
+     "gs_per_gp": 0.148,
+     "toi_per_gp_min": 11.5
+    },
+    {
+     "id": 8477986,
+     "name": "Brandon Montour",
+     "pos": "D",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.49,
+     "toi_per_gp_min": 22.8
+    },
+    {
+     "id": 8478407,
+     "name": "Vince Dunn",
+     "pos": "D",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.535,
+     "toi_per_gp_min": 21.8
+    },
+    {
+     "id": 8476457,
+     "name": "Adam Larsson",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.261,
+     "toi_per_gp_min": 21.3
+    },
+    {
+     "id": 8479324,
+     "name": "Ryan Lindgren",
+     "pos": "D",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.157,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8482858,
+     "name": "Ryker Evans",
+     "pos": "D",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.174,
+     "toi_per_gp_min": 18.7
+    },
+    {
+     "id": 8479985,
+     "name": "Cale Fleury",
+     "pos": "D",
+     "gp": 37,
+     "known": true,
+     "gs_per_gp": 0.108,
+     "toi_per_gp_min": 15.0
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478916,
+     "name": "Joey Daccord",
+     "gp": 154,
+     "known": true,
+     "gsax_per_gp_raw": 0.108,
+     "gsax_per_gp": 0.032,
+     "role": "starter"
+    },
+    {
+     "id": 8475831,
+     "name": "Philipp Grubauer",
+     "gp": 94,
+     "known": true,
+     "gsax_per_gp_raw": -0.176,
+     "gsax_per_gp": -0.052,
+     "role": "backup"
+    }
+   ]
+  },
+  "SJS": {
+   "prior_elo": 1472.2,
+   "proj_points": 85.3,
+   "proj_points_vs_mean": -7.3,
+   "skater_gs": 628.2,
+   "goalie_gsax": -3.08,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8484801,
+     "name": "Macklin Celebrini",
+     "pos": "C",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 1.075,
+     "toi_per_gp_min": 20.6
+    },
+    {
+     "id": 8477505,
+     "name": "Alexander Wennberg",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.46,
+     "toi_per_gp_min": 19.7
+    },
+    {
+     "id": 8484227,
+     "name": "Will Smith",
+     "pos": "C",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.611,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8478975,
+     "name": "Mason Marchment",
+     "pos": "L",
+     "gp": 130,
+     "known": true,
+     "gs_per_gp": 0.683,
+     "toi_per_gp_min": 16.4
+    },
+    {
+     "id": 8484911,
+     "name": "Collin Graf",
+     "pos": "R",
+     "gp": 114,
+     "known": true,
+     "gs_per_gp": 0.35,
+     "toi_per_gp_min": 16.3
+    },
+    {
+     "id": 8480748,
+     "name": "Kiefer Sherwood",
+     "pos": "L",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.579,
+     "toi_per_gp_min": 16.0
+    },
+    {
+     "id": 8475726,
+     "name": "Tyler Toffoli",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.637,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8484994,
+     "name": "Igor Chernyshov",
+     "pos": "L",
+     "gp": 28,
+     "known": true,
+     "gs_per_gp": 0.693,
+     "toi_per_gp_min": 15.1
+    },
+    {
+     "id": 8485402,
+     "name": "Michael Misa",
+     "pos": "C",
+     "gp": 45,
+     "known": true,
+     "gs_per_gp": 0.412,
+     "toi_per_gp_min": 12.8
+    },
+    {
+     "id": 8480848,
+     "name": "Ty Dellandrea",
+     "pos": "C",
+     "gp": 114,
+     "known": true,
+     "gs_per_gp": -0.052,
+     "toi_per_gp_min": 12.8
+    },
+    {
+     "id": 8481517,
+     "name": "Brett Leason",
+     "pos": "R",
+     "gp": 68,
+     "known": true,
+     "gs_per_gp": 0.106,
+     "toi_per_gp_min": 12.6
+    },
+    {
+     "id": 8476624,
+     "name": "Barclay Goodrow",
+     "pos": "C",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": -0.015,
+     "toi_per_gp_min": 12.5
+    },
+    {
+     "id": 8476885,
+     "name": "Jacob Trouba",
+     "pos": "D",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.35,
+     "toi_per_gp_min": 21.7
+    },
+    {
+     "id": 8477498,
+     "name": "Darnell Nurse",
+     "pos": "D",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.478,
+     "toi_per_gp_min": 21.6
+    },
+    {
+     "id": 8475200,
+     "name": "Dmitry Orlov",
+     "pos": "D",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.535,
+     "toi_per_gp_min": 20.6
+    },
+    {
+     "id": 8484152,
+     "name": "Luca Cagnoni",
+     "pos": "D",
+     "gp": 9,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 17.8
+    },
+    {
+     "id": 8484806,
+     "name": "Sam Dickinson",
+     "pos": "D",
+     "gp": 72,
+     "known": true,
+     "gs_per_gp": 0.149,
+     "toi_per_gp_min": 16.8
+    },
+    {
+     "id": 8480891,
+     "name": "Michael Kesselring",
+     "pos": "D",
+     "gp": 116,
+     "known": true,
+     "gs_per_gp": 0.418,
+     "toi_per_gp_min": 16.4
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8477968,
+     "name": "Alex Nedeljkovic",
+     "gp": 116,
+     "known": true,
+     "gsax_per_gp_raw": -0.047,
+     "gsax_per_gp": -0.014,
+     "role": "starter"
+    },
+    {
+     "id": 8482137,
+     "name": "Yaroslav Askarov",
+     "gp": 62,
+     "known": true,
+     "gsax_per_gp_raw": -0.248,
+     "gsax_per_gp": -0.074,
+     "role": "backup"
+    }
+   ]
+  },
+  "STL": {
+   "prior_elo": 1475.9,
+   "proj_points": 86.3,
+   "proj_points_vs_mean": -6.3,
+   "skater_gs": 622.8,
+   "goalie_gsax": 1.53,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8480023,
+     "name": "Robert Thomas",
+     "pos": "C",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.988,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8477402,
+     "name": "Pavel Buchnevich",
+     "pos": "L",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.597,
+     "toi_per_gp_min": 18.5
+    },
+    {
+     "id": 8482077,
+     "name": "Dylan Holloway",
+     "pos": "L",
+     "gp": 136,
+     "known": true,
+     "gs_per_gp": 0.869,
+     "toi_per_gp_min": 17.4
+    },
+    {
+     "id": 8481580,
+     "name": "Connor McMichael",
+     "pos": "L",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.574,
+     "toi_per_gp_min": 16.9
+    },
+    {
+     "id": 8480459,
+     "name": "Pius Suter",
+     "pos": "C",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.474,
+     "toi_per_gp_min": 16.7
+    },
+    {
+     "id": 8483516,
+     "name": "Jimmy Snuggerud",
+     "pos": "R",
+     "gp": 77,
+     "known": true,
+     "gs_per_gp": 0.647,
+     "toi_per_gp_min": 16.6
+    },
+    {
+     "id": 8482745,
+     "name": "Mason McTavish",
+     "pos": "C",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.568,
+     "toi_per_gp_min": 16.1
+    },
+    {
+     "id": 8482089,
+     "name": "Jake Neighbours",
+     "pos": "L",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.465,
+     "toi_per_gp_min": 15.6
+    },
+    {
+     "id": 8484164,
+     "name": "Dalibor Dvorsky",
+     "pos": "R",
+     "gp": 73,
+     "known": true,
+     "gs_per_gp": 0.201,
+     "toi_per_gp_min": 14.2
+    },
+    {
+     "id": 8481013,
+     "name": "Jonatan Berggren",
+     "pos": "R",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 0.315,
+     "toi_per_gp_min": 13.3
+    },
+    {
+     "id": 8480281,
+     "name": "Alexey Toropchenko",
+     "pos": "R",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.129,
+     "toi_per_gp_min": 12.3
+    },
+    {
+     "id": 8477527,
+     "name": "Ross Johnston",
+     "pos": "L",
+     "gp": 105,
+     "known": true,
+     "gs_per_gp": 0.06,
+     "toi_per_gp_min": 9.3
+    },
+    {
+     "id": 8476892,
+     "name": "Colton Parayko",
+     "pos": "D",
+     "gp": 141,
+     "known": true,
+     "gs_per_gp": 0.403,
+     "toi_per_gp_min": 22.9
+    },
+    {
+     "id": 8481598,
+     "name": "Philip Broberg",
+     "pos": "D",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.394,
+     "toi_per_gp_min": 22.1
+    },
+    {
+     "id": 8475764,
+     "name": "Cam Fowler",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.434,
+     "toi_per_gp_min": 21.3
+    },
+    {
+     "id": 8478443,
+     "name": "Brandon Carlo",
+     "pos": "D",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.037,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8482733,
+     "name": "Logan Mailloux",
+     "pos": "D",
+     "gp": 74,
+     "known": true,
+     "gs_per_gp": 0.175,
+     "toi_per_gp_min": 16.7
+    },
+    {
+     "id": 8482111,
+     "name": "Justin Barron",
+     "pos": "D",
+     "gp": 114,
+     "known": true,
+     "gs_per_gp": 0.264,
+     "toi_per_gp_min": 16.0
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8476412,
+     "name": "Jordan Binnington",
+     "gp": 154,
+     "known": true,
+     "gsax_per_gp_raw": -0.004,
+     "gsax_per_gp": -0.001,
+     "role": "starter"
+    },
+    {
+     "id": 8480981,
+     "name": "Joel Hofer",
+     "gp": 107,
+     "known": true,
+     "gsax_per_gp_raw": 0.165,
+     "gsax_per_gp": 0.049,
+     "role": "backup"
+    }
+   ]
+  },
+  "TBL": {
+   "prior_elo": 1544.9,
+   "proj_points": 104.5,
+   "proj_points_vs_mean": 11.9,
+   "skater_gs": 932.4,
+   "goalie_gsax": 6.66,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8476453,
+     "name": "Nikita Kucherov",
+     "pos": "R",
+     "gp": 154,
+     "known": true,
+     "gs_per_gp": 1.586,
+     "toi_per_gp_min": 20.8
+    },
+    {
+     "id": 8479542,
+     "name": "Brandon Hagel",
+     "pos": "L",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 1.217,
+     "toi_per_gp_min": 20.3
+    },
+    {
+     "id": 8477404,
+     "name": "Jake Guentzel",
+     "pos": "C",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 1.056,
+     "toi_per_gp_min": 20.1
+    },
+    {
+     "id": 8478010,
+     "name": "Brayden Point",
+     "pos": "C",
+     "gp": 140,
+     "known": true,
+     "gs_per_gp": 0.912,
+     "toi_per_gp_min": 18.9
+    },
+    {
+     "id": 8478519,
+     "name": "Anthony Cirelli",
+     "pos": "C",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.884,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8481624,
+     "name": "Ilya Mikheyev",
+     "pos": "R",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.348,
+     "toi_per_gp_min": 16.5
+    },
+    {
+     "id": 8476878,
+     "name": "Zemgus Girgensons",
+     "pos": "C",
+     "gp": 156,
+     "known": true,
+     "gs_per_gp": 0.223,
+     "toi_per_gp_min": 13.1
+    },
+    {
+     "id": 8480995,
+     "name": "Pontus Holmberg",
+     "pos": "R",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.365,
+     "toi_per_gp_min": 13.0
+    },
+    {
+     "id": 8482201,
+     "name": "Gage Goncalves",
+     "pos": "C",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.422,
+     "toi_per_gp_min": 13.0
+    },
+    {
+     "id": 8483752,
+     "name": "Dominic James",
+     "pos": "C",
+     "gp": 43,
+     "known": true,
+     "gs_per_gp": 0.469,
+     "toi_per_gp_min": 12.2
+    },
+    {
+     "id": 8483447,
+     "name": "Conor Geekie",
+     "pos": "C",
+     "gp": 66,
+     "known": true,
+     "gs_per_gp": 0.246,
+     "toi_per_gp_min": 11.8
+    },
+    {
+     "id": 8479705,
+     "name": "Jeffrey Viel",
+     "pos": "L",
+     "gp": 50,
+     "known": true,
+     "gs_per_gp": 0.303,
+     "toi_per_gp_min": 11.5
+    },
+    {
+     "id": 8474590,
+     "name": "John Carlson",
+     "pos": "D",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.868,
+     "toi_per_gp_min": 23.4
+    },
+    {
+     "id": 8475167,
+     "name": "Victor Hedman",
+     "pos": "D",
+     "gp": 112,
+     "known": true,
+     "gs_per_gp": 0.807,
+     "toi_per_gp_min": 21.8
+    },
+    {
+     "id": 8482655,
+     "name": "J.J. Moser",
+     "pos": "D",
+     "gp": 133,
+     "known": true,
+     "gs_per_gp": 0.542,
+     "toi_per_gp_min": 20.5
+    },
+    {
+     "id": 8474151,
+     "name": "Ryan McDonagh",
+     "pos": "D",
+     "gp": 130,
+     "known": true,
+     "gs_per_gp": 0.426,
+     "toi_per_gp_min": 20.0
+    },
+    {
+     "id": 8480426,
+     "name": "Charle-Edouard D'Astous",
+     "pos": "D",
+     "gp": 70,
+     "known": true,
+     "gs_per_gp": 0.469,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8478416,
+     "name": "Erik Cernak",
+     "pos": "D",
+     "gp": 137,
+     "known": true,
+     "gs_per_gp": 0.227,
+     "toi_per_gp_min": 18.0
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8476883,
+     "name": "Andrei Vasilevskiy",
+     "gp": 173,
+     "known": true,
+     "gsax_per_gp_raw": 0.297,
+     "gsax_per_gp": 0.089,
+     "role": "starter"
+    },
+    {
+     "id": 8483710,
+     "name": "Dennis Hildeby",
+     "gp": 26,
+     "known": true,
+     "gsax_per_gp_raw": 0.235,
+     "gsax_per_gp": 0.07,
+     "role": "backup"
+    }
+   ]
+  },
+  "TOR": {
+   "prior_elo": 1498.0,
+   "proj_points": 92.1,
+   "proj_points_vs_mean": -0.5,
+   "skater_gs": 711.2,
+   "goalie_gsax": 5.28,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8479318,
+     "name": "Auston Matthews",
+     "pos": "C",
+     "gp": 127,
+     "known": true,
+     "gs_per_gp": 1.102,
+     "toi_per_gp_min": 20.6
+    },
+    {
+     "id": 8477939,
+     "name": "William Nylander",
+     "pos": "R",
+     "gp": 147,
+     "known": true,
+     "gs_per_gp": 0.962,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8480893,
+     "name": "Kirill Marchenko",
+     "pos": "R",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.984,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8475166,
+     "name": "John Tavares",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.789,
+     "toi_per_gp_min": 18.2
+    },
+    {
+     "id": 8480870,
+     "name": "Bo Groulx",
+     "pos": "C",
+     "gp": 13,
+     "known": true,
+     "gs_per_gp": 0.015,
+     "toi_per_gp_min": 15.7
+    },
+    {
+     "id": 8477426,
+     "name": "Nick Paul",
+     "pos": "L",
+     "gp": 127,
+     "known": true,
+     "gs_per_gp": 0.457,
+     "toi_per_gp_min": 15.3
+    },
+    {
+     "id": 8476927,
+     "name": "Teddy Blueger",
+     "pos": "C",
+     "gp": 117,
+     "known": true,
+     "gs_per_gp": 0.242,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8478458,
+     "name": "Jack Roslovic",
+     "pos": "C",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.641,
+     "toi_per_gp_min": 14.7
+    },
+    {
+     "id": 8484158,
+     "name": "Easton Cowan",
+     "pos": "R",
+     "gp": 66,
+     "known": true,
+     "gs_per_gp": 0.324,
+     "toi_per_gp_min": 14.7
+    },
+    {
+     "id": 8485467,
+     "name": "Luke Haymes",
+     "pos": "C",
+     "gp": 4,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 13.6
+    },
+    {
+     "id": 8476925,
+     "name": "Colton Sissons",
+     "pos": "C",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.229,
+     "toi_per_gp_min": 13.5
+    },
+    {
+     "id": 8479520,
+     "name": "Brandon Duhaime",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.167,
+     "toi_per_gp_min": 12.2
+    },
+    {
+     "id": 8476931,
+     "name": "Jake McCabe",
+     "pos": "D",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 0.267,
+     "toi_per_gp_min": 22.0
+    },
+    {
+     "id": 8476853,
+     "name": "Morgan Rielly",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.426,
+     "toi_per_gp_min": 21.3
+    },
+    {
+     "id": 8475171,
+     "name": "Oliver Ekman-Larsson",
+     "pos": "D",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.34,
+     "toi_per_gp_min": 20.8
+    },
+    {
+     "id": 8478178,
+     "name": "Darren Raddysh",
+     "pos": "D",
+     "gp": 146,
+     "known": true,
+     "gs_per_gp": 0.849,
+     "toi_per_gp_min": 20.0
+    },
+    {
+     "id": 8475690,
+     "name": "Chris Tanev",
+     "pos": "D",
+     "gp": 86,
+     "known": true,
+     "gs_per_gp": 0.278,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8483565,
+     "name": "Nick Blankenburg",
+     "pos": "D",
+     "gp": 121,
+     "known": true,
+     "gs_per_gp": 0.409,
+     "toi_per_gp_min": 18.2
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8475683,
+     "name": "Sergei Bobrovsky",
+     "gp": 164,
+     "known": true,
+     "gsax_per_gp_raw": 0.065,
+     "gsax_per_gp": 0.019,
+     "role": "starter"
+    },
+    {
+     "id": 8476932,
+     "name": "Anthony Stolarz",
+     "gp": 87,
+     "known": true,
+     "gsax_per_gp_raw": 0.45,
+     "gsax_per_gp": 0.134,
+     "role": "backup"
+    }
+   ]
+  },
+  "UTA": {
+   "prior_elo": 1534.5,
+   "proj_points": 101.7,
+   "proj_points_vs_mean": 9.1,
+   "skater_gs": 908.8,
+   "goalie_gsax": 1.34,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8476389,
+     "name": "Vincent Trocheck",
+     "pos": "C",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.771,
+     "toi_per_gp_min": 20.9
+    },
+    {
+     "id": 8477951,
+     "name": "Nick Schmaltz",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.931,
+     "toi_per_gp_min": 19.2
+    },
+    {
+     "id": 8479343,
+     "name": "Clayton Keller",
+     "pos": "R",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 1.144,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8483431,
+     "name": "Logan Cooley",
+     "pos": "C",
+     "gp": 129,
+     "known": true,
+     "gs_per_gp": 0.781,
+     "toi_per_gp_min": 17.6
+    },
+    {
+     "id": 8482699,
+     "name": "Dylan Guenther",
+     "pos": "R",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.963,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8475314,
+     "name": "Anders Lee",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.701,
+     "toi_per_gp_min": 16.3
+    },
+    {
+     "id": 8480849,
+     "name": "Barrett Hayton",
+     "pos": "C",
+     "gp": 149,
+     "known": true,
+     "gs_per_gp": 0.647,
+     "toi_per_gp_min": 15.7
+    },
+    {
+     "id": 8478474,
+     "name": "Lawson Crouse",
+     "pos": "L",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.51,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8478831,
+     "name": "Kevin Stenlund",
+     "pos": "C",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.267,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8480855,
+     "name": "Jack McBain",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.399,
+     "toi_per_gp_min": 13.7
+    },
+    {
+     "id": 8484388,
+     "name": "Daniil But",
+     "pos": "L",
+     "gp": 29,
+     "known": true,
+     "gs_per_gp": 0.419,
+     "toi_per_gp_min": 12.5
+    },
+    {
+     "id": 8479619,
+     "name": "Michael Carcone",
+     "pos": "L",
+     "gp": 132,
+     "known": true,
+     "gs_per_gp": 0.54,
+     "toi_per_gp_min": 12.2
+    },
+    {
+     "id": 8479410,
+     "name": "Mikhail Sergachev",
+     "pos": "D",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.786,
+     "toi_per_gp_min": 24.7
+    },
+    {
+     "id": 8477346,
+     "name": "MacKenzie Weegar",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.665,
+     "toi_per_gp_min": 23.3
+    },
+    {
+     "id": 8478507,
+     "name": "John Marino",
+     "pos": "D",
+     "gp": 115,
+     "known": true,
+     "gs_per_gp": 0.567,
+     "toi_per_gp_min": 20.5
+    },
+    {
+     "id": 8479369,
+     "name": "Andrew Peeke",
+     "pos": "D",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.168,
+     "toi_per_gp_min": 19.0
+    },
+    {
+     "id": 8477220,
+     "name": "Nate Schmidt",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.482,
+     "toi_per_gp_min": 18.1
+    },
+    {
+     "id": 8483472,
+     "name": "Maveric Lamoureux",
+     "pos": "D",
+     "gp": 20,
+     "known": true,
+     "gs_per_gp": 0.344,
+     "toi_per_gp_min": 15.8
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478872,
+     "name": "Karel Vejmelka",
+     "gp": 160,
+     "known": true,
+     "gsax_per_gp_raw": 0.09,
+     "gsax_per_gp": 0.027,
+     "role": "starter"
+    },
+    {
+     "id": 8482657,
+     "name": "Sebastian Cossa",
+     "gp": 1,
+     "known": false,
+     "gsax_per_gp_raw": 0.0,
+     "gsax_per_gp": 0.0,
+     "role": "backup"
+    }
+   ]
+  },
+  "VAN": {
+   "prior_elo": 1443.2,
+   "proj_points": 77.6,
+   "proj_points_vs_mean": -15.0,
+   "skater_gs": 467.4,
+   "goalie_gsax": 0.75,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8480012,
+     "name": "Elias Pettersson",
+     "pos": "C",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.572,
+     "toi_per_gp_min": 18.8
+    },
+    {
+     "id": 8478444,
+     "name": "Brock Boeser",
+     "pos": "R",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.489,
+     "toi_per_gp_min": 18.6
+    },
+    {
+     "id": 8482079,
+     "name": "Marco Rossi",
+     "pos": "C",
+     "gp": 132,
+     "known": true,
+     "gs_per_gp": 0.609,
+     "toi_per_gp_min": 18.0
+    },
+    {
+     "id": 8478498,
+     "name": "Jake DeBrusk",
+     "pos": "L",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.483,
+     "toi_per_gp_min": 16.8
+    },
+    {
+     "id": 8480078,
+     "name": "Filip Chytil",
+     "pos": "C",
+     "gp": 68,
+     "known": true,
+     "gs_per_gp": 0.486,
+     "toi_per_gp_min": 15.0
+    },
+    {
+     "id": 8482055,
+     "name": "Drew O'Connor",
+     "pos": "L",
+     "gp": 166,
+     "known": true,
+     "gs_per_gp": 0.336,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8475848,
+     "name": "Brendan Gallagher",
+     "pos": "R",
+     "gp": 159,
+     "known": true,
+     "gs_per_gp": 0.398,
+     "toi_per_gp_min": 13.2
+    },
+    {
+     "id": 8483499,
+     "name": "Liam Ohgren",
+     "pos": "L",
+     "gp": 93,
+     "known": true,
+     "gs_per_gp": 0.107,
+     "toi_per_gp_min": 12.6
+    },
+    {
+     "id": 8483476,
+     "name": "Jonathan Lekkerim\u00e4ki",
+     "pos": "R",
+     "gp": 37,
+     "known": true,
+     "gs_per_gp": 0.179,
+     "toi_per_gp_min": 12.2
+    },
+    {
+     "id": 8481024,
+     "name": "Linus Karlsson",
+     "pos": "C",
+     "gp": 102,
+     "known": true,
+     "gs_per_gp": 0.383,
+     "toi_per_gp_min": 12.2
+    },
+    {
+     "id": 8481032,
+     "name": "Paul Cotter",
+     "pos": "L",
+     "gp": 158,
+     "known": true,
+     "gs_per_gp": 0.163,
+     "toi_per_gp_min": 11.9
+    },
+    {
+     "id": 8482691,
+     "name": "Aatu R\u00e4ty",
+     "pos": "C",
+     "gp": 99,
+     "known": true,
+     "gs_per_gp": 0.241,
+     "toi_per_gp_min": 11.6
+    },
+    {
+     "id": 8479425,
+     "name": "Filip Hronek",
+     "pos": "D",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.557,
+     "toi_per_gp_min": 24.5
+    },
+    {
+     "id": 8484798,
+     "name": "Zeev Buium",
+     "pos": "D",
+     "gp": 76,
+     "known": true,
+     "gs_per_gp": 0.217,
+     "toi_per_gp_min": 19.6
+    },
+    {
+     "id": 8476467,
+     "name": "Jamie Oleksiak",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.146,
+     "toi_per_gp_min": 17.9
+    },
+    {
+     "id": 8484240,
+     "name": "Tom Willander",
+     "pos": "D",
+     "gp": 70,
+     "known": true,
+     "gs_per_gp": 0.062,
+     "toi_per_gp_min": 17.0
+    },
+    {
+     "id": 8478465,
+     "name": "Guillaume Brisebois",
+     "pos": "D",
+     "gp": 3,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 15.8
+    },
+    {
+     "id": 8474568,
+     "name": "Luke Schenn",
+     "pos": "D",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 0.077,
+     "toi_per_gp_min": 15.0
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8480947,
+     "name": "Kevin Lankinen",
+     "gp": 122,
+     "known": true,
+     "gsax_per_gp_raw": -0.124,
+     "gsax_per_gp": -0.037,
+     "role": "starter"
+    },
+    {
+     "id": 8477967,
+     "name": "Thatcher Demko",
+     "gp": 94,
+     "known": true,
+     "gsax_per_gp_raw": 0.27,
+     "gsax_per_gp": 0.081,
+     "role": "backup"
+    },
+    {
+     "id": 8482447,
+     "name": "Leevi Meril\u00e4inen",
+     "gp": 32,
+     "known": true,
+     "gsax_per_gp_raw": -0.33,
+     "gsax_per_gp": -0.098,
+     "role": "third"
+    }
+   ]
+  },
+  "VGK": {
+   "prior_elo": 1524.9,
+   "proj_points": 99.2,
+   "proj_points_vs_mean": 6.6,
+   "skater_gs": 870.0,
+   "goalie_gsax": -0.17,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8478403,
+     "name": "Jack Eichel",
+     "pos": "C",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 1.211,
+     "toi_per_gp_min": 20.9
+    },
+    {
+     "id": 8478483,
+     "name": "Mitch Marner",
+     "pos": "R",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 1.05,
+     "toi_per_gp_min": 20.6
+    },
+    {
+     "id": 8475913,
+     "name": "Mark Stone",
+     "pos": "R",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 1.115,
+     "toi_per_gp_min": 19.2
+    },
+    {
+     "id": 8476881,
+     "name": "Tomas Hertl",
+     "pos": "C",
+     "gp": 155,
+     "known": true,
+     "gs_per_gp": 0.875,
+     "toi_per_gp_min": 17.1
+    },
+    {
+     "id": 8476448,
+     "name": "William Karlsson",
+     "pos": "C",
+     "gp": 67,
+     "known": true,
+     "gs_per_gp": 0.741,
+     "toi_per_gp_min": 16.6
+    },
+    {
+     "id": 8477964,
+     "name": "Ivan Barbashev",
+     "pos": "L",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.738,
+     "toi_per_gp_min": 16.5
+    },
+    {
+     "id": 8479353,
+     "name": "Brett Howden",
+     "pos": "C",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.439,
+     "toi_per_gp_min": 14.9
+    },
+    {
+     "id": 8475343,
+     "name": "Nic Dowd",
+     "pos": "C",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.269,
+     "toi_per_gp_min": 14.9
+    },
+    {
+     "id": 8483890,
+     "name": "Braeden Bowman",
+     "pos": "R",
+     "gp": 54,
+     "known": true,
+     "gs_per_gp": 0.394,
+     "toi_per_gp_min": 14.1
+    },
+    {
+     "id": 8478109,
+     "name": "Victor Olofsson",
+     "pos": "L",
+     "gp": 134,
+     "known": true,
+     "gs_per_gp": 0.596,
+     "toi_per_gp_min": 14.0
+    },
+    {
+     "id": 8483553,
+     "name": "Marc Gatcomb",
+     "pos": "C",
+     "gp": 88,
+     "known": true,
+     "gs_per_gp": 0.198,
+     "toi_per_gp_min": 10.0
+    },
+    {
+     "id": 8481534,
+     "name": "Raphael Lavoie",
+     "pos": "C",
+     "gp": 10,
+     "known": true,
+     "gs_per_gp": 0.072,
+     "toi_per_gp_min": 9.9
+    },
+    {
+     "id": 8478397,
+     "name": "Rasmus Andersson",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.549,
+     "toi_per_gp_min": 23.6
+    },
+    {
+     "id": 8477447,
+     "name": "Shea Theodore",
+     "pos": "D",
+     "gp": 137,
+     "known": true,
+     "gs_per_gp": 0.799,
+     "toi_per_gp_min": 22.4
+    },
+    {
+     "id": 8478396,
+     "name": "Noah Hanifin",
+     "pos": "D",
+     "gp": 151,
+     "known": true,
+     "gs_per_gp": 0.617,
+     "toi_per_gp_min": 22.0
+    },
+    {
+     "id": 8475188,
+     "name": "Brayden McNabb",
+     "pos": "D",
+     "gp": 145,
+     "known": true,
+     "gs_per_gp": 0.429,
+     "toi_per_gp_min": 20.3
+    },
+    {
+     "id": 8478450,
+     "name": "Parker Wotherspoon",
+     "pos": "D",
+     "gp": 135,
+     "known": true,
+     "gs_per_gp": 0.324,
+     "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8478468,
+     "name": "Jeremy Lauzon",
+     "pos": "D",
+     "gp": 96,
+     "known": true,
+     "gs_per_gp": 0.195,
+     "toi_per_gp_min": 17.4
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8478499,
+     "name": "Adin Hill",
+     "gp": 112,
+     "known": true,
+     "gsax_per_gp_raw": 0.06,
+     "gsax_per_gp": 0.018,
+     "role": "starter"
+    },
+    {
+     "id": 8479394,
+     "name": "Carter Hart",
+     "gp": 44,
+     "known": true,
+     "gsax_per_gp_raw": -0.111,
+     "gsax_per_gp": -0.033,
+     "role": "backup"
+    }
+   ]
+  },
+  "WPG": {
+   "prior_elo": 1492.6,
+   "proj_points": 90.7,
+   "proj_points_vs_mean": -1.9,
+   "skater_gs": 676.2,
+   "goalie_gsax": 6.97,
+   "unknown_in_lineup": 0,
+   "lineup": [
+    {
+     "id": 8476460,
+     "name": "Mark Scheifele",
+     "pos": "C",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.977,
+     "toi_per_gp_min": 21.0
+    },
+    {
+     "id": 8478398,
+     "name": "Kyle Connor",
+     "pos": "L",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 1.046,
+     "toi_per_gp_min": 21.0
+    },
+    {
+     "id": 8480014,
+     "name": "Gabriel Vilardi",
+     "pos": "C",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.746,
+     "toi_per_gp_min": 18.5
+    },
+    {
+     "id": 8482149,
+     "name": "Cole Perfetti",
+     "pos": "C",
+     "gp": 150,
+     "known": true,
+     "gs_per_gp": 0.605,
+     "toi_per_gp_min": 15.4
+    },
+    {
+     "id": 8476392,
+     "name": "Adam Lowry",
+     "pos": "C",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.442,
+     "toi_per_gp_min": 15.2
+    },
+    {
+     "id": 8476480,
+     "name": "Vladislav Namestnikov",
+     "pos": "C",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.396,
+     "toi_per_gp_min": 14.5
+    },
+    {
+     "id": 8480113,
+     "name": "Alex Iafallo",
+     "pos": "L",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.418,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8475799,
+     "name": "Nino Niederreiter",
+     "pos": "R",
+     "gp": 143,
+     "known": true,
+     "gs_per_gp": 0.427,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8480289,
+     "name": "Morgan Barron",
+     "pos": "C",
+     "gp": 139,
+     "known": true,
+     "gs_per_gp": 0.313,
+     "toi_per_gp_min": 11.5
+    },
+    {
+     "id": 8482765,
+     "name": "Isak Rosen",
+     "pos": "R",
+     "gp": 45,
+     "known": true,
+     "gs_per_gp": 0.194,
+     "toi_per_gp_min": 11.2
+    },
+    {
+     "id": 8483471,
+     "name": "Brad Lambert",
+     "pos": "C",
+     "gp": 30,
+     "known": true,
+     "gs_per_gp": 0.157,
+     "toi_per_gp_min": 10.9
+    },
+    {
+     "id": 8481043,
+     "name": "Cole Koepke",
+     "pos": "L",
+     "gp": 139,
+     "known": true,
+     "gs_per_gp": 0.212,
+     "toi_per_gp_min": 10.9
+    },
+    {
+     "id": 8477504,
+     "name": "Josh Morrissey",
+     "pos": "D",
+     "gp": 157,
+     "known": true,
+     "gs_per_gp": 0.762,
+     "toi_per_gp_min": 24.6
+    },
+    {
+     "id": 8480145,
+     "name": "Neal Pionk",
+     "pos": "D",
+     "gp": 120,
+     "known": true,
+     "gs_per_gp": 0.497,
+     "toi_per_gp_min": 22.3
+    },
+    {
+     "id": 8480049,
+     "name": "Dylan Samberg",
+     "pos": "D",
+     "gp": 126,
+     "known": true,
+     "gs_per_gp": 0.458,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8476331,
+     "name": "Dylan DeMelo",
+     "pos": "D",
+     "gp": 164,
+     "known": true,
+     "gs_per_gp": 0.291,
+     "toi_per_gp_min": 21.5
+    },
+    {
+     "id": 8479983,
+     "name": "Mario Ferraro",
+     "pos": "D",
+     "gp": 160,
+     "known": true,
+     "gs_per_gp": 0.166,
+     "toi_per_gp_min": 21.2
+    },
+    {
+     "id": 8481030,
+     "name": "Jack St. Ivany",
+     "pos": "D",
+     "gp": 39,
+     "known": true,
+     "gs_per_gp": 0.139,
+     "toi_per_gp_min": 16.3
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8476945,
+     "name": "Connor Hellebuyck",
+     "gp": 180,
+     "known": true,
+     "gsax_per_gp_raw": 0.435,
+     "gsax_per_gp": 0.13,
+     "role": "starter"
+    },
+    {
+     "id": 8479973,
+     "name": "Stuart Skinner",
+     "gp": 160,
+     "known": true,
+     "gsax_per_gp_raw": 0.055,
+     "gsax_per_gp": 0.016,
+     "role": "backup"
+    },
+    {
+     "id": 8483532,
+     "name": "Clay Stevenson",
+     "gp": 5,
+     "known": false,
+     "gsax_per_gp_raw": 0.0,
+     "gsax_per_gp": 0.0,
+     "role": "third"
+    }
+   ]
+  },
+  "WSH": {
+   "prior_elo": 1528.3,
+   "proj_points": 100.1,
+   "proj_points_vs_mean": 7.5,
+   "skater_gs": 852.6,
+   "goalie_gsax": 6.41,
+   "unknown_in_lineup": 1,
+   "lineup": [
+    {
+     "id": 8477949,
+     "name": "Alex Tuch",
+     "pos": "R",
+     "gp": 161,
+     "known": true,
+     "gs_per_gp": 0.849,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8476880,
+     "name": "Tom Wilson",
+     "pos": "R",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.848,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8478440,
+     "name": "Dylan Strome",
+     "pos": "C",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.744,
+     "toi_per_gp_min": 17.7
+    },
+    {
+     "id": 8471214,
+     "name": "Alex Ovechkin",
+     "pos": "L",
+     "gp": 147,
+     "known": true,
+     "gs_per_gp": 0.918,
+     "toi_per_gp_min": 17.6
+    },
+    {
+     "id": 8481656,
+     "name": "Aliaksei Protas",
+     "pos": "L",
+     "gp": 152,
+     "known": true,
+     "gs_per_gp": 0.861,
+     "toi_per_gp_min": 17.3
+    },
+    {
+     "id": 8479400,
+     "name": "Pierre-Luc Dubois",
+     "pos": "C",
+     "gp": 111,
+     "known": true,
+     "gs_per_gp": 0.744,
+     "toi_per_gp_min": 17.2
+    },
+    {
+     "id": 8479385,
+     "name": "Jordan Kyrou",
+     "pos": "R",
+     "gp": 154,
+     "known": true,
+     "gs_per_gp": 0.848,
+     "toi_per_gp_min": 16.7
+    },
+    {
+     "id": 8476432,
+     "name": "Boone Jenner",
+     "pos": "C",
+     "gp": 93,
+     "known": true,
+     "gs_per_gp": 0.695,
+     "toi_per_gp_min": 16.6
+    },
+    {
+     "id": 8484999,
+     "name": "Ilya Protas",
+     "pos": "L",
+     "gp": 4,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 15.9
+    },
+    {
+     "id": 8482088,
+     "name": "Justin Sourdif",
+     "pos": "C",
+     "gp": 79,
+     "known": true,
+     "gs_per_gp": 0.51,
+     "toi_per_gp_min": 14.7
+    },
+    {
+     "id": 8484186,
+     "name": "Ryan Leonard",
+     "pos": "R",
+     "gp": 84,
+     "known": true,
+     "gs_per_gp": 0.507,
+     "toi_per_gp_min": 14.4
+    },
+    {
+     "id": 8478463,
+     "name": "Anthony Beauvillier",
+     "pos": "R",
+     "gp": 163,
+     "known": true,
+     "gs_per_gp": 0.41,
+     "toi_per_gp_min": 14.3
+    },
+    {
+     "id": 8479345,
+     "name": "Jakob Chychrun",
+     "pos": "D",
+     "gp": 154,
+     "known": true,
+     "gs_per_gp": 0.824,
+     "toi_per_gp_min": 22.2
+    },
+    {
+     "id": 8478911,
+     "name": "Matt Roy",
+     "pos": "D",
+     "gp": 148,
+     "known": true,
+     "gs_per_gp": 0.358,
+     "toi_per_gp_min": 20.3
+    },
+    {
+     "id": 8480043,
+     "name": "Timothy Liljegren",
+     "pos": "D",
+     "gp": 115,
+     "known": true,
+     "gs_per_gp": 0.133,
+     "toi_per_gp_min": 19.5
+    },
+    {
+     "id": 8480796,
+     "name": "Martin Feh\u00e9rv\u00e1ry",
+     "pos": "D",
+     "gp": 162,
+     "known": true,
+     "gs_per_gp": 0.346,
+     "toi_per_gp_min": 19.1
+    },
+    {
+     "id": 8484873,
+     "name": "Cole Hutson",
+     "pos": "D",
+     "gp": 14,
+     "known": true,
+     "gs_per_gp": 0.532,
+     "toi_per_gp_min": 17.5
+    },
+    {
+     "id": 8479576,
+     "name": "Vincent Desharnais",
+     "pos": "D",
+     "gp": 104,
+     "known": true,
+     "gs_per_gp": 0.075,
+     "toi_per_gp_min": 17.1
+    }
+   ],
+   "goalies": [
+    {
+     "id": 8480313,
+     "name": "Logan Thompson",
+     "gp": 147,
+     "known": true,
+     "gsax_per_gp_raw": 0.407,
+     "gsax_per_gp": 0.121,
+     "role": "starter"
+    },
+    {
+     "id": 8479292,
+     "name": "Charlie Lindgren",
+     "gp": 110,
+     "known": true,
+     "gsax_per_gp_raw": 0.039,
+     "gsax_per_gp": 0.012,
+     "role": "backup"
+    }
+   ]
+  }
+ }
+}

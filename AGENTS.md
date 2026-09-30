@@ -27,6 +27,10 @@ generate_data_v3.py (orchestrator)
 | `backend/generate_data_v3.py` | Main orchestrator. Runs on cron. |
 | `backend/simulator_np.py` | NumPy-vectorized Monte Carlo engine |
 | `backend/elo_engine.py` | Elo rating computation from NHL game results |
+| `backend/roster_prior.py` | Roster-aware strength prior (MoneyPuck Game Score + GSAx on current rosters), blended into Elo by games played |
+| `backend/generate_roster_prior.py` | Builds `data/roster_prior.json` (32 roster calls, ~10 s). Called by the orchestrator when the table is >24 h old |
+| `backend/roster_prior_fit.py` | Fits every roster-prior constant from cached history and runs the backtest (manual, `--sims` takes ~40 min) |
+| `backend/patches/` | Orchestrator integration for the roster prior (`roster_prior_integration.patch`) and the schedule-window fix (`schedule_window.patch`), NOT applied |
 | `backend/nhl_api.py` | NHL API data fetching |
 | `backend/narrative.py` | Text narrative generation |
 | `backend/calibration.py` | Historical calibration (run manually) |
@@ -34,6 +38,9 @@ generate_data_v3.py (orchestrator)
 | `/var/www/icechaser/` | Live site (nginx) |
 | `/var/www/icechaser/data/playoff_odds.json` | Live data file |
 | `data/elo_ratings.json` | Persistent Elo ratings |
+| `data/roster_prior.json` | Per-team roster prior (prior Elo, lineup, goalies) |
+| `data/moneypuck/` | Cached MoneyPuck season CSVs (completed seasons never change) |
+| `data/backtest/` | Cached results, opening rosters, fit log and playoff backtest for `roster_prior_fit.py` |
 | `data/calibration_results.json` | Calibration output |
 | `METHODOLOGY.md` | Public methodology doc (also served on site) |
 
@@ -47,6 +54,29 @@ OT_PROBABILITY = 0.24  # Fixed per-game OT rate
 ```
 
 Calibrated via grid search over 3 seasons (2022-25), 480 predictions, Brier=0.061.
+
+## Roster Prior (FITTED — re-run `roster_prior_fit.py --sims` before changing)
+
+```python
+ROSTER_PRIOR_GAMES = 41   # rating = w*prior + (1-w)*Elo, w = 41/(41+GP). The one blend constant.
+GOALIE_SHRINK = 0.298     # goalie GSAx regressed hard: year-over-year r is only 0.25
+TEAM_SHRINK = 1.172       # scale from projected points to actual (>1: projection compresses spreads)
+```
+
+All other constants and their derivations are in the header of `backend/roster_prior.py`.
+Injured/suspended players: add their NHL id to `PLAYER_OVERRIDES` there, then run `generate_roster_prior.py`.
+The prior is only active once `backend/patches/roster_prior_integration.patch` is applied to `generate_data_v3.py`;
+the cron runs that file directly from this directory, so applying the patch IS the deployment.
+
+## Known pre-existing issues (found 2026-09-29, not fixed here)
+
+- `nhl_api.get_remaining_schedule()` only looks 30 days ahead. At season open the simulator receives ~235 of the
+  1344 games, so "playoff odds" are really odds after one month. `backend/patches/schedule_window.patch` extends
+  the window to `regularSeasonEndDate`; verify the run stays inside the 60 s budget after applying it.
+- 2026-27 is an **84-game** season (1344 games). `82` is hardcoded in `nhl_api.parse_standings`, `simulator_np`
+  and `calibration.py` (`gamesRemaining`, `pointsPace`). Harmless while the real schedule is used, wrong for pace.
+- `elo_engine.SEASON_START` is fixed at 2025-10-07, so ratings carry across seasons un-regressed and the
+  replay grows every season. METHODOLOGY says ratings reset each October; the code does not.
 
 ## Simulation Constants
 

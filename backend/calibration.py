@@ -9,6 +9,7 @@ Tests: Did teams we gave X% actually make the playoffs X% of the time?
 """
 
 import json
+from nhl_api import SEASON_GAMES
 import os
 import sys
 import time
@@ -133,7 +134,7 @@ def build_standings_at_game(games_played, all_teams):
             "otLosses": 0,
             "regulationWins": 0,
             "gamesPlayed": 0,
-            "gamesRemaining": 82,
+            "gamesRemaining": SEASON_GAMES,
         }
     
     for game in games_played:
@@ -167,11 +168,11 @@ def build_standings_at_game(games_played, all_teams):
     teams = []
     for abbrev, s in stats.items():
         gp = s["gamesPlayed"]
-        s["gamesRemaining"] = 82 - gp
+        s["gamesRemaining"] = SEASON_GAMES - gp
         if gp > 0:
-            s["pointsPace"] = round(s["points"] / gp * 82, 1)
+            s["pointsPace"] = round(s["points"] / gp * SEASON_GAMES, 1)
         else:
-            s["pointsPace"] = 82  # Default to ~1 pt/game
+            s["pointsPace"] = SEASON_GAMES  # Default to ~1 pt/game
         teams.append(s)
     
     return teams
@@ -305,9 +306,9 @@ def run_full_calibration():
         
         for games_remaining_target in checkpoints:
             # Find the game index where avg games remaining ≈ target
-            target_gp = 82 - games_remaining_target
+            target_gp = SEASON_GAMES - games_remaining_target
             # Approximate: game_index ≈ target_gp / 82 * total_games
-            game_idx = int(target_gp / 82 * total_games)
+            game_idx = int(target_gp / SEASON_GAMES * total_games)
             game_idx = min(game_idx, total_games - 1)
             
             games_played = all_games[:game_idx]

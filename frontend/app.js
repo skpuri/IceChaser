@@ -770,7 +770,7 @@ function renderDivePanel(team, allTeams, container, tomorrowGames) {
     container.appendChild(wifTable);
 
     const wifNote = el('p', { style: 'font-size:11px;color:var(--text-muted);margin-top:6px;' });
-    wifNote.textContent = `Based on 500,000 simulations. # Times = how often this exact record occurred.`;
+    wifNote.textContent = `Based on 100,000 simulations. # Times = how often this exact record occurred.`;
     container.appendChild(wifNote);
   }
 
@@ -1139,7 +1139,7 @@ function renderStandingsTable(conferences, teams, todaysGames) {
   section.appendChild(table);
 
   const note = el('p', { style: 'margin-top:8px;font-size:12px;color:var(--text-muted)' });
-  note.textContent = 'Probabilities from 500,000 Monte Carlo simulations. Tonight\'s Range = playoff odds after best/worst possible outcomes tonight. GL = Games Left. Click team for deep dive.';
+  note.textContent = 'Probabilities from 100,000 Monte Carlo simulations. Tonight\'s Range = playoff odds after best/worst possible outcomes tonight. GL = Games Left. Click team for deep dive.';
   section.appendChild(note);
 
   return section;

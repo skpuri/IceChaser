@@ -16,6 +16,29 @@ HISTORY_FILE = os.path.join(os.path.dirname(__file__), "..", "data", "odds_histo
 LIVE_DATA = "/var/www/icechaser/data/playoff_odds.json"
 
 
+def current_season_start():
+    """
+    First day of the current regular season, as an ISO date string.
+
+    Derived from the NHL API rather than hardcoded - hardcoding a season
+    constant is what left `82` baked in after the league moved to 84 games.
+    Falls back to a September cutover if the API is unreachable, so the
+    chart still resets rather than silently replaying last season.
+    """
+    try:
+        import nhl_api
+        st = nhl_api.get_season_state() or {}
+        start = st.get("regularSeasonStart")
+        if start:
+            return start
+    except Exception:
+        pass
+    from datetime import date
+    today = date.today()
+    year = today.year if today.month >= 9 else today.year - 1
+    return f"{year}-09-01"
+
+
 def build_odds_history():
     """
     Aggregate all daily snapshots + current live data into a time series.
@@ -24,7 +47,11 @@ def build_odds_history():
     history = {}  # abbrev -> [{date, odds}]
 
     # Process all snapshots
-    snap_files = sorted(glob.glob(os.path.join(SNAPSHOTS_DIR, "*.json")))
+    _season_start = current_season_start()
+    # Only this season. Without this the chart appends the new season onto
+    # last season and shows a full completed year ending at 0%/100%.
+    snap_files = [f for f in sorted(glob.glob(os.path.join(SNAPSHOTS_DIR, "*.json")))
+                  if os.path.basename(f)[:10] >= _season_start]
 
     for snap_path in snap_files:
         date_str = os.path.basename(snap_path).replace(".json", "")

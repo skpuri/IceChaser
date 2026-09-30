@@ -5,6 +5,22 @@ Fetches NHL data, runs Monte Carlo simulation, generates narratives,
 and writes output to /data/playoff_odds.json.
 """
 
+import fcntl as _fcntl, sys as _sys, os as _os
+
+# ── Single-instance guard ────────────────────────────────────────────────────
+# The wrapper script holds an flock, but the OpenClaw scheduler invokes this
+# file directly and never goes through the wrapper, so the wrapper's lock
+# protects nothing in normal operation. Since the schedule-window fix each run
+# simulates 1344 games instead of ~235 and can outlast the 20-minute cron
+# interval, which caused overlapping runs to fight over the live JSON.
+# Locking here means every invocation is protected, however it was started.
+_ICECHASER_SINGLETON = open("/tmp/icechaser_generate.lock", "w")
+try:
+    _fcntl.flock(_ICECHASER_SINGLETON, _fcntl.LOCK_EX | _fcntl.LOCK_NB)
+except BlockingIOError:
+    print("another generate_data_v3 run is already in progress - exiting", flush=True)
+    _sys.exit(0)
+
 import json
 import os
 import sys
@@ -21,7 +37,9 @@ import narrative
 OUTPUT_PATH = "/var/www/icechaser/data/playoff_odds.json"
 OUTPUT_PATH_V2 = "/var/www/icechaser-v2/data/playoff_odds.json"  # legacy, kept in sync
 
-NUM_SIMULATIONS = 5000  # TEMP: reduced for low-memory host (was 10000)
+NUM_SIMULATIONS = simulator.SIM_COUNT  # size of the single simulation pool (100k);
+                                       # reported in the JSON, the pool itself is run
+                                       # inside simulator.run_scenario_analysis_vectorized
 NUM_SCENARIO_SIMULATIONS = 1000  # faster scenario sims
 
 
@@ -777,15 +795,58 @@ def main():
     except Exception as e:
         print(f"   ⚠ Elo update failed, falling back to points pace: {e}")
 
-    # Single 100k vectorized sim: produces odds + scenarios + best/worst + what-if
-    print("🎲🔮📈 Running 100k vectorized simulation (Elo-based, odds + scenarios + what-if)...")
+    # Roster-aware strength prior (backend/roster_prior.py), blended into the
+    # game Elo with weight N0/(N0+GP) per team. Pure prior at 0 GP, fades as
+    # results accumulate. Any failure here leaves the pure-Elo path untouched.
+    strength_by_team = {}
+    strength_model = {"roster_prior": False}
+    try:
+        import roster_prior
+        if roster_prior.ENABLED:
+            if roster_prior.prior_age_hours() > roster_prior.PRIOR_MAX_AGE_HOURS:
+                try:
+                    import generate_roster_prior
+                    generate_roster_prior.main([])
+                except Exception as e:
+                    print(f"   ⚠ Roster prior refresh failed, using existing table: {e}")
+            prior_table = roster_prior.load_prior() or {}
+            prior_elo = roster_prior.get_prior_elo()
+            game_elo = elo_engine.get_elo_ratings()
+            if prior_elo and game_elo and str(prior_table.get("season")) == str(season_state.get("season") or prior_table.get("season")):
+                gp_by_team = {t["teamAbbrev"]: t.get("gamesPlayed", 0) for t in teams}
+                blended, weights = roster_prior.blend_elo_ratings(game_elo, prior_elo, gp_by_team)
+                simulator._elo_ratings_cache = blended
+                for ab in blended:
+                    strength_by_team[ab] = {
+                        "elo_game": round(game_elo.get(ab, 1500.0), 1),
+                        "elo_roster_prior": round(prior_elo.get(ab, 1500.0), 1),
+                        "elo_blended": round(blended[ab], 1),
+                        "roster_prior_weight": round(weights[ab], 3),
+                    }
+                avg_w = sum(weights.values()) / max(1, len(weights))
+                strength_model = {
+                    "roster_prior": True,
+                    "roster_prior_games": roster_prior.ROSTER_PRIOR_GAMES,
+                    "avg_prior_weight": round(avg_w, 3),
+                    "prior_generated_at": prior_table.get("generated_at"),
+                    "prior_fit_date": prior_table.get("fit_date"),
+                    "prior_source": (prior_table.get("source") or {}).get("players"),
+                }
+                print(f"   ✓ Roster prior blended (avg {avg_w*100:.0f}% prior / {(1-avg_w)*100:.0f}% game Elo, N0={roster_prior.ROSTER_PRIOR_GAMES:g})")
+            else:
+                print("   ⚠ Roster prior unavailable or wrong season — using pure Elo")
+    except Exception as e:
+        print(f"   ⚠ Roster prior failed, using pure Elo: {e}")
+
+    # Single vectorized sim pool: produces odds + scenarios + best/worst + what-if + seeds
+    print(f"🎲🔮📈 Running vectorized simulation ({NUM_SIMULATIONS:,} sims, Elo-based, odds + scenarios + what-if)...")
     team_scenarios = {}
     best_worst_cases = {}
     what_if_data = {}
     sim_results = {}
     try:
         vect_best_worst, vect_scenarios, vect_odds, vect_what_if, vect_seed_probs = simulator.run_scenario_analysis_vectorized(
-            teams, active_tonight, num_simulations=500000, real_schedule=real_schedule
+            teams, active_tonight, num_simulations=NUM_SIMULATIONS, real_schedule=real_schedule
         )
         team_scenarios = vect_scenarios
         what_if_data = vect_what_if
@@ -805,9 +866,9 @@ def main():
                 "playoff_pct": pct,
                 "clinched": pct >= 99.5 or team.get("clinchIndicator", "") in ("x", "y", "z", "p"),
                 "eliminated": pct <= 0.05,
-                "sim_count": 100000,
+                "sim_count": NUM_SIMULATIONS,
             }
-        print(f"   ✓ 100k simulation complete")
+        print(f"   ✓ simulation complete")
     except Exception as e:
         print(f"   ✗ Simulation error: {e}")
         import traceback
@@ -832,7 +893,8 @@ def main():
             _preseason = {
                 "headline": (f"The {_label} NHL season starts {_when}. "
                              f"No games have been played yet — the numbers below are "
-                             f"preseason projections, not a live playoff race."),
+                             f"preseason projections built from current rosters and last "
+                             f"season's results, not a live playoff race."),
                 "biggest_movers": "No movement yet. Odds start moving on opening night.",
                 "bubble_watch": "Bubble watch returns once teams have played games.",
                 "tonight_stakes": f"No regular-season games yet. Opening night is {_start}.",
@@ -869,7 +931,7 @@ def main():
             post_tomorrow_schedule = [g for g in (real_schedule or []) if (g[0], g[1]) not in tonight_pairs and (g[0], g[1]) not in tomorrow_pairs]
             tomorrow_full_schedule = [(g["homeTeamAbbrev"], g["awayTeamAbbrev"]) for g in tomorrow_games] + post_tomorrow_schedule
             tmr_bw, tmr_sc, tmr_vect_odds, _tmr_wif, _ = simulator.run_scenario_analysis_vectorized(
-                teams, tomorrow_games, num_simulations=500000, real_schedule=tomorrow_full_schedule
+                teams, tomorrow_games, num_simulations=NUM_SIMULATIONS, real_schedule=tomorrow_full_schedule
             )
 
             # Rebase tomorrow scenarios against today's displayed baseline.
@@ -914,7 +976,7 @@ def main():
         traceback.print_exc()
 
     # What If tables already computed in the 100k vectorized sim above
-    print(f"🤔 What If tables: {len(what_if_data)} teams (from 100k sim)")
+    print(f"🤔 What If tables: {len(what_if_data)} teams (from {NUM_SIMULATIONS:,} sim pool)")
 
     # Organize data
     print("🗂️  Organizing data...")
@@ -922,6 +984,10 @@ def main():
     enhanced_games = add_game_impact(today_games, sim_results)
     flat_teams = build_flat_teams_list(teams, sim_results, team_scenarios, best_worst_cases,
                                        tomorrow_scenarios, tomorrow_best_worst, what_if_data)
+
+    # Attach strength-model ratings (game Elo, roster prior, blend, weight)
+    for t in flat_teams:
+        t.update(strength_by_team.get(t["teamAbbrev"], {}))
 
     # Attach seed probability distributions
     for t in flat_teams:
@@ -946,9 +1012,9 @@ def main():
                 t["conf_position"] = mt.get("position")
                 t["chasing_team"] = mt.get("chasing")
 
-        # Schedule strength
+        # Schedule strength (blended ratings when the roster prior is active)
         elo_data = _elo.load_ratings()
-        elo_rats = elo_data["ratings"] if elo_data else {}
+        elo_rats = simulator._elo_ratings_cache or (elo_data["ratings"] if elo_data else {})
         sched_strength = history_tracker.compute_schedule_strength(
             flat_teams, full_schedule_with_tonight, elo_rats
         )
@@ -1028,6 +1094,7 @@ def main():
         "season": str(season_state.get("season") or ""),
         "season_state": season_state,
         "num_simulations": NUM_SIMULATIONS,
+        "strength_model": strength_model,
         "narratives": narratives,
         "conferences": conferences,
         "teams": flat_teams,
@@ -1074,7 +1141,7 @@ def main():
         "# IceChaser — NHL Playoff Odds",
         f"> Updated: {_ts_display}",
         "> Source: icechaser.com",
-        "> Data: 500,000 Monte Carlo simulations per run",
+        f"> Data: {NUM_SIMULATIONS:,} Monte Carlo simulations per run",
         "> API: icechaser.com/data/playoff_odds.json",
         "",
         "## Current Playoff Odds",
@@ -1157,7 +1224,7 @@ def main():
             "mainEntity": {
                 "@type": "Dataset",
                 "name": "NHL Playoff Odds",
-                "description": "Playoff probability for all 32 NHL teams based on 500,000 Monte Carlo simulations",
+                "description": f"Playoff probability for all 32 NHL teams based on {NUM_SIMULATIONS:,} Monte Carlo simulations",
                 "dateModified": _ts_iso,
                 "distribution": {
                     "@type": "DataDownload",

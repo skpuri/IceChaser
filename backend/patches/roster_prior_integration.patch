@@ -1,0 +1,93 @@
+--- a/backend/generate_data_v3.py
++++ b/backend/generate_data_v3.py
+@@ -777,6 +777,49 @@
+     except Exception as e:
+         print(f"   ⚠ Elo update failed, falling back to points pace: {e}")
+ 
++    # Roster-aware strength prior (backend/roster_prior.py), blended into the
++    # game Elo with weight N0/(N0+GP) per team. Pure prior at 0 GP, fades as
++    # results accumulate. Any failure here leaves the pure-Elo path untouched.
++    strength_by_team = {}
++    strength_model = {"roster_prior": False}
++    try:
++        import roster_prior
++        if roster_prior.ENABLED:
++            if roster_prior.prior_age_hours() > roster_prior.PRIOR_MAX_AGE_HOURS:
++                try:
++                    import generate_roster_prior
++                    generate_roster_prior.main([])
++                except Exception as e:
++                    print(f"   ⚠ Roster prior refresh failed, using existing table: {e}")
++            prior_table = roster_prior.load_prior() or {}
++            prior_elo = roster_prior.get_prior_elo()
++            game_elo = elo_engine.get_elo_ratings()
++            if prior_elo and game_elo and str(prior_table.get("season")) == str(season_state.get("season") or prior_table.get("season")):
++                gp_by_team = {t["teamAbbrev"]: t.get("gamesPlayed", 0) for t in teams}
++                blended, weights = roster_prior.blend_elo_ratings(game_elo, prior_elo, gp_by_team)
++                simulator._elo_ratings_cache = blended
++                for ab in blended:
++                    strength_by_team[ab] = {
++                        "elo_game": round(game_elo.get(ab, 1500.0), 1),
++                        "elo_roster_prior": round(prior_elo.get(ab, 1500.0), 1),
++                        "elo_blended": round(blended[ab], 1),
++                        "roster_prior_weight": round(weights[ab], 3),
++                    }
++                avg_w = sum(weights.values()) / max(1, len(weights))
++                strength_model = {
++                    "roster_prior": True,
++                    "roster_prior_games": roster_prior.ROSTER_PRIOR_GAMES,
++                    "avg_prior_weight": round(avg_w, 3),
++                    "prior_generated_at": prior_table.get("generated_at"),
++                    "prior_fit_date": prior_table.get("fit_date"),
++                    "prior_source": (prior_table.get("source") or {}).get("players"),
++                }
++                print(f"   ✓ Roster prior blended (avg {avg_w*100:.0f}% prior / {(1-avg_w)*100:.0f}% game Elo, N0={roster_prior.ROSTER_PRIOR_GAMES:g})")
++            else:
++                print("   ⚠ Roster prior unavailable or wrong season — using pure Elo")
++    except Exception as e:
++        print(f"   ⚠ Roster prior failed, using pure Elo: {e}")
++
+     # Single 100k vectorized sim: produces odds + scenarios + best/worst + what-if
+     print("🎲🔮📈 Running 100k vectorized simulation (Elo-based, odds + scenarios + what-if)...")
+     team_scenarios = {}
+@@ -832,7 +875,8 @@
+             _preseason = {
+                 "headline": (f"The {_label} NHL season starts {_when}. "
+                              f"No games have been played yet — the numbers below are "
+-                             f"preseason projections, not a live playoff race."),
++                             f"preseason projections built from current rosters and last "
++                             f"season's results, not a live playoff race."),
+                 "biggest_movers": "No movement yet. Odds start moving on opening night.",
+                 "bubble_watch": "Bubble watch returns once teams have played games.",
+                 "tonight_stakes": f"No regular-season games yet. Opening night is {_start}.",
+@@ -923,6 +967,10 @@
+     flat_teams = build_flat_teams_list(teams, sim_results, team_scenarios, best_worst_cases,
+                                        tomorrow_scenarios, tomorrow_best_worst, what_if_data)
+ 
++    # Attach strength-model ratings (game Elo, roster prior, blend, weight)
++    for t in flat_teams:
++        t.update(strength_by_team.get(t["teamAbbrev"], {}))
++
+     # Attach seed probability distributions
+     for t in flat_teams:
+         sp = seed_probs_data.get(t["teamAbbrev"], {}) if 'seed_probs_data' in dir() else {}
+@@ -946,9 +994,9 @@
+                 t["conf_position"] = mt.get("position")
+                 t["chasing_team"] = mt.get("chasing")
+ 
+-        # Schedule strength
++        # Schedule strength (blended ratings when the roster prior is active)
+         elo_data = _elo.load_ratings()
+-        elo_rats = elo_data["ratings"] if elo_data else {}
++        elo_rats = simulator._elo_ratings_cache or (elo_data["ratings"] if elo_data else {})
+         sched_strength = history_tracker.compute_schedule_strength(
+             flat_teams, full_schedule_with_tonight, elo_rats
+         )
+@@ -1028,6 +1076,7 @@
+         "season": str(season_state.get("season") or ""),
+         "season_state": season_state,
+         "num_simulations": NUM_SIMULATIONS,
++        "strength_model": strength_model,
+         "narratives": narratives,
+         "conferences": conferences,
+         "teams": flat_teams,

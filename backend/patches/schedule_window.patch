@@ -1,0 +1,22 @@
+--- a/backend/nhl_api.py
++++ b/backend/nhl_api.py
+@@ -254,9 +254,17 @@
+     all_games = []
+     seen_game_ids = set()
+     
+-    # Start from today, page through weeks until no more FUT games
++    # Start from today, page through weeks until the regular season ends.
++    # (Was a fixed 30-day window, which at season open handed the simulator
++    # ~235 of 1344 games; the API publishes regularSeasonEndDate, so use it.)
+     current_date = datetime.now(PST).date()
+-    end_date = current_date + timedelta(days=30)  # ~1 month should cover remaining season
++    end_date = current_date + timedelta(days=30)
++    try:
++        _end = _fetch_json(f"{BASE_URL}/schedule/now").get("regularSeasonEndDate")
++        if _end:
++            end_date = max(end_date, date.fromisoformat(_end) + timedelta(days=7))
++    except Exception:
++        pass
+     
+     d = current_date
+     while d <= end_date:

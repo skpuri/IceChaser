@@ -86,10 +86,10 @@ def parse_standings(raw, reset_records=False):
     for entry in standings_data:
         # NHL regular season is 82 games
         games_played = 0 if reset_records else entry.get("gamesPlayed", 0)
-        games_remaining = 82 - games_played
+        games_remaining = SEASON_GAMES - games_played
         points = 0 if reset_records else entry.get("points", 0)
         # Points pace over 82 games
-        points_pace = (points / games_played * 82) if games_played > 0 else 0
+        points_pace = (points / games_played * SEASON_GAMES) if games_played > 0 else 0
 
         team = {
             "teamAbbrev": entry.get("teamAbbrev", {}).get("default", ""),
@@ -244,6 +244,12 @@ def get_all_data():
     return teams, games
 
 
+# Regular-season games per team. The NHL moved to an 84-game season for
+# 2026-27 (1344 games / 32 teams). Verified against the published schedule:
+# get_remaining_schedule() returns exactly 84 per team with 0 games played.
+SEASON_GAMES = 84
+
+
 def get_remaining_schedule():
     """
     Fetch all remaining games in the regular season.
@@ -254,9 +260,17 @@ def get_remaining_schedule():
     all_games = []
     seen_game_ids = set()
     
-    # Start from today, page through weeks until no more FUT games
+    # Start from today, page through weeks until the regular season ends.
+    # (Was a fixed 30-day window, which at season open handed the simulator
+    # ~235 of 1344 games; the API publishes regularSeasonEndDate, so use it.)
     current_date = datetime.now(PST).date()
-    end_date = current_date + timedelta(days=30)  # ~1 month should cover remaining season
+    end_date = current_date + timedelta(days=30)
+    try:
+        _end = _fetch_json(f"{BASE_URL}/schedule/now").get("regularSeasonEndDate")
+        if _end:
+            end_date = max(end_date, date.fromisoformat(_end) + timedelta(days=7))
+    except Exception:
+        pass
     
     d = current_date
     while d <= end_date:
