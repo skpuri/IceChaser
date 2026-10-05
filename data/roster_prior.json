@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-10-03T18:04:10+00:00",
+ "generated_at": "2026-10-04T18:04:39+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-10-03T18:04:10+00:00",
+  "rosters": "NHL API rosters fetched 2026-10-04T18:04:39+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -3311,15 +3311,6 @@
      "gsax_per_gp_raw": 0.141,
      "gsax_per_gp": 0.042,
      "role": "backup"
-    },
-    {
-     "id": 8483575,
-     "name": "Matt Murray",
-     "gp": 1,
-     "known": false,
-     "gsax_per_gp_raw": 0.0,
-     "gsax_per_gp": 0.0,
-     "role": "third"
     }
    ]
   },
