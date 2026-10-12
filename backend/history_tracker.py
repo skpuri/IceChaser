@@ -223,6 +223,28 @@ def compute_schedule_strength(teams, remaining_schedule, elo_ratings):
     return results
 
 
+WEB_HISTORY_FILE = "/var/www/icechaser/data/odds_history.json"
+
+
+def save_web_history(history, path=WEB_HISTORY_FILE):
+    """
+    Publish the homepage "Odds Movement" chart feed (also read by the Odds
+    Explorer): {"dates": [...], "teams": {abbrev: {date: odds}}}.
+
+    `history` is already limited to the current season by build_odds_history(),
+    so this file only ever holds this season. Nothing wrote it after the
+    2025-26 season ended, so the chart kept showing last season's full year;
+    that season lives on at data/archive/odds_history_2025-26.json.
+    """
+    dates = sorted({e["date"] for entries in history.values() for e in entries})
+    teams = {a: {e["date"]: e["odds"] for e in entries} for a, entries in history.items()}
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump({"dates": dates, "teams": teams}, f)
+    os.replace(tmp, path)
+    print(f"   ✓ Chart history published ({len(dates)} days, {dates[0] if dates else '-'} → {dates[-1] if dates else '-'})")
+
+
 def save_history(history):
     """Save history to JSON file."""
     os.makedirs(os.path.dirname(HISTORY_FILE), exist_ok=True)

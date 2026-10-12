@@ -1028,6 +1028,7 @@ def main():
 
         # Odds history
         odds_history = history_tracker.build_odds_history()
+        history_tracker.save_web_history(odds_history)
         for t in flat_teams:
             h = odds_history.get(t["teamAbbrev"], [])
             if h:
