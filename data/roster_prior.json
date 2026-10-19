@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-10-17T21:04:14+00:00",
+ "generated_at": "2026-10-18T21:22:06+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-10-17T21:04:14+00:00",
+  "rosters": "NHL API rosters fetched 2026-10-18T21:22:06+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -801,9 +801,9 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1501.0,
+   "prior_elo": 1500.9,
    "proj_points": 93.1,
-   "proj_points_vs_mean": 0.3,
+   "proj_points_vs_mean": 0.2,
    "skater_gs": 727.0,
    "goalie_gsax": 5.6,
    "unknown_in_lineup": 0,
@@ -993,7 +993,7 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1459.5,
+   "prior_elo": 1459.4,
    "proj_points": 82.1,
    "proj_points_vs_mean": -10.7,
    "skater_gs": 538.6,
@@ -1185,9 +1185,9 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1444.5,
+   "prior_elo": 1444.4,
    "proj_points": 78.1,
-   "proj_points_vs_mean": -14.6,
+   "proj_points_vs_mean": -14.7,
    "skater_gs": 488.3,
    "goalie_gsax": -1.5,
    "unknown_in_lineup": 0,
@@ -1761,10 +1761,10 @@
    ]
   },
   "DET": {
-   "prior_elo": 1476.9,
-   "proj_points": 86.7,
-   "proj_points_vs_mean": -6.1,
-   "skater_gs": 632.3,
+   "prior_elo": 1475.8,
+   "proj_points": 86.4,
+   "proj_points_vs_mean": -6.4,
+   "skater_gs": 627.2,
    "goalie_gsax": 1.21,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -1922,13 +1922,13 @@
      "toi_per_gp_min": 16.1
     },
     {
-     "id": 8480879,
-     "name": "Jacob Bernard-Docker",
+     "id": 8477971,
+     "name": "Andreas Englund",
      "pos": "D",
-     "gp": 103,
+     "gp": 38,
      "known": true,
-     "gs_per_gp": 0.116,
-     "toi_per_gp_min": 14.3
+     "gs_per_gp": 0.053,
+     "toi_per_gp_min": 12.9
     }
    ],
    "goalies": [
@@ -2346,7 +2346,7 @@
    ]
   },
   "LAK": {
-   "prior_elo": 1515.8,
+   "prior_elo": 1515.7,
    "proj_points": 97.0,
    "proj_points_vs_mean": 4.2,
    "skater_gs": 818.6,
@@ -3141,7 +3141,7 @@
    ]
   },
   "NSH": {
-   "prior_elo": 1478.4,
+   "prior_elo": 1478.3,
    "proj_points": 87.1,
    "proj_points_vs_mean": -5.7,
    "skater_gs": 646.8,
@@ -3525,9 +3525,9 @@
    ]
   },
   "NYR": {
-   "prior_elo": 1496.1,
+   "prior_elo": 1496.0,
    "proj_points": 91.8,
-   "proj_points_vs_mean": -1.0,
+   "proj_points_vs_mean": -1.1,
    "skater_gs": 714.9,
    "goalie_gsax": 3.29,
    "unknown_in_lineup": 0,
@@ -3735,7 +3735,7 @@
    ]
   },
   "OTT": {
-   "prior_elo": 1515.3,
+   "prior_elo": 1515.2,
    "proj_points": 96.8,
    "proj_points_vs_mean": 4.0,
    "skater_gs": 831.6,
@@ -4311,7 +4311,7 @@
    ]
   },
   "SEA": {
-   "prior_elo": 1457.1,
+   "prior_elo": 1457.0,
    "proj_points": 81.5,
    "proj_points_vs_mean": -11.3,
    "skater_gs": 542.3,
@@ -4505,7 +4505,7 @@
   "SJS": {
    "prior_elo": 1475.2,
    "proj_points": 86.3,
-   "proj_points_vs_mean": -6.5,
+   "proj_points_vs_mean": -6.6,
    "skater_gs": 645.8,
    "goalie_gsax": -3.08,
    "unknown_in_lineup": 1,
@@ -4695,12 +4695,12 @@
    ]
   },
   "STL": {
-   "prior_elo": 1475.3,
-   "proj_points": 86.3,
-   "proj_points_vs_mean": -6.5,
-   "skater_gs": 622.8,
+   "prior_elo": 1477.5,
+   "proj_points": 86.9,
+   "proj_points_vs_mean": -5.9,
+   "skater_gs": 633.7,
    "goalie_gsax": 1.53,
-   "unknown_in_lineup": 0,
+   "unknown_in_lineup": 1,
    "lineup": [
     {
      "id": 8480023,
@@ -4802,13 +4802,13 @@
      "toi_per_gp_min": 12.3
     },
     {
-     "id": 8477527,
-     "name": "Ross Johnston",
-     "pos": "L",
-     "gp": 105,
-     "known": true,
-     "gs_per_gp": 0.06,
-     "toi_per_gp_min": 9.3
+     "id": 8483463,
+     "name": "Aleksanteri Kaskimaki",
+     "pos": "C",
+     "gp": 5,
+     "known": false,
+     "gs_per_gp": 0.193,
+     "toi_per_gp_min": 10.4
     },
     {
      "id": 8476892,
@@ -5079,10 +5079,10 @@
    ]
   },
   "TOR": {
-   "prior_elo": 1497.7,
+   "prior_elo": 1497.8,
    "proj_points": 92.2,
    "proj_points_vs_mean": -0.6,
-   "skater_gs": 712.7,
+   "skater_gs": 713.4,
    "goalie_gsax": 5.28,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -5168,6 +5168,15 @@
      "toi_per_gp_min": 14.7
     },
     {
+     "id": 8479968,
+     "name": "Vinni Lettieri",
+     "pos": "C",
+     "gp": 26,
+     "known": true,
+     "gs_per_gp": 0.219,
+     "toi_per_gp_min": 13.5
+    },
+    {
      "id": 8476925,
      "name": "Colton Sissons",
      "pos": "C",
@@ -5184,15 +5193,6 @@
      "known": true,
      "gs_per_gp": 0.167,
      "toi_per_gp_min": 12.2
-    },
-    {
-     "id": 8477425,
-     "name": "Miles Wood",
-     "pos": "L",
-     "gp": 91,
-     "known": true,
-     "gs_per_gp": 0.212,
-     "toi_per_gp_min": 11.7
     },
     {
      "id": 8476931,
@@ -5271,7 +5271,7 @@
    ]
   },
   "UTA": {
-   "prior_elo": 1533.9,
+   "prior_elo": 1533.8,
    "proj_points": 101.7,
    "proj_points_vs_mean": 8.9,
    "skater_gs": 908.8,
@@ -5463,7 +5463,7 @@
    ]
   },
   "VAN": {
-   "prior_elo": 1442.3,
+   "prior_elo": 1442.2,
    "proj_points": 77.6,
    "proj_points_vs_mean": -15.2,
    "skater_gs": 466.1,
@@ -5664,7 +5664,7 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1524.3,
+   "prior_elo": 1524.2,
    "proj_points": 99.2,
    "proj_points_vs_mean": 6.4,
    "skater_gs": 870.0,
@@ -5856,7 +5856,7 @@
    ]
   },
   "WPG": {
-   "prior_elo": 1492.0,
+   "prior_elo": 1491.9,
    "proj_points": 90.7,
    "proj_points_vs_mean": -2.1,
    "skater_gs": 676.2,
