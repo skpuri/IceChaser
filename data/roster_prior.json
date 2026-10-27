@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-10-25T22:42:28+00:00",
+ "generated_at": "2026-10-26T23:05:11+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-10-25T22:42:28+00:00",
+  "rosters": "NHL API rosters fetched 2026-10-26T23:05:11+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -24,9 +24,9 @@
  "overrides_applied": {},
  "teams": {
   "ANA": {
-   "prior_elo": 1463.4,
+   "prior_elo": 1463.0,
    "proj_points": 83.4,
-   "proj_points_vs_mean": -9.6,
+   "proj_points_vs_mean": -9.8,
    "skater_gs": 587.4,
    "goalie_gsax": -1.81,
    "unknown_in_lineup": 2,
@@ -216,9 +216,9 @@
    ]
   },
   "BOS": {
-   "prior_elo": 1484.1,
+   "prior_elo": 1483.7,
    "proj_points": 88.9,
-   "proj_points_vs_mean": -4.2,
+   "proj_points_vs_mean": -4.3,
    "skater_gs": 660.5,
    "goalie_gsax": 3.6,
    "unknown_in_lineup": 1,
@@ -408,9 +408,9 @@
    ]
   },
   "BUF": {
-   "prior_elo": 1503.9,
+   "prior_elo": 1503.5,
    "proj_points": 94.1,
-   "proj_points_vs_mean": 1.0,
+   "proj_points_vs_mean": 0.9,
    "skater_gs": 761.6,
    "goalie_gsax": 2.67,
    "unknown_in_lineup": 1,
@@ -609,12 +609,12 @@
    ]
   },
   "CAR": {
-   "prior_elo": 1568.0,
-   "proj_points": 111.0,
-   "proj_points_vs_mean": 17.9,
-   "skater_gs": 1078.6,
+   "prior_elo": 1580.2,
+   "proj_points": 114.4,
+   "proj_points_vs_mean": 21.2,
+   "skater_gs": 1139.9,
    "goalie_gsax": 1.69,
-   "unknown_in_lineup": 1,
+   "unknown_in_lineup": 0,
    "lineup": [
     {
      "id": 8478427,
@@ -660,15 +660,6 @@
      "known": true,
      "gs_per_gp": 0.736,
      "toi_per_gp_min": 15.8
-    },
-    {
-     "id": 8480291,
-     "name": "Skyler Brind'Amour",
-     "pos": "C",
-     "gp": 6,
-     "known": false,
-     "gs_per_gp": 0.193,
-     "toi_per_gp_min": 15.5
     },
     {
      "id": 8482702,
@@ -725,6 +716,15 @@
      "toi_per_gp_min": 11.9
     },
     {
+     "id": 8476873,
+     "name": "Mark Jankowski",
+     "pos": "L",
+     "gp": 128,
+     "known": true,
+     "gs_per_gp": 0.464,
+     "toi_per_gp_min": 11.8
+    },
+    {
      "id": 8480817,
      "name": "K'Andre Miller",
      "pos": "D",
@@ -770,13 +770,13 @@
      "toi_per_gp_min": 18.8
     },
     {
-     "id": 8479976,
-     "name": "Juuso V\u00e4lim\u00e4ki",
+     "id": 8482100,
+     "name": "Alexander Nikishin",
      "pos": "D",
-     "gp": 43,
+     "gp": 81,
      "known": true,
-     "gs_per_gp": 0.228,
-     "toi_per_gp_min": 16.6
+     "gs_per_gp": 0.705,
+     "toi_per_gp_min": 18.2
     }
    ],
    "goalies": [
@@ -801,9 +801,9 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1506.5,
+   "prior_elo": 1506.1,
    "proj_points": 94.8,
-   "proj_points_vs_mean": 1.7,
+   "proj_points_vs_mean": 1.6,
    "skater_gs": 759.0,
    "goalie_gsax": 5.6,
    "unknown_in_lineup": 0,
@@ -993,9 +993,9 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1458.4,
+   "prior_elo": 1458.0,
    "proj_points": 82.1,
-   "proj_points_vs_mean": -11.0,
+   "proj_points_vs_mean": -11.1,
    "skater_gs": 538.6,
    "goalie_gsax": 2.93,
    "unknown_in_lineup": 1,
@@ -1185,9 +1185,9 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1443.4,
+   "prior_elo": 1443.0,
    "proj_points": 78.1,
-   "proj_points_vs_mean": -14.9,
+   "proj_points_vs_mean": -15.0,
    "skater_gs": 488.3,
    "goalie_gsax": -1.5,
    "unknown_in_lineup": 0,
@@ -1377,9 +1377,9 @@
    ]
   },
   "COL": {
-   "prior_elo": 1568.7,
+   "prior_elo": 1568.3,
    "proj_points": 111.2,
-   "proj_points_vs_mean": 18.1,
+   "proj_points_vs_mean": 18.0,
    "skater_gs": 1068.9,
    "goalie_gsax": 4.2,
    "unknown_in_lineup": 0,
@@ -1569,9 +1569,9 @@
    ]
   },
   "DAL": {
-   "prior_elo": 1509.3,
+   "prior_elo": 1508.8,
    "proj_points": 95.5,
-   "proj_points_vs_mean": 2.4,
+   "proj_points_vs_mean": 2.3,
    "skater_gs": 778.0,
    "goalie_gsax": 4.54,
    "unknown_in_lineup": 0,
@@ -1761,9 +1761,9 @@
    ]
   },
   "DET": {
-   "prior_elo": 1474.8,
+   "prior_elo": 1474.4,
    "proj_points": 86.4,
-   "proj_points_vs_mean": -6.7,
+   "proj_points_vs_mean": -6.8,
    "skater_gs": 627.2,
    "goalie_gsax": 1.21,
    "unknown_in_lineup": 0,
@@ -1962,9 +1962,9 @@
    ]
   },
   "EDM": {
-   "prior_elo": 1520.3,
+   "prior_elo": 1519.9,
    "proj_points": 98.4,
-   "proj_points_vs_mean": 5.4,
+   "proj_points_vs_mean": 5.3,
    "skater_gs": 847.0,
    "goalie_gsax": 1.58,
    "unknown_in_lineup": 0,
@@ -2172,9 +2172,9 @@
    ]
   },
   "FLA": {
-   "prior_elo": 1542.1,
+   "prior_elo": 1541.7,
    "proj_points": 104.2,
-   "proj_points_vs_mean": 11.1,
+   "proj_points_vs_mean": 11.0,
    "skater_gs": 959.8,
    "goalie_gsax": 0.27,
    "unknown_in_lineup": 0,
@@ -2373,9 +2373,9 @@
    ]
   },
   "LAK": {
-   "prior_elo": 1512.9,
+   "prior_elo": 1512.5,
    "proj_points": 96.5,
-   "proj_points_vs_mean": 3.4,
+   "proj_points_vs_mean": 3.3,
    "skater_gs": 810.0,
    "goalie_gsax": 1.76,
    "unknown_in_lineup": 0,
@@ -2565,9 +2565,9 @@
    ]
   },
   "MIN": {
-   "prior_elo": 1497.3,
+   "prior_elo": 1496.9,
    "proj_points": 92.4,
-   "proj_points_vs_mean": -0.7,
+   "proj_points_vs_mean": -0.8,
    "skater_gs": 745.1,
    "goalie_gsax": -0.46,
    "unknown_in_lineup": 0,
@@ -2766,9 +2766,9 @@
    ]
   },
   "MTL": {
-   "prior_elo": 1499.7,
+   "prior_elo": 1499.3,
    "proj_points": 93.0,
-   "proj_points_vs_mean": -0.1,
+   "proj_points_vs_mean": -0.2,
    "skater_gs": 719.2,
    "goalie_gsax": 6.95,
    "unknown_in_lineup": 0,
@@ -2967,9 +2967,9 @@
    ]
   },
   "NJD": {
-   "prior_elo": 1537.2,
+   "prior_elo": 1536.8,
    "proj_points": 102.9,
-   "proj_points_vs_mean": 9.8,
+   "proj_points_vs_mean": 9.7,
    "skater_gs": 893.2,
    "goalie_gsax": 8.6,
    "unknown_in_lineup": 0,
@@ -3168,9 +3168,9 @@
    ]
   },
   "NSH": {
-   "prior_elo": 1477.3,
+   "prior_elo": 1476.9,
    "proj_points": 87.1,
-   "proj_points_vs_mean": -6.0,
+   "proj_points_vs_mean": -6.1,
    "skater_gs": 646.8,
    "goalie_gsax": -0.26,
    "unknown_in_lineup": 0,
@@ -3360,9 +3360,9 @@
    ]
   },
   "NYI": {
-   "prior_elo": 1478.5,
+   "prior_elo": 1478.1,
    "proj_points": 87.4,
-   "proj_points_vs_mean": -5.7,
+   "proj_points_vs_mean": -5.8,
    "skater_gs": 621.1,
    "goalie_gsax": 5.96,
    "unknown_in_lineup": 1,
@@ -3552,10 +3552,10 @@
    ]
   },
   "NYR": {
-   "prior_elo": 1491.9,
-   "proj_points": 90.9,
-   "proj_points_vs_mean": -2.1,
-   "skater_gs": 699.7,
+   "prior_elo": 1494.6,
+   "proj_points": 91.8,
+   "proj_points_vs_mean": -1.4,
+   "skater_gs": 714.9,
    "goalie_gsax": 3.29,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -3713,13 +3713,13 @@
      "toi_per_gp_min": 19.2
     },
     {
-     "id": 8481525,
-     "name": "Matthew Robertson",
+     "id": 8482666,
+     "name": "Scott Morrow",
      "pos": "D",
-     "gp": 74,
+     "gp": 43,
      "known": true,
-     "gs_per_gp": 0.232,
-     "toi_per_gp_min": 17.4
+     "gs_per_gp": 0.417,
+     "toi_per_gp_min": 15.7
     }
    ],
    "goalies": [
@@ -3751,15 +3751,6 @@
      "role": "third"
     },
     {
-     "id": 8477484,
-     "name": "Spencer Martin",
-     "gp": 34,
-     "known": true,
-     "gsax_per_gp_raw": -0.454,
-     "gsax_per_gp": -0.135,
-     "role": "third"
-    },
-    {
      "id": 8482193,
      "name": "Dylan Garand",
      "gp": 3,
@@ -3771,9 +3762,9 @@
    ]
   },
   "OTT": {
-   "prior_elo": 1514.2,
+   "prior_elo": 1513.8,
    "proj_points": 96.8,
-   "proj_points_vs_mean": 3.7,
+   "proj_points_vs_mean": 3.6,
    "skater_gs": 831.6,
    "goalie_gsax": -1.26,
    "unknown_in_lineup": 1,
@@ -3972,9 +3963,9 @@
    ]
   },
   "PHI": {
-   "prior_elo": 1469.2,
+   "prior_elo": 1468.8,
    "proj_points": 84.9,
-   "proj_points_vs_mean": -8.1,
+   "proj_points_vs_mean": -8.2,
    "skater_gs": 592.5,
    "goalie_gsax": 2.64,
    "unknown_in_lineup": 1,
@@ -4164,9 +4155,9 @@
    ]
   },
   "PIT": {
-   "prior_elo": 1503.4,
+   "prior_elo": 1503.0,
    "proj_points": 94.0,
-   "proj_points_vs_mean": 0.9,
+   "proj_points_vs_mean": 0.8,
    "skater_gs": 804.1,
    "goalie_gsax": -6.18,
    "unknown_in_lineup": 0,
@@ -4356,9 +4347,9 @@
    ]
   },
   "SEA": {
-   "prior_elo": 1457.6,
+   "prior_elo": 1457.2,
    "proj_points": 81.9,
-   "proj_points_vs_mean": -11.2,
+   "proj_points_vs_mean": -11.3,
    "skater_gs": 550.3,
    "goalie_gsax": -0.08,
    "unknown_in_lineup": 0,
@@ -4548,9 +4539,9 @@
    ]
   },
   "SJS": {
-   "prior_elo": 1474.1,
+   "prior_elo": 1473.7,
    "proj_points": 86.3,
-   "proj_points_vs_mean": -6.8,
+   "proj_points_vs_mean": -6.9,
    "skater_gs": 645.8,
    "goalie_gsax": -3.08,
    "unknown_in_lineup": 1,
@@ -4740,9 +4731,9 @@
    ]
   },
   "STL": {
-   "prior_elo": 1477.4,
+   "prior_elo": 1477.0,
    "proj_points": 87.1,
-   "proj_points_vs_mean": -6.0,
+   "proj_points_vs_mean": -6.1,
    "skater_gs": 638.5,
    "goalie_gsax": 1.53,
    "unknown_in_lineup": 0,
@@ -4932,9 +4923,9 @@
    ]
   },
   "TBL": {
-   "prior_elo": 1545.7,
+   "prior_elo": 1545.3,
    "proj_points": 105.1,
-   "proj_points_vs_mean": 12.1,
+   "proj_points_vs_mean": 12.0,
    "skater_gs": 944.6,
    "goalie_gsax": 6.66,
    "unknown_in_lineup": 0,
@@ -5124,9 +5115,9 @@
    ]
   },
   "TOR": {
-   "prior_elo": 1496.8,
+   "prior_elo": 1496.4,
    "proj_points": 92.2,
-   "proj_points_vs_mean": -0.9,
+   "proj_points_vs_mean": -1.0,
    "skater_gs": 713.4,
    "goalie_gsax": 5.28,
    "unknown_in_lineup": 0,
@@ -5316,9 +5307,9 @@
    ]
   },
   "UTA": {
-   "prior_elo": 1532.8,
+   "prior_elo": 1532.4,
    "proj_points": 101.7,
-   "proj_points_vs_mean": 8.6,
+   "proj_points_vs_mean": 8.5,
    "skater_gs": 908.8,
    "goalie_gsax": 1.34,
    "unknown_in_lineup": 0,
@@ -5508,9 +5499,9 @@
    ]
   },
   "VAN": {
-   "prior_elo": 1441.2,
+   "prior_elo": 1440.8,
    "proj_points": 77.6,
-   "proj_points_vs_mean": -15.5,
+   "proj_points_vs_mean": -15.6,
    "skater_gs": 466.1,
    "goalie_gsax": 0.75,
    "unknown_in_lineup": 1,
@@ -5709,10 +5700,10 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1525.5,
-   "proj_points": 99.8,
-   "proj_points_vs_mean": 6.7,
-   "skater_gs": 880.9,
+   "prior_elo": 1522.7,
+   "proj_points": 99.2,
+   "proj_points_vs_mean": 6.0,
+   "skater_gs": 869.3,
    "goalie_gsax": -0.17,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -5807,13 +5798,13 @@
      "toi_per_gp_min": 14.0
     },
     {
-     "id": 8482125,
-     "name": "Alexander Holtz",
+     "id": 8480007,
+     "name": "Jonas Rondbjerg",
      "pos": "R",
-     "gp": 81,
+     "gp": 17,
      "known": true,
-     "gs_per_gp": 0.205,
-     "toi_per_gp_min": 11.5
+     "gs_per_gp": 0.064,
+     "toi_per_gp_min": 10.2
     },
     {
      "id": 8483553,
@@ -5901,9 +5892,9 @@
    ]
   },
   "WPG": {
-   "prior_elo": 1492.7,
+   "prior_elo": 1492.3,
    "proj_points": 91.2,
-   "proj_points_vs_mean": -1.9,
+   "proj_points_vs_mean": -2.0,
    "skater_gs": 711.8,
    "goalie_gsax": 1.71,
    "unknown_in_lineup": 0,
@@ -6102,9 +6093,9 @@
    ]
   },
   "WSH": {
-   "prior_elo": 1531.6,
+   "prior_elo": 1531.2,
    "proj_points": 101.4,
-   "proj_points_vs_mean": 8.3,
+   "proj_points_vs_mean": 8.2,
    "skater_gs": 877.3,
    "goalie_gsax": 6.41,
    "unknown_in_lineup": 1,
