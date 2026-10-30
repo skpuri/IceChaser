@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-10-28T23:22:23+00:00",
+ "generated_at": "2026-10-29T23:22:41+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-10-28T23:22:23+00:00",
+  "rosters": "NHL API rosters fetched 2026-10-29T23:22:41+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -24,10 +24,10 @@
  "overrides_applied": {},
  "teams": {
   "ANA": {
-   "prior_elo": 1463.2,
-   "proj_points": 83.4,
-   "proj_points_vs_mean": -9.7,
-   "skater_gs": 587.4,
+   "prior_elo": 1473.1,
+   "proj_points": 86.1,
+   "proj_points_vs_mean": -7.1,
+   "skater_gs": 635.8,
    "goalie_gsax": -1.81,
    "unknown_in_lineup": 2,
    "lineup": [
@@ -39,6 +39,15 @@
      "known": true,
      "gs_per_gp": 0.627,
      "toi_per_gp_min": 19.3
+    },
+    {
+     "id": 8478873,
+     "name": "Troy Terry",
+     "pos": "R",
+     "gp": 138,
+     "known": true,
+     "gs_per_gp": 0.816,
+     "toi_per_gp_min": 18.6
     },
     {
      "id": 8484153,
@@ -129,15 +138,6 @@
      "known": true,
      "gs_per_gp": 0.401,
      "toi_per_gp_min": 11.0
-    },
-    {
-     "id": 8482408,
-     "name": "Jeff Malott",
-     "pos": "L",
-     "gp": 70,
-     "known": true,
-     "gs_per_gp": 0.225,
-     "toi_per_gp_min": 9.1
     },
     {
      "id": 8481605,
@@ -1185,7 +1185,7 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1443.1,
+   "prior_elo": 1443.2,
    "proj_points": 78.1,
    "proj_points_vs_mean": -15.0,
    "skater_gs": 488.3,
@@ -1761,22 +1761,13 @@
    ]
   },
   "DET": {
-   "prior_elo": 1474.5,
-   "proj_points": 86.4,
-   "proj_points_vs_mean": -6.7,
-   "skater_gs": 627.2,
+   "prior_elo": 1462.4,
+   "proj_points": 83.2,
+   "proj_points_vs_mean": -9.9,
+   "skater_gs": 568.4,
    "goalie_gsax": 1.21,
    "unknown_in_lineup": 0,
    "lineup": [
-    {
-     "id": 8477946,
-     "name": "Dylan Larkin",
-     "pos": "C",
-     "gp": 156,
-     "known": true,
-     "gs_per_gp": 0.902,
-     "toi_per_gp_min": 20.1
-    },
     {
      "id": 8482078,
      "name": "Lucas Raymond",
@@ -1877,6 +1868,15 @@
      "toi_per_gp_min": 12.4
     },
     {
+     "id": 8484160,
+     "name": "Nate Danielson",
+     "pos": "C",
+     "gp": 28,
+     "known": true,
+     "gs_per_gp": 0.185,
+     "toi_per_gp_min": 11.1
+    },
+    {
      "id": 8481542,
      "name": "Moritz Seider",
      "pos": "D",
@@ -1949,15 +1949,6 @@
      "gsax_per_gp_raw": -0.079,
      "gsax_per_gp": -0.024,
      "role": "backup"
-    },
-    {
-     "id": 8485545,
-     "name": "Michal Postava",
-     "gp": 0,
-     "known": false,
-     "gsax_per_gp_raw": 0.0,
-     "gsax_per_gp": 0.0,
-     "role": "third"
     }
    ]
   },
@@ -2172,7 +2163,7 @@
    ]
   },
   "FLA": {
-   "prior_elo": 1541.8,
+   "prior_elo": 1541.9,
    "proj_points": 104.2,
    "proj_points_vs_mean": 11.0,
    "skater_gs": 959.8,
@@ -2373,10 +2364,10 @@
    ]
   },
   "LAK": {
-   "prior_elo": 1512.7,
-   "proj_points": 96.5,
-   "proj_points_vs_mean": 3.3,
-   "skater_gs": 810.0,
+   "prior_elo": 1514.4,
+   "proj_points": 97.0,
+   "proj_points_vs_mean": 3.8,
+   "skater_gs": 818.6,
    "goalie_gsax": 1.76,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -2480,13 +2471,13 @@
      "toi_per_gp_min": 12.8
     },
     {
-     "id": 8483756,
-     "name": "Jared Wright",
-     "pos": "R",
-     "gp": 23,
+     "id": 8481532,
+     "name": "Alex Turcotte",
+     "pos": "C",
+     "gp": 130,
      "known": true,
-     "gs_per_gp": 0.293,
-     "toi_per_gp_min": 11.4
+     "gs_per_gp": 0.398,
+     "toi_per_gp_min": 11.3
     },
     {
      "id": 8474563,
@@ -2768,7 +2759,7 @@
   "MTL": {
    "prior_elo": 1499.4,
    "proj_points": 93.0,
-   "proj_points_vs_mean": -0.2,
+   "proj_points_vs_mean": -0.1,
    "skater_gs": 719.2,
    "goalie_gsax": 6.95,
    "unknown_in_lineup": 0,
@@ -3360,7 +3351,7 @@
    ]
   },
   "NYI": {
-   "prior_elo": 1478.2,
+   "prior_elo": 1478.3,
    "proj_points": 87.4,
    "proj_points_vs_mean": -5.7,
    "skater_gs": 621.1,
@@ -4923,7 +4914,7 @@
    ]
   },
   "TBL": {
-   "prior_elo": 1545.4,
+   "prior_elo": 1545.5,
    "proj_points": 105.1,
    "proj_points_vs_mean": 12.0,
    "skater_gs": 944.6,
@@ -5700,7 +5691,7 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1522.9,
+   "prior_elo": 1523.0,
    "proj_points": 99.2,
    "proj_points_vs_mean": 6.1,
    "skater_gs": 870.0,
