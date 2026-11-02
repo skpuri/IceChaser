@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-10-31T23:23:59+00:00",
+ "generated_at": "2026-11-01T23:24:23+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-10-31T23:23:59+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-01T23:24:23+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -24,9 +24,9 @@
  "overrides_applied": {},
  "teams": {
   "ANA": {
-   "prior_elo": 1473.2,
+   "prior_elo": 1473.4,
    "proj_points": 86.1,
-   "proj_points_vs_mean": -7.1,
+   "proj_points_vs_mean": -7.0,
    "skater_gs": 635.8,
    "goalie_gsax": -1.81,
    "unknown_in_lineup": 2,
@@ -216,7 +216,7 @@
    ]
   },
   "BOS": {
-   "prior_elo": 1484.0,
+   "prior_elo": 1484.1,
    "proj_points": 88.9,
    "proj_points_vs_mean": -4.2,
    "skater_gs": 660.5,
@@ -408,7 +408,7 @@
    ]
   },
   "BUF": {
-   "prior_elo": 1503.8,
+   "prior_elo": 1503.9,
    "proj_points": 94.1,
    "proj_points_vs_mean": 1.0,
    "skater_gs": 761.6,
@@ -609,9 +609,9 @@
    ]
   },
   "CAR": {
-   "prior_elo": 1580.5,
+   "prior_elo": 1580.6,
    "proj_points": 114.4,
-   "proj_points_vs_mean": 21.2,
+   "proj_points_vs_mean": 21.3,
    "skater_gs": 1139.9,
    "goalie_gsax": 1.69,
    "unknown_in_lineup": 0,
@@ -801,7 +801,7 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1506.3,
+   "prior_elo": 1506.5,
    "proj_points": 94.8,
    "proj_points_vs_mean": 1.7,
    "skater_gs": 759.0,
@@ -993,7 +993,7 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1458.2,
+   "prior_elo": 1458.4,
    "proj_points": 82.1,
    "proj_points_vs_mean": -11.0,
    "skater_gs": 538.6,
@@ -1194,9 +1194,9 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1443.2,
+   "prior_elo": 1443.4,
    "proj_points": 78.1,
-   "proj_points_vs_mean": -15.0,
+   "proj_points_vs_mean": -14.9,
    "skater_gs": 488.3,
    "goalie_gsax": -1.5,
    "unknown_in_lineup": 0,
@@ -1386,7 +1386,7 @@
    ]
   },
   "COL": {
-   "prior_elo": 1568.5,
+   "prior_elo": 1568.7,
    "proj_points": 111.2,
    "proj_points_vs_mean": 18.1,
    "skater_gs": 1068.9,
@@ -1578,7 +1578,7 @@
    ]
   },
   "DAL": {
-   "prior_elo": 1509.1,
+   "prior_elo": 1509.2,
    "proj_points": 95.5,
    "proj_points_vs_mean": 2.4,
    "skater_gs": 778.0,
@@ -1770,10 +1770,10 @@
    ]
   },
   "DET": {
-   "prior_elo": 1459.7,
-   "proj_points": 82.5,
-   "proj_points_vs_mean": -10.6,
-   "skater_gs": 554.8,
+   "prior_elo": 1461.0,
+   "proj_points": 82.8,
+   "proj_points_vs_mean": -10.3,
+   "skater_gs": 560.0,
    "goalie_gsax": 1.21,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -1877,13 +1877,13 @@
      "toi_per_gp_min": 12.4
     },
     {
-     "id": 8484160,
-     "name": "Nate Danielson",
-     "pos": "C",
-     "gp": 28,
+     "id": 8481077,
+     "name": "John Leonard",
+     "pos": "L",
+     "gp": 11,
      "known": true,
-     "gs_per_gp": 0.185,
-     "toi_per_gp_min": 11.1
+     "gs_per_gp": 0.248,
+     "toi_per_gp_min": 11.5
     },
     {
      "id": 8481542,
@@ -1962,9 +1962,9 @@
    ]
   },
   "EDM": {
-   "prior_elo": 1520.2,
+   "prior_elo": 1520.3,
    "proj_points": 98.4,
-   "proj_points_vs_mean": 5.3,
+   "proj_points_vs_mean": 5.4,
    "skater_gs": 847.0,
    "goalie_gsax": 1.58,
    "unknown_in_lineup": 0,
@@ -2172,7 +2172,7 @@
    ]
   },
   "FLA": {
-   "prior_elo": 1542.0,
+   "prior_elo": 1542.1,
    "proj_points": 104.2,
    "proj_points_vs_mean": 11.1,
    "skater_gs": 959.8,
@@ -2373,9 +2373,9 @@
    ]
   },
   "LAK": {
-   "prior_elo": 1514.5,
+   "prior_elo": 1514.7,
    "proj_points": 97.0,
-   "proj_points_vs_mean": 3.8,
+   "proj_points_vs_mean": 3.9,
    "skater_gs": 818.6,
    "goalie_gsax": 1.76,
    "unknown_in_lineup": 0,
@@ -2565,9 +2565,9 @@
    ]
   },
   "MIN": {
-   "prior_elo": 1497.1,
+   "prior_elo": 1497.3,
    "proj_points": 92.4,
-   "proj_points_vs_mean": -0.8,
+   "proj_points_vs_mean": -0.7,
    "skater_gs": 745.1,
    "goalie_gsax": -0.46,
    "unknown_in_lineup": 0,
@@ -2766,7 +2766,7 @@
    ]
   },
   "MTL": {
-   "prior_elo": 1499.5,
+   "prior_elo": 1499.7,
    "proj_points": 93.0,
    "proj_points_vs_mean": -0.1,
    "skater_gs": 719.2,
@@ -2967,7 +2967,7 @@
    ]
   },
   "NJD": {
-   "prior_elo": 1537.0,
+   "prior_elo": 1537.2,
    "proj_points": 102.9,
    "proj_points_vs_mean": 9.8,
    "skater_gs": 893.2,
@@ -3155,23 +3155,14 @@
      "gsax_per_gp_raw": 0.224,
      "gsax_per_gp": 0.067,
      "role": "backup"
-    },
-    {
-     "id": 8482465,
-     "name": "R\u00e9mi Poirier",
-     "gp": 0,
-     "known": false,
-     "gsax_per_gp_raw": 0.0,
-     "gsax_per_gp": 0.0,
-     "role": "third"
     }
    ]
   },
   "NSH": {
-   "prior_elo": 1477.1,
-   "proj_points": 87.1,
-   "proj_points_vs_mean": -6.0,
-   "skater_gs": 646.8,
+   "prior_elo": 1476.8,
+   "proj_points": 87.0,
+   "proj_points_vs_mean": -6.1,
+   "skater_gs": 644.5,
    "goalie_gsax": -0.26,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -3230,6 +3221,15 @@
      "toi_per_gp_min": 14.2
     },
     {
+     "id": 8483524,
+     "name": "Shane Wright",
+     "pos": "C",
+     "gp": 153,
+     "known": true,
+     "gs_per_gp": 0.374,
+     "toi_per_gp_min": 13.9
+    },
+    {
      "id": 8480835,
      "name": "Jack Drury",
      "pos": "C",
@@ -3246,15 +3246,6 @@
      "known": true,
      "gs_per_gp": 0.634,
      "toi_per_gp_min": 13.4
-    },
-    {
-     "id": 8484241,
-     "name": "Matthew Wood",
-     "pos": "R",
-     "gp": 77,
-     "known": true,
-     "gs_per_gp": 0.402,
-     "toi_per_gp_min": 12.3
     },
     {
      "id": 8481535,
@@ -3360,7 +3351,7 @@
    ]
   },
   "NYI": {
-   "prior_elo": 1478.4,
+   "prior_elo": 1478.5,
    "proj_points": 87.4,
    "proj_points_vs_mean": -5.7,
    "skater_gs": 621.1,
@@ -3552,10 +3543,10 @@
    ]
   },
   "NYR": {
-   "prior_elo": 1494.8,
-   "proj_points": 91.8,
-   "proj_points_vs_mean": -1.4,
-   "skater_gs": 714.9,
+   "prior_elo": 1491.9,
+   "proj_points": 90.9,
+   "proj_points_vs_mean": -2.1,
+   "skater_gs": 699.7,
    "goalie_gsax": 3.29,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -3713,13 +3704,13 @@
      "toi_per_gp_min": 19.2
     },
     {
-     "id": 8482666,
-     "name": "Scott Morrow",
+     "id": 8481525,
+     "name": "Matthew Robertson",
      "pos": "D",
-     "gp": 43,
+     "gp": 74,
      "known": true,
-     "gs_per_gp": 0.417,
-     "toi_per_gp_min": 15.7
+     "gs_per_gp": 0.232,
+     "toi_per_gp_min": 17.4
     }
    ],
    "goalies": [
@@ -3762,7 +3753,7 @@
    ]
   },
   "OTT": {
-   "prior_elo": 1514.0,
+   "prior_elo": 1514.2,
    "proj_points": 96.8,
    "proj_points_vs_mean": 3.7,
    "skater_gs": 831.6,
@@ -3963,9 +3954,9 @@
    ]
   },
   "PHI": {
-   "prior_elo": 1469.0,
+   "prior_elo": 1469.2,
    "proj_points": 84.9,
-   "proj_points_vs_mean": -8.2,
+   "proj_points_vs_mean": -8.1,
    "skater_gs": 592.5,
    "goalie_gsax": 2.64,
    "unknown_in_lineup": 1,
@@ -4155,10 +4146,10 @@
    ]
   },
   "PIT": {
-   "prior_elo": 1503.2,
-   "proj_points": 94.0,
-   "proj_points_vs_mean": 0.9,
-   "skater_gs": 804.1,
+   "prior_elo": 1500.6,
+   "proj_points": 93.2,
+   "proj_points_vs_mean": 0.1,
+   "skater_gs": 790.4,
    "goalie_gsax": -6.18,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -4262,13 +4253,13 @@
      "toi_per_gp_min": 13.0
     },
     {
-     "id": 8483487,
-     "name": "Rutger McGroarty",
-     "pos": "R",
-     "gp": 32,
+     "id": 8481582,
+     "name": "Nick Robertson",
+     "pos": "L",
+     "gp": 147,
      "known": true,
-     "gs_per_gp": 0.496,
-     "toi_per_gp_min": 12.6
+     "gs_per_gp": 0.329,
+     "toi_per_gp_min": 12.4
     },
     {
      "id": 8474578,
@@ -4347,10 +4338,10 @@
    ]
   },
   "SEA": {
-   "prior_elo": 1457.5,
-   "proj_points": 81.9,
-   "proj_points_vs_mean": -11.2,
-   "skater_gs": 550.3,
+   "prior_elo": 1458.1,
+   "proj_points": 82.0,
+   "proj_points_vs_mean": -11.1,
+   "skater_gs": 552.6,
    "goalie_gsax": -0.08,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -4418,15 +4409,6 @@
      "toi_per_gp_min": 15.0
     },
     {
-     "id": 8483524,
-     "name": "Shane Wright",
-     "pos": "C",
-     "gp": 153,
-     "known": true,
-     "gs_per_gp": 0.374,
-     "toi_per_gp_min": 13.9
-    },
-    {
      "id": 8482713,
      "name": "Mackie Samoskevich",
      "pos": "R",
@@ -4443,6 +4425,15 @@
      "known": true,
      "gs_per_gp": 0.206,
      "toi_per_gp_min": 12.9
+    },
+    {
+     "id": 8484241,
+     "name": "Matthew Wood",
+     "pos": "R",
+     "gp": 77,
+     "known": true,
+     "gs_per_gp": 0.402,
+     "toi_per_gp_min": 12.3
     },
     {
      "id": 8482751,
@@ -4539,7 +4530,7 @@
    ]
   },
   "SJS": {
-   "prior_elo": 1469.2,
+   "prior_elo": 1469.3,
    "proj_points": 85.0,
    "proj_points_vs_mean": -8.1,
    "skater_gs": 622.6,
@@ -4731,9 +4722,9 @@
    ]
   },
   "STL": {
-   "prior_elo": 1476.3,
+   "prior_elo": 1476.5,
    "proj_points": 86.9,
-   "proj_points_vs_mean": -6.3,
+   "proj_points_vs_mean": -6.2,
    "skater_gs": 633.7,
    "goalie_gsax": 1.53,
    "unknown_in_lineup": 1,
@@ -4923,9 +4914,9 @@
    ]
   },
   "TBL": {
-   "prior_elo": 1545.6,
+   "prior_elo": 1545.7,
    "proj_points": 105.1,
-   "proj_points_vs_mean": 12.0,
+   "proj_points_vs_mean": 12.1,
    "skater_gs": 944.6,
    "goalie_gsax": 6.66,
    "unknown_in_lineup": 0,
@@ -5115,9 +5106,9 @@
    ]
   },
   "TOR": {
-   "prior_elo": 1496.7,
+   "prior_elo": 1496.8,
    "proj_points": 92.2,
-   "proj_points_vs_mean": -0.9,
+   "proj_points_vs_mean": -0.8,
    "skater_gs": 713.8,
    "goalie_gsax": 5.28,
    "unknown_in_lineup": 0,
@@ -5307,9 +5298,9 @@
    ]
   },
   "UTA": {
-   "prior_elo": 1533.5,
+   "prior_elo": 1533.6,
    "proj_points": 102.0,
-   "proj_points_vs_mean": 8.8,
+   "proj_points_vs_mean": 8.9,
    "skater_gs": 913.0,
    "goalie_gsax": 1.34,
    "unknown_in_lineup": 0,
@@ -5499,9 +5490,9 @@
    ]
   },
   "VAN": {
-   "prior_elo": 1441.0,
+   "prior_elo": 1441.2,
    "proj_points": 77.6,
-   "proj_points_vs_mean": -15.6,
+   "proj_points_vs_mean": -15.5,
    "skater_gs": 466.1,
    "goalie_gsax": 0.75,
    "unknown_in_lineup": 1,
@@ -5700,9 +5691,9 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1522.9,
+   "prior_elo": 1523.1,
    "proj_points": 99.2,
-   "proj_points_vs_mean": 6.0,
+   "proj_points_vs_mean": 6.1,
    "skater_gs": 869.3,
    "goalie_gsax": -0.17,
    "unknown_in_lineup": 0,
@@ -5892,9 +5883,9 @@
    ]
   },
   "WPG": {
-   "prior_elo": 1492.5,
+   "prior_elo": 1492.7,
    "proj_points": 91.2,
-   "proj_points_vs_mean": -2.0,
+   "proj_points_vs_mean": -1.9,
    "skater_gs": 711.8,
    "goalie_gsax": 1.71,
    "unknown_in_lineup": 0,
@@ -6093,7 +6084,7 @@
    ]
   },
   "WSH": {
-   "prior_elo": 1531.5,
+   "prior_elo": 1531.6,
    "proj_points": 101.4,
    "proj_points_vs_mean": 8.3,
    "skater_gs": 877.3,
@@ -6281,6 +6272,15 @@
      "gsax_per_gp_raw": 0.039,
      "gsax_per_gp": 0.012,
      "role": "backup"
+    },
+    {
+     "id": 8482465,
+     "name": "R\u00e9mi Poirier",
+     "gp": 0,
+     "known": false,
+     "gsax_per_gp_raw": 0.0,
+     "gsax_per_gp": 0.0,
+     "role": "third"
     }
    ]
   }
