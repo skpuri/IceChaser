@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-11-01T23:24:23+00:00",
+ "generated_at": "2026-11-02T23:42:28+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-11-01T23:24:23+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-02T23:42:28+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -24,10 +24,10 @@
  "overrides_applied": {},
  "teams": {
   "ANA": {
-   "prior_elo": 1473.4,
-   "proj_points": 86.1,
-   "proj_points_vs_mean": -7.0,
-   "skater_gs": 635.8,
+   "prior_elo": 1472.4,
+   "proj_points": 85.8,
+   "proj_points_vs_mean": -7.3,
+   "skater_gs": 631.2,
    "goalie_gsax": -1.81,
    "unknown_in_lineup": 2,
    "lineup": [
@@ -149,15 +149,6 @@
      "toi_per_gp_min": 23.3
     },
     {
-     "id": 8475324,
-     "name": "Nick Jensen",
-     "pos": "D",
-     "gp": 132,
-     "known": true,
-     "gs_per_gp": 0.309,
-     "toi_per_gp_min": 18.7
-    },
-    {
      "id": 8483490,
      "name": "Pavel Mintyukov",
      "pos": "D",
@@ -192,6 +183,15 @@
      "known": false,
      "gs_per_gp": 0.193,
      "toi_per_gp_min": 15.6
+    },
+    {
+     "id": 8482178,
+     "name": "Ian Moore",
+     "pos": "D",
+     "gp": 70,
+     "known": true,
+     "gs_per_gp": 0.253,
+     "toi_per_gp_min": 13.7
     }
    ],
    "goalies": [
@@ -212,6 +212,15 @@
      "gsax_per_gp_raw": -0.25,
      "gsax_per_gp": -0.075,
      "role": "backup"
+    },
+    {
+     "id": 8476316,
+     "name": "Laurent Brossoit",
+     "gp": 24,
+     "known": true,
+     "gsax_per_gp_raw": 0.447,
+     "gsax_per_gp": 0.133,
+     "role": "third"
     }
    ]
   },
@@ -801,7 +810,7 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1506.5,
+   "prior_elo": 1506.4,
    "proj_points": 94.8,
    "proj_points_vs_mean": 1.7,
    "skater_gs": 759.0,
@@ -993,7 +1002,7 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1458.4,
+   "prior_elo": 1458.3,
    "proj_points": 82.1,
    "proj_points_vs_mean": -11.0,
    "skater_gs": 538.6,
@@ -1194,7 +1203,7 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1443.4,
+   "prior_elo": 1443.3,
    "proj_points": 78.1,
    "proj_points_vs_mean": -14.9,
    "skater_gs": 488.3,
@@ -1386,7 +1395,7 @@
    ]
   },
   "COL": {
-   "prior_elo": 1568.7,
+   "prior_elo": 1568.6,
    "proj_points": 111.2,
    "proj_points_vs_mean": 18.1,
    "skater_gs": 1068.9,
@@ -1770,7 +1779,7 @@
    ]
   },
   "DET": {
-   "prior_elo": 1461.0,
+   "prior_elo": 1460.9,
    "proj_points": 82.8,
    "proj_points_vs_mean": -10.3,
    "skater_gs": 560.0,
@@ -1964,7 +1973,7 @@
   "EDM": {
    "prior_elo": 1520.3,
    "proj_points": 98.4,
-   "proj_points_vs_mean": 5.4,
+   "proj_points_vs_mean": 5.3,
    "skater_gs": 847.0,
    "goalie_gsax": 1.58,
    "unknown_in_lineup": 0,
@@ -2360,20 +2369,11 @@
      "gsax_per_gp_raw": -0.029,
      "gsax_per_gp": -0.009,
      "role": "backup"
-    },
-    {
-     "id": 8484900,
-     "name": "Cooper Black",
-     "gp": 0,
-     "known": false,
-     "gsax_per_gp_raw": 0.0,
-     "gsax_per_gp": 0.0,
-     "role": "third"
     }
    ]
   },
   "LAK": {
-   "prior_elo": 1514.7,
+   "prior_elo": 1514.6,
    "proj_points": 97.0,
    "proj_points_vs_mean": 3.9,
    "skater_gs": 818.6,
@@ -2565,7 +2565,7 @@
    ]
   },
   "MIN": {
-   "prior_elo": 1497.3,
+   "prior_elo": 1497.2,
    "proj_points": 92.4,
    "proj_points_vs_mean": -0.7,
    "skater_gs": 745.1,
@@ -2766,7 +2766,7 @@
    ]
   },
   "MTL": {
-   "prior_elo": 1499.7,
+   "prior_elo": 1499.6,
    "proj_points": 93.0,
    "proj_points_vs_mean": -0.1,
    "skater_gs": 719.2,
@@ -2967,7 +2967,7 @@
    ]
   },
   "NJD": {
-   "prior_elo": 1537.2,
+   "prior_elo": 1537.1,
    "proj_points": 102.9,
    "proj_points_vs_mean": 9.8,
    "skater_gs": 893.2,
@@ -3159,7 +3159,7 @@
    ]
   },
   "NSH": {
-   "prior_elo": 1476.8,
+   "prior_elo": 1476.7,
    "proj_points": 87.0,
    "proj_points_vs_mean": -6.1,
    "skater_gs": 644.5,
@@ -3543,10 +3543,10 @@
    ]
   },
   "NYR": {
-   "prior_elo": 1491.9,
-   "proj_points": 90.9,
-   "proj_points_vs_mean": -2.1,
-   "skater_gs": 699.7,
+   "prior_elo": 1490.7,
+   "proj_points": 90.7,
+   "proj_points_vs_mean": -2.4,
+   "skater_gs": 694.5,
    "goalie_gsax": 3.29,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -3632,15 +3632,6 @@
      "toi_per_gp_min": 13.5
     },
     {
-     "id": 8479390,
-     "name": "Taylor Raddysh",
-     "pos": "R",
-     "gp": 148,
-     "known": true,
-     "gs_per_gp": 0.286,
-     "toi_per_gp_min": 12.1
-    },
-    {
      "id": 8480813,
      "name": "Joseph Veleno",
      "pos": "C",
@@ -3657,6 +3648,15 @@
      "known": true,
      "gs_per_gp": 0.357,
      "toi_per_gp_min": 11.2
+    },
+    {
+     "id": 8481789,
+     "name": "Tye Kartye",
+     "pos": "L",
+     "gp": 127,
+     "known": true,
+     "gs_per_gp": 0.222,
+     "toi_per_gp_min": 10.8
     },
     {
      "id": 8479323,
@@ -3753,7 +3753,7 @@
    ]
   },
   "OTT": {
-   "prior_elo": 1514.2,
+   "prior_elo": 1514.1,
    "proj_points": 96.8,
    "proj_points_vs_mean": 3.7,
    "skater_gs": 831.6,
@@ -3954,9 +3954,9 @@
    ]
   },
   "PHI": {
-   "prior_elo": 1469.2,
+   "prior_elo": 1469.1,
    "proj_points": 84.9,
-   "proj_points_vs_mean": -8.1,
+   "proj_points_vs_mean": -8.2,
    "skater_gs": 592.5,
    "goalie_gsax": 2.64,
    "unknown_in_lineup": 1,
@@ -4146,7 +4146,7 @@
    ]
   },
   "PIT": {
-   "prior_elo": 1500.6,
+   "prior_elo": 1500.5,
    "proj_points": 93.2,
    "proj_points_vs_mean": 0.1,
    "skater_gs": 790.4,
@@ -4722,10 +4722,10 @@
    ]
   },
   "STL": {
-   "prior_elo": 1476.5,
-   "proj_points": 86.9,
-   "proj_points_vs_mean": -6.2,
-   "skater_gs": 633.7,
+   "prior_elo": 1480.1,
+   "proj_points": 87.9,
+   "proj_points_vs_mean": -5.2,
+   "skater_gs": 651.9,
    "goalie_gsax": 1.53,
    "unknown_in_lineup": 1,
    "lineup": [
@@ -4874,15 +4874,6 @@
      "toi_per_gp_min": 19.1
     },
     {
-     "id": 8482733,
-     "name": "Logan Mailloux",
-     "pos": "D",
-     "gp": 74,
-     "known": true,
-     "gs_per_gp": 0.175,
-     "toi_per_gp_min": 16.7
-    },
-    {
      "id": 8482111,
      "name": "Justin Barron",
      "pos": "D",
@@ -4890,6 +4881,15 @@
      "known": true,
      "gs_per_gp": 0.264,
      "toi_per_gp_min": 16.0
+    },
+    {
+     "id": 8484188,
+     "name": "Theo Lindstein",
+     "pos": "D",
+     "gp": 17,
+     "known": true,
+     "gs_per_gp": 0.397,
+     "toi_per_gp_min": 15.8
     }
    ],
    "goalies": [
@@ -4916,7 +4916,7 @@
   "TBL": {
    "prior_elo": 1545.7,
    "proj_points": 105.1,
-   "proj_points_vs_mean": 12.1,
+   "proj_points_vs_mean": 12.0,
    "skater_gs": 944.6,
    "goalie_gsax": 6.66,
    "unknown_in_lineup": 0,
@@ -5490,7 +5490,7 @@
    ]
   },
   "VAN": {
-   "prior_elo": 1441.2,
+   "prior_elo": 1441.1,
    "proj_points": 77.6,
    "proj_points_vs_mean": -15.5,
    "skater_gs": 466.1,
@@ -5691,7 +5691,7 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1523.1,
+   "prior_elo": 1523.0,
    "proj_points": 99.2,
    "proj_points_vs_mean": 6.1,
    "skater_gs": 869.3,
@@ -5883,7 +5883,7 @@
    ]
   },
   "WPG": {
-   "prior_elo": 1492.7,
+   "prior_elo": 1492.6,
    "proj_points": 91.2,
    "proj_points_vs_mean": -1.9,
    "skater_gs": 711.8,

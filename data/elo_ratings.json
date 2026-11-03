@@ -1,22 +1,22 @@
 {
-  "updated_at": "2026-11-02T03:44:03.146222Z",
-  "games_processed": 1543,
+  "updated_at": "2026-11-03T05:42:38.924619Z",
+  "games_processed": 1547,
   "k_factor": 10,
   "home_bonus": 100,
   "ot_discount": 0.5,
   "ratings": {
     "ANA": 1480.3,
-    "BOS": 1540.8,
+    "BOS": 1542.3,
     "BUF": 1567.8,
     "CAR": 1598.6,
     "CBJ": 1476.5,
-    "CGY": 1459.1,
-    "CHI": 1409.4,
-    "COL": 1578.0,
+    "CGY": 1465.7,
+    "CHI": 1405.4,
+    "COL": 1582.1,
     "DAL": 1547.6,
-    "DET": 1474.6,
+    "DET": 1481.4,
     "EDM": 1532.1,
-    "FLA": 1504.4,
+    "FLA": 1497.6,
     "LAK": 1453.2,
     "MIN": 1557.1,
     "MTL": 1560.1,
@@ -28,57 +28,17 @@
     "PHI": 1491.0,
     "PIT": 1497.1,
     "SEA": 1461.8,
-    "SJS": 1473.2,
+    "SJS": 1466.6,
     "STL": 1510.0,
     "TBL": 1561.0,
     "TOR": 1454.6,
     "UTA": 1516.2,
     "VAN": 1354.2,
-    "VGK": 1501.1,
+    "VGK": 1499.6,
     "WPG": 1451.6,
     "WSH": 1528.9
   },
   "last_10_games": [
-    {
-      "game_id": 2026020222,
-      "date": "2026-10-31",
-      "home": "SJS",
-      "away": "OTT",
-      "home_win": false,
-      "overtime": false,
-      "home_elo_after": 1473.2,
-      "away_elo_after": 1543.0
-    },
-    {
-      "game_id": 2026020223,
-      "date": "2026-10-31",
-      "home": "MTL",
-      "away": "PIT",
-      "home_win": true,
-      "overtime": false,
-      "home_elo_after": 1560.1,
-      "away_elo_after": 1497.1
-    },
-    {
-      "game_id": 2026020224,
-      "date": "2026-10-31",
-      "home": "VAN",
-      "away": "TOR",
-      "home_win": false,
-      "overtime": false,
-      "home_elo_after": 1354.2,
-      "away_elo_after": 1454.6
-    },
-    {
-      "game_id": 2026020225,
-      "date": "2026-10-31",
-      "home": "DAL",
-      "away": "CBJ",
-      "home_win": true,
-      "overtime": false,
-      "home_elo_after": 1547.6,
-      "away_elo_after": 1476.5
-    },
     {
       "game_id": 2026020226,
       "date": "2026-10-31",
@@ -138,6 +98,46 @@
       "overtime": false,
       "home_elo_after": 1480.3,
       "away_elo_after": 1538.5
+    },
+    {
+      "game_id": 2026020232,
+      "date": "2026-11-02",
+      "home": "BOS",
+      "away": "VGK",
+      "home_win": true,
+      "overtime": true,
+      "home_elo_after": 1542.3,
+      "away_elo_after": 1499.6
+    },
+    {
+      "game_id": 2026020233,
+      "date": "2026-11-02",
+      "home": "FLA",
+      "away": "DET",
+      "home_win": false,
+      "overtime": false,
+      "home_elo_after": 1497.6,
+      "away_elo_after": 1481.4
+    },
+    {
+      "game_id": 2026020234,
+      "date": "2026-11-02",
+      "home": "CHI",
+      "away": "COL",
+      "home_win": false,
+      "overtime": false,
+      "home_elo_after": 1405.4,
+      "away_elo_after": 1582.1
+    },
+    {
+      "game_id": 2026020235,
+      "date": "2026-11-02",
+      "home": "SJS",
+      "away": "CGY",
+      "home_win": false,
+      "overtime": false,
+      "home_elo_after": 1466.6,
+      "away_elo_after": 1465.7
     }
   ]
 }
