@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-11-04T00:03:42+00:00",
+ "generated_at": "2026-11-05T00:05:40+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-11-04T00:03:42+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-05T00:05:40+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -810,7 +810,7 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1506.5,
+   "prior_elo": 1506.4,
    "proj_points": 94.8,
    "proj_points_vs_mean": 1.7,
    "skater_gs": 759.0,
@@ -1002,7 +1002,7 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1458.4,
+   "prior_elo": 1458.3,
    "proj_points": 82.1,
    "proj_points_vs_mean": -11.0,
    "skater_gs": 538.6,
@@ -1395,7 +1395,7 @@
    ]
   },
   "COL": {
-   "prior_elo": 1568.7,
+   "prior_elo": 1568.6,
    "proj_points": 111.2,
    "proj_points_vs_mean": 18.1,
    "skater_gs": 1068.9,
@@ -1779,7 +1779,7 @@
    ]
   },
   "DET": {
-   "prior_elo": 1461.0,
+   "prior_elo": 1460.9,
    "proj_points": 82.8,
    "proj_points_vs_mean": -10.3,
    "skater_gs": 560.0,
@@ -2565,7 +2565,7 @@
    ]
   },
   "MIN": {
-   "prior_elo": 1497.3,
+   "prior_elo": 1497.2,
    "proj_points": 92.4,
    "proj_points_vs_mean": -0.7,
    "skater_gs": 745.1,
@@ -3753,7 +3753,7 @@
    ]
   },
   "OTT": {
-   "prior_elo": 1514.2,
+   "prior_elo": 1514.1,
    "proj_points": 96.8,
    "proj_points_vs_mean": 3.7,
    "skater_gs": 831.6,
@@ -3954,7 +3954,7 @@
    ]
   },
   "PHI": {
-   "prior_elo": 1469.2,
+   "prior_elo": 1469.1,
    "proj_points": 84.9,
    "proj_points_vs_mean": -8.1,
    "skater_gs": 592.5,
@@ -5691,10 +5691,10 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1523.1,
+   "prior_elo": 1523.2,
    "proj_points": 99.2,
    "proj_points_vs_mean": 6.1,
-   "skater_gs": 869.3,
+   "skater_gs": 870.0,
    "goalie_gsax": -0.17,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -5789,15 +5789,6 @@
      "toi_per_gp_min": 14.0
     },
     {
-     "id": 8480007,
-     "name": "Jonas Rondbjerg",
-     "pos": "R",
-     "gp": 17,
-     "known": true,
-     "gs_per_gp": 0.064,
-     "toi_per_gp_min": 10.2
-    },
-    {
      "id": 8483553,
      "name": "Marc Gatcomb",
      "pos": "C",
@@ -5805,6 +5796,15 @@
      "known": true,
      "gs_per_gp": 0.198,
      "toi_per_gp_min": 10.0
+    },
+    {
+     "id": 8481534,
+     "name": "Raphael Lavoie",
+     "pos": "C",
+     "gp": 10,
+     "known": true,
+     "gs_per_gp": 0.072,
+     "toi_per_gp_min": 9.9
     },
     {
      "id": 8478397,
@@ -5883,10 +5883,10 @@
    ]
   },
   "WPG": {
-   "prior_elo": 1492.7,
-   "proj_points": 91.2,
-   "proj_points_vs_mean": -1.9,
-   "skater_gs": 711.8,
+   "prior_elo": 1493.6,
+   "proj_points": 91.4,
+   "proj_points_vs_mean": -1.7,
+   "skater_gs": 716.4,
    "goalie_gsax": 1.71,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -5990,12 +5990,12 @@
      "toi_per_gp_min": 11.2
     },
     {
-     "id": 8483471,
-     "name": "Brad Lambert",
-     "pos": "C",
-     "gp": 30,
+     "id": 8481043,
+     "name": "Cole Koepke",
+     "pos": "L",
+     "gp": 139,
      "known": true,
-     "gs_per_gp": 0.157,
+     "gs_per_gp": 0.212,
      "toi_per_gp_min": 10.9
     },
     {
