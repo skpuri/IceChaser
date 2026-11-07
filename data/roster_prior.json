@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-11-06T00:24:06+00:00",
+ "generated_at": "2026-11-07T00:42:37+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-11-06T00:24:06+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-07T00:42:37+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -24,7 +24,7 @@
  "overrides_applied": {},
  "teams": {
   "ANA": {
-   "prior_elo": 1472.5,
+   "prior_elo": 1472.6,
    "proj_points": 85.8,
    "proj_points_vs_mean": -7.2,
    "skater_gs": 631.2,
@@ -810,10 +810,10 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1502.9,
-   "proj_points": 93.8,
-   "proj_points_vs_mean": 0.8,
-   "skater_gs": 741.0,
+   "prior_elo": 1503.9,
+   "proj_points": 94.1,
+   "proj_points_vs_mean": 1.0,
+   "skater_gs": 746.0,
    "goalie_gsax": 5.6,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -917,13 +917,13 @@
      "toi_per_gp_min": 11.5
     },
     {
-     "id": 8479066,
-     "name": "Ryan Lomberg",
-     "pos": "L",
-     "gp": 137,
+     "id": 8478904,
+     "name": "Steven Lorentz",
+     "pos": "C",
+     "gp": 151,
      "known": true,
-     "gs_per_gp": 0.122,
-     "toi_per_gp_min": 8.8
+     "gs_per_gp": 0.183,
+     "toi_per_gp_min": 11.2
     },
     {
      "id": 8478460,
@@ -1004,7 +1004,7 @@
   "CGY": {
    "prior_elo": 1458.5,
    "proj_points": 82.1,
-   "proj_points_vs_mean": -11.0,
+   "proj_points_vs_mean": -10.9,
    "skater_gs": 538.6,
    "goalie_gsax": 2.93,
    "unknown_in_lineup": 1,
@@ -1578,7 +1578,7 @@
    ]
   },
   "DAL": {
-   "prior_elo": 1509.3,
+   "prior_elo": 1509.4,
    "proj_points": 95.5,
    "proj_points_vs_mean": 2.5,
    "skater_gs": 778.0,
@@ -2177,15 +2177,6 @@
      "gsax_per_gp_raw": 0.0,
      "gsax_per_gp": 0.0,
      "role": "third"
-    },
-    {
-     "id": 8486540,
-     "name": "Brett Epp",
-     "gp": 0,
-     "known": false,
-     "gsax_per_gp_raw": 0.0,
-     "gsax_per_gp": 0.0,
-     "role": "third"
     }
    ]
   },
@@ -2777,7 +2768,7 @@
   "MTL": {
    "prior_elo": 1499.8,
    "proj_points": 93.0,
-   "proj_points_vs_mean": -0.1,
+   "proj_points_vs_mean": -0.0,
    "skater_gs": 719.2,
    "goalie_gsax": 6.95,
    "unknown_in_lineup": 0,
@@ -3742,15 +3733,6 @@
      "role": "backup"
     },
     {
-     "id": 8473503,
-     "name": "James Reimer",
-     "gp": 63,
-     "known": true,
-     "gsax_per_gp_raw": 0.112,
-     "gsax_per_gp": 0.033,
-     "role": "third"
-    },
-    {
      "id": 8482193,
      "name": "Dylan Garand",
      "gp": 3,
@@ -3963,7 +3945,7 @@
    ]
   },
   "PHI": {
-   "prior_elo": 1469.2,
+   "prior_elo": 1469.3,
    "proj_points": 84.9,
    "proj_points_vs_mean": -8.1,
    "skater_gs": 592.5,
@@ -4155,12 +4137,12 @@
    ]
   },
   "PIT": {
-   "prior_elo": 1498.8,
-   "proj_points": 92.7,
-   "proj_points_vs_mean": -0.3,
-   "skater_gs": 781.6,
+   "prior_elo": 1500.7,
+   "proj_points": 93.2,
+   "proj_points_vs_mean": 0.2,
+   "skater_gs": 790.4,
    "goalie_gsax": -6.18,
-   "unknown_in_lineup": 1,
+   "unknown_in_lineup": 0,
    "lineup": [
     {
      "id": 8471675,
@@ -4271,15 +4253,6 @@
      "toi_per_gp_min": 12.4
     },
     {
-     "id": 8486169,
-     "name": "Jake Livanavage",
-     "pos": "D",
-     "gp": 1,
-     "known": false,
-     "gs_per_gp": 0.193,
-     "toi_per_gp_min": 25.2
-    },
-    {
      "id": 8474578,
      "name": "Erik Karlsson",
      "pos": "D",
@@ -4322,6 +4295,15 @@
      "gp": 89,
      "known": true,
      "gs_per_gp": 0.203,
+     "toi_per_gp_min": 15.7
+    },
+    {
+     "id": 8481527,
+     "name": "Kaedan Korczak",
+     "pos": "D",
+     "gp": 118,
+     "known": true,
+     "gs_per_gp": 0.301,
      "toi_per_gp_min": 15.7
     }
    ],
@@ -4539,7 +4521,7 @@
    ]
   },
   "SJS": {
-   "prior_elo": 1469.4,
+   "prior_elo": 1469.5,
    "proj_points": 85.0,
    "proj_points_vs_mean": -8.1,
    "skater_gs": 622.6,
@@ -4731,10 +4713,10 @@
    ]
   },
   "STL": {
-   "prior_elo": 1480.3,
-   "proj_points": 87.9,
-   "proj_points_vs_mean": -5.2,
-   "skater_gs": 651.9,
+   "prior_elo": 1476.6,
+   "proj_points": 86.9,
+   "proj_points_vs_mean": -6.2,
+   "skater_gs": 633.7,
    "goalie_gsax": 1.53,
    "unknown_in_lineup": 1,
    "lineup": [
@@ -4883,6 +4865,15 @@
      "toi_per_gp_min": 19.1
     },
     {
+     "id": 8482733,
+     "name": "Logan Mailloux",
+     "pos": "D",
+     "gp": 74,
+     "known": true,
+     "gs_per_gp": 0.175,
+     "toi_per_gp_min": 16.7
+    },
+    {
      "id": 8482111,
      "name": "Justin Barron",
      "pos": "D",
@@ -4890,15 +4881,6 @@
      "known": true,
      "gs_per_gp": 0.264,
      "toi_per_gp_min": 16.0
-    },
-    {
-     "id": 8484188,
-     "name": "Theo Lindstein",
-     "pos": "D",
-     "gp": 17,
-     "known": true,
-     "gs_per_gp": 0.397,
-     "toi_per_gp_min": 15.8
     }
    ],
    "goalies": [
@@ -5115,7 +5097,7 @@
    ]
   },
   "TOR": {
-   "prior_elo": 1496.9,
+   "prior_elo": 1497.0,
    "proj_points": 92.2,
    "proj_points_vs_mean": -0.8,
    "skater_gs": 713.8,
@@ -5702,7 +5684,7 @@
   "VGK": {
    "prior_elo": 1523.3,
    "proj_points": 99.2,
-   "proj_points_vs_mean": 6.1,
+   "proj_points_vs_mean": 6.2,
    "skater_gs": 870.0,
    "goalie_gsax": -0.17,
    "unknown_in_lineup": 0,
