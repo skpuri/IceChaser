@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-11-11T01:42:38+00:00",
+ "generated_at": "2026-11-12T02:04:22+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-11-11T01:42:38+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-12T02:04:22+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -810,7 +810,7 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1503.9,
+   "prior_elo": 1504.0,
    "proj_points": 94.1,
    "proj_points_vs_mean": 1.0,
    "skater_gs": 746.0,
@@ -1002,7 +1002,7 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1458.5,
+   "prior_elo": 1458.6,
    "proj_points": 82.1,
    "proj_points_vs_mean": -10.9,
    "skater_gs": 538.6,
@@ -1194,7 +1194,7 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1448.1,
+   "prior_elo": 1448.2,
    "proj_points": 79.4,
    "proj_points_vs_mean": -13.7,
    "skater_gs": 488.3,
@@ -2364,7 +2364,7 @@
    ]
   },
   "LAK": {
-   "prior_elo": 1514.8,
+   "prior_elo": 1514.9,
    "proj_points": 97.0,
    "proj_points_vs_mean": 3.9,
    "skater_gs": 818.6,
@@ -2757,7 +2757,7 @@
    ]
   },
   "MTL": {
-   "prior_elo": 1499.8,
+   "prior_elo": 1499.9,
    "proj_points": 93.0,
    "proj_points_vs_mean": -0.0,
    "skater_gs": 719.2,
@@ -2958,7 +2958,7 @@
    ]
   },
   "NJD": {
-   "prior_elo": 1537.3,
+   "prior_elo": 1537.4,
    "proj_points": 102.9,
    "proj_points_vs_mean": 9.9,
    "skater_gs": 893.2,
@@ -3150,7 +3150,7 @@
    ]
   },
   "NSH": {
-   "prior_elo": 1476.9,
+   "prior_elo": 1477.0,
    "proj_points": 87.0,
    "proj_points_vs_mean": -6.1,
    "skater_gs": 644.5,
@@ -3534,7 +3534,7 @@
    ]
   },
   "NYR": {
-   "prior_elo": 1490.9,
+   "prior_elo": 1491.0,
    "proj_points": 90.7,
    "proj_points_vs_mean": -2.4,
    "skater_gs": 694.5,
@@ -3735,7 +3735,7 @@
    ]
   },
   "OTT": {
-   "prior_elo": 1514.3,
+   "prior_elo": 1514.4,
    "proj_points": 96.8,
    "proj_points_vs_mean": 3.8,
    "skater_gs": 831.6,
@@ -4119,7 +4119,7 @@
    ]
   },
   "PIT": {
-   "prior_elo": 1503.5,
+   "prior_elo": 1503.6,
    "proj_points": 94.0,
    "proj_points_vs_mean": 0.9,
    "skater_gs": 804.1,
@@ -5280,10 +5280,10 @@
    ]
   },
   "UTA": {
-   "prior_elo": 1533.8,
-   "proj_points": 102.0,
-   "proj_points_vs_mean": 8.9,
-   "skater_gs": 913.0,
+   "prior_elo": 1532.9,
+   "proj_points": 101.7,
+   "proj_points_vs_mean": 8.7,
+   "skater_gs": 908.8,
    "goalie_gsax": 1.34,
    "unknown_in_lineup": 0,
    "lineup": [
@@ -5378,6 +5378,15 @@
      "toi_per_gp_min": 13.7
     },
     {
+     "id": 8484388,
+     "name": "Daniil But",
+     "pos": "L",
+     "gp": 29,
+     "known": true,
+     "gs_per_gp": 0.419,
+     "toi_per_gp_min": 12.5
+    },
+    {
      "id": 8479619,
      "name": "Michael Carcone",
      "pos": "L",
@@ -5385,15 +5394,6 @@
      "known": true,
      "gs_per_gp": 0.54,
      "toi_per_gp_min": 12.2
-    },
-    {
-     "id": 8479977,
-     "name": "Kailer Yamamoto",
-     "pos": "R",
-     "gp": 71,
-     "known": true,
-     "gs_per_gp": 0.47,
-     "toi_per_gp_min": 11.8
     },
     {
      "id": 8479410,
