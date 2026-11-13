@@ -1507,3 +1507,20 @@ body {
   color: var(--text-muted);
   font-size: 13px;
 }
+
+/* Sibling-site pills (NFL / NBA). Amber marks them as other products, not
+   part of IceChaser; same treatment as the league pills on BlitzChaser. */
+.league-links { display: inline-flex; gap: 4px; }
+.league-pill {
+  background: #b45309; border: 1px solid #b45309; color: #fff;
+  padding: 4px 9px; border-radius: 20px; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.02em; text-decoration: none; white-space: nowrap;
+}
+.league-pill:hover { background: #92400e; border-color: #92400e; color: #fff; }
+:root[data-theme="dark"] .league-pill { background: #d97706; border-color: #d97706; color: #1a1205; }
+@media (max-width: 640px) {
+  /* Let the header controls wrap onto a second row instead of pushing the
+     page wider than the phone. */
+  .header-inner { flex-wrap: wrap; row-gap: 8px; }
+  .header-meta { flex-wrap: wrap; justify-content: flex-end; row-gap: 8px; }
+}
