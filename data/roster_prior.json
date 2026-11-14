@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-11-13T02:05:52+00:00",
+ "generated_at": "2026-11-14T02:22:51+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-11-13T02:05:52+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-14T02:22:51+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -24,7 +24,7 @@
  "overrides_applied": {},
  "teams": {
   "ANA": {
-   "prior_elo": 1472.6,
+   "prior_elo": 1472.7,
    "proj_points": 85.8,
    "proj_points_vs_mean": -7.2,
    "skater_gs": 631.2,
@@ -225,7 +225,7 @@
    ]
   },
   "BOS": {
-   "prior_elo": 1484.3,
+   "prior_elo": 1484.4,
    "proj_points": 88.9,
    "proj_points_vs_mean": -4.1,
    "skater_gs": 660.5,
@@ -417,7 +417,7 @@
    ]
   },
   "BUF": {
-   "prior_elo": 1504.1,
+   "prior_elo": 1504.2,
    "proj_points": 94.1,
    "proj_points_vs_mean": 1.1,
    "skater_gs": 761.6,
@@ -618,7 +618,7 @@
    ]
   },
   "CAR": {
-   "prior_elo": 1580.8,
+   "prior_elo": 1580.9,
    "proj_points": 114.4,
    "proj_points_vs_mean": 21.3,
    "skater_gs": 1139.9,
@@ -810,9 +810,9 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1504.0,
+   "prior_elo": 1504.1,
    "proj_points": 94.1,
-   "proj_points_vs_mean": 1.0,
+   "proj_points_vs_mean": 1.1,
    "skater_gs": 746.0,
    "goalie_gsax": 5.6,
    "unknown_in_lineup": 0,
@@ -1002,10 +1002,10 @@
    ]
   },
   "CGY": {
-   "prior_elo": 1458.6,
-   "proj_points": 82.1,
-   "proj_points_vs_mean": -10.9,
-   "skater_gs": 538.6,
+   "prior_elo": 1457.8,
+   "proj_points": 81.9,
+   "proj_points_vs_mean": -11.1,
+   "skater_gs": 534.4,
    "goalie_gsax": 2.93,
    "unknown_in_lineup": 1,
    "lineup": [
@@ -1100,15 +1100,6 @@
      "toi_per_gp_min": 12.7
     },
     {
-     "id": 8484180,
-     "name": "Samuel Honzek",
-     "pos": "L",
-     "gp": 23,
-     "known": true,
-     "gs_per_gp": 0.27,
-     "toi_per_gp_min": 12.4
-    },
-    {
      "id": 8484234,
      "name": "Aydar Suniev",
      "pos": "L",
@@ -1116,6 +1107,15 @@
      "known": false,
      "gs_per_gp": 0.193,
      "toi_per_gp_min": 12.1
+    },
+    {
+     "id": 8483609,
+     "name": "Adam Klapka",
+     "pos": "R",
+     "gp": 110,
+     "known": true,
+     "gs_per_gp": 0.218,
+     "toi_per_gp_min": 10.4
     },
     {
      "id": 8480860,
@@ -1194,7 +1194,7 @@
    ]
   },
   "CHI": {
-   "prior_elo": 1448.2,
+   "prior_elo": 1448.3,
    "proj_points": 79.4,
    "proj_points_vs_mean": -13.7,
    "skater_gs": 488.3,
@@ -1386,7 +1386,7 @@
    ]
   },
   "COL": {
-   "prior_elo": 1568.8,
+   "prior_elo": 1568.9,
    "proj_points": 111.2,
    "proj_points_vs_mean": 18.2,
    "skater_gs": 1068.9,
@@ -1578,7 +1578,7 @@
    ]
   },
   "DAL": {
-   "prior_elo": 1509.4,
+   "prior_elo": 1509.5,
    "proj_points": 95.5,
    "proj_points_vs_mean": 2.5,
    "skater_gs": 778.0,
@@ -1779,7 +1779,7 @@
    ]
   },
   "DET": {
-   "prior_elo": 1460.2,
+   "prior_elo": 1460.3,
    "proj_points": 82.5,
    "proj_points_vs_mean": -10.5,
    "skater_gs": 555.4,
@@ -1971,7 +1971,7 @@
    ]
   },
   "EDM": {
-   "prior_elo": 1520.5,
+   "prior_elo": 1520.6,
    "proj_points": 98.4,
    "proj_points_vs_mean": 5.4,
    "skater_gs": 847.0,
@@ -2172,7 +2172,7 @@
    ]
   },
   "FLA": {
-   "prior_elo": 1542.3,
+   "prior_elo": 1542.4,
    "proj_points": 104.2,
    "proj_points_vs_mean": 11.2,
    "skater_gs": 959.8,
@@ -2364,7 +2364,7 @@
    ]
   },
   "LAK": {
-   "prior_elo": 1514.9,
+   "prior_elo": 1515.0,
    "proj_points": 97.0,
    "proj_points_vs_mean": 3.9,
    "skater_gs": 818.6,
@@ -2556,7 +2556,7 @@
    ]
   },
   "MIN": {
-   "prior_elo": 1497.4,
+   "prior_elo": 1497.5,
    "proj_points": 92.4,
    "proj_points_vs_mean": -0.7,
    "skater_gs": 745.1,
@@ -2757,7 +2757,7 @@
    ]
   },
   "MTL": {
-   "prior_elo": 1499.9,
+   "prior_elo": 1500.0,
    "proj_points": 93.0,
    "proj_points_vs_mean": -0.0,
    "skater_gs": 719.2,
@@ -3150,7 +3150,7 @@
    ]
   },
   "NSH": {
-   "prior_elo": 1477.0,
+   "prior_elo": 1477.1,
    "proj_points": 87.0,
    "proj_points_vs_mean": -6.1,
    "skater_gs": 644.5,
@@ -3342,7 +3342,7 @@
    ]
   },
   "NYI": {
-   "prior_elo": 1478.7,
+   "prior_elo": 1478.8,
    "proj_points": 87.4,
    "proj_points_vs_mean": -5.6,
    "skater_gs": 621.1,
@@ -3534,7 +3534,7 @@
    ]
   },
   "NYR": {
-   "prior_elo": 1491.0,
+   "prior_elo": 1491.1,
    "proj_points": 90.7,
    "proj_points_vs_mean": -2.4,
    "skater_gs": 694.5,
@@ -3927,7 +3927,7 @@
    ]
   },
   "PHI": {
-   "prior_elo": 1469.3,
+   "prior_elo": 1469.4,
    "proj_points": 84.9,
    "proj_points_vs_mean": -8.1,
    "skater_gs": 592.5,
@@ -4121,7 +4121,7 @@
   "PIT": {
    "prior_elo": 1503.6,
    "proj_points": 94.0,
-   "proj_points_vs_mean": 0.9,
+   "proj_points_vs_mean": 1.0,
    "skater_gs": 804.1,
    "goalie_gsax": -6.18,
    "unknown_in_lineup": 0,
@@ -4311,7 +4311,7 @@
    ]
   },
   "SEA": {
-   "prior_elo": 1458.3,
+   "prior_elo": 1458.4,
    "proj_points": 82.0,
    "proj_points_vs_mean": -11.0,
    "skater_gs": 552.6,
@@ -4503,7 +4503,7 @@
    ]
   },
   "SJS": {
-   "prior_elo": 1469.5,
+   "prior_elo": 1469.6,
    "proj_points": 85.0,
    "proj_points_vs_mean": -8.0,
    "skater_gs": 622.6,
@@ -4695,9 +4695,9 @@
    ]
   },
   "STL": {
-   "prior_elo": 1476.6,
+   "prior_elo": 1476.7,
    "proj_points": 86.9,
-   "proj_points_vs_mean": -6.2,
+   "proj_points_vs_mean": -6.1,
    "skater_gs": 633.7,
    "goalie_gsax": 1.53,
    "unknown_in_lineup": 1,
@@ -4887,7 +4887,7 @@
    ]
   },
   "TBL": {
-   "prior_elo": 1543.1,
+   "prior_elo": 1543.2,
    "proj_points": 104.4,
    "proj_points_vs_mean": 11.4,
    "skater_gs": 931.0,
@@ -5079,7 +5079,7 @@
    ]
   },
   "TOR": {
-   "prior_elo": 1496.1,
+   "prior_elo": 1496.2,
    "proj_points": 92.0,
    "proj_points_vs_mean": -1.0,
    "skater_gs": 709.5,
@@ -5280,7 +5280,7 @@
    ]
   },
   "UTA": {
-   "prior_elo": 1532.9,
+   "prior_elo": 1533.0,
    "proj_points": 101.7,
    "proj_points_vs_mean": 8.7,
    "skater_gs": 908.8,
@@ -5472,9 +5472,9 @@
    ]
   },
   "VAN": {
-   "prior_elo": 1441.4,
+   "prior_elo": 1441.5,
    "proj_points": 77.6,
-   "proj_points_vs_mean": -15.5,
+   "proj_points_vs_mean": -15.4,
    "skater_gs": 466.1,
    "goalie_gsax": 0.75,
    "unknown_in_lineup": 1,
@@ -5673,7 +5673,7 @@
    ]
   },
   "VGK": {
-   "prior_elo": 1523.4,
+   "prior_elo": 1523.5,
    "proj_points": 99.2,
    "proj_points_vs_mean": 6.2,
    "skater_gs": 870.0,
@@ -5865,10 +5865,10 @@
    ]
   },
   "WPG": {
-   "prior_elo": 1489.6,
-   "proj_points": 90.3,
-   "proj_points_vs_mean": -2.7,
-   "skater_gs": 695.9,
+   "prior_elo": 1487.8,
+   "proj_points": 89.8,
+   "proj_points_vs_mean": -3.2,
+   "skater_gs": 686.8,
    "goalie_gsax": 1.71,
    "unknown_in_lineup": 1,
    "lineup": [
@@ -6026,13 +6026,13 @@
      "toi_per_gp_min": 21.2
     },
     {
-     "id": 8477938,
-     "name": "Haydn Fleury",
+     "id": 8481567,
+     "name": "Henry Thrun",
      "pos": "D",
-     "gp": 77,
+     "gp": 64,
      "known": true,
-     "gs_per_gp": 0.029,
-     "toi_per_gp_min": 14.9
+     "gs_per_gp": -0.083,
+     "toi_per_gp_min": 17.3
     }
    ],
    "goalies": [
@@ -6066,7 +6066,7 @@
    ]
   },
   "WSH": {
-   "prior_elo": 1531.8,
+   "prior_elo": 1531.9,
    "proj_points": 101.4,
    "proj_points_vs_mean": 8.4,
    "skater_gs": 877.3,

@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-11-13T05:22:34.539161Z",
-  "games_processed": 1620,
+  "updated_at": "2026-11-14T04:42:45.428155Z",
+  "games_processed": 1622,
   "k_factor": 10,
   "home_bonus": 100,
   "ot_discount": 0.5,
@@ -17,13 +17,13 @@
     "DET": 1464.0,
     "EDM": 1529.3,
     "FLA": 1503.2,
-    "LAK": 1445.1,
+    "LAK": 1439.1,
     "MIN": 1569.5,
     "MTL": 1565.8,
     "NJD": 1516.4,
     "NSH": 1499.9,
-    "NYI": 1475.0,
-    "NYR": 1475.3,
+    "NYI": 1481.0,
+    "NYR": 1479.8,
     "OTT": 1547.2,
     "PHI": 1482.6,
     "PIT": 1490.5,
@@ -33,32 +33,12 @@
     "TBL": 1574.9,
     "TOR": 1429.7,
     "UTA": 1510.0,
-    "VAN": 1341.0,
+    "VAN": 1336.5,
     "VGK": 1522.6,
     "WPG": 1474.7,
     "WSH": 1525.6
   },
   "last_10_games": [
-    {
-      "game_id": 2026020299,
-      "date": "2026-11-12",
-      "home": "BOS",
-      "away": "MTL",
-      "home_win": false,
-      "overtime": false,
-      "home_elo_after": 1544.7,
-      "away_elo_after": 1565.8
-    },
-    {
-      "game_id": 2026020300,
-      "date": "2026-11-12",
-      "home": "TOR",
-      "away": "MIN",
-      "home_win": false,
-      "overtime": false,
-      "home_elo_after": 1429.7,
-      "away_elo_after": 1569.5
-    },
     {
       "game_id": 2026020301,
       "date": "2026-11-12",
@@ -130,6 +110,16 @@
       "away_elo_after": 1506.5
     },
     {
+      "game_id": 2026020308,
+      "date": "2026-11-12",
+      "home": "LAK",
+      "away": "NYI",
+      "home_win": false,
+      "overtime": false,
+      "home_elo_after": 1439.1,
+      "away_elo_after": 1481.0
+    },
+    {
       "game_id": 2026020309,
       "date": "2026-11-12",
       "home": "SEA",
@@ -138,6 +128,16 @@
       "overtime": false,
       "home_elo_after": 1452.9,
       "away_elo_after": 1604.0
+    },
+    {
+      "game_id": 2026020310,
+      "date": "2026-11-13",
+      "home": "VAN",
+      "away": "NYR",
+      "home_win": false,
+      "overtime": false,
+      "home_elo_after": 1336.5,
+      "away_elo_after": 1479.8
     }
   ]
 }
