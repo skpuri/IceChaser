@@ -1,9 +1,7 @@
 #!/bin/bash
-# Cron wrapper for generate_data_v3.py
-# Logs stdout+stderr to /tmp/icechaser_cron.log
-cd /root/.openclaw/workspace/projects/icechaser/backend || exit 1
+LOG=/tmp/icechaser_cron.log
 {
-  echo "===== RUN $(date -u '+%Y-%m-%d %H:%M:%S UTC') ====="
-  python3 generate_data_v3.py
-  echo "===== EXIT: $? at $(date -u '+%Y-%m-%d %H:%M:%S UTC') ====="
-} >> /tmp/icechaser_cron.log 2>&1
+  echo "=== IceChaser odds cron run: $(date -u '+%Y-%m-%d %H:%M:%S UTC') ==="
+  python3 /root/.openclaw/workspace/projects/icechaser/backend/generate_data_v3.py
+  echo "=== exit=$? at $(date -u '+%Y-%m-%d %H:%M:%S UTC') ==="
+} >> "$LOG" 2>&1
