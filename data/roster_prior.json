@@ -1,10 +1,10 @@
 {
  "season": 20262027,
- "generated_at": "2026-11-25T06:05:13+00:00",
+ "generated_at": "2026-11-26T06:42:13+00:00",
  "fit_date": "2026-09-29",
  "source": {
   "players": "MoneyPuck season summaries 2023-2025 (https://moneypuck.com/moneypuck/playerData/seasonSummary/{year}/regular/{kind}.csv)",
-  "rosters": "NHL API rosters fetched 2026-11-25T06:05:13+00:00",
+  "rosters": "NHL API rosters fetched 2026-11-26T06:42:13+00:00",
   "method": "see backend/roster_prior.py docstring"
  },
  "constants": {
@@ -26,7 +26,7 @@
   "ANA": {
    "prior_elo": 1471.8,
    "proj_points": 85.8,
-   "proj_points_vs_mean": -7.4,
+   "proj_points_vs_mean": -7.5,
    "skater_gs": 631.2,
    "goalie_gsax": -1.81,
    "unknown_in_lineup": 2,
@@ -225,7 +225,7 @@
    ]
   },
   "BOS": {
-   "prior_elo": 1483.5,
+   "prior_elo": 1483.4,
    "proj_points": 88.9,
    "proj_points_vs_mean": -4.4,
    "skater_gs": 660.5,
@@ -618,7 +618,7 @@
    ]
   },
   "CAR": {
-   "prior_elo": 1580.0,
+   "prior_elo": 1579.9,
    "proj_points": 114.4,
    "proj_points_vs_mean": 21.1,
    "skater_gs": 1139.9,
@@ -810,7 +810,7 @@
    ]
   },
   "CBJ": {
-   "prior_elo": 1500.5,
+   "prior_elo": 1500.4,
    "proj_points": 93.4,
    "proj_points_vs_mean": 0.1,
    "skater_gs": 733.0,
@@ -3333,10 +3333,10 @@
    ]
   },
   "NYI": {
-   "prior_elo": 1488.9,
-   "proj_points": 90.3,
+   "prior_elo": 1489.1,
+   "proj_points": 90.4,
    "proj_points_vs_mean": -2.9,
-   "skater_gs": 674.7,
+   "skater_gs": 676.0,
    "goalie_gsax": 5.96,
    "unknown_in_lineup": 1,
    "lineup": [
@@ -3431,6 +3431,15 @@
      "toi_per_gp_min": 14.0
     },
     {
+     "id": 8484221,
+     "name": "Calum Ritchie",
+     "pos": "C",
+     "gp": 72,
+     "known": true,
+     "gs_per_gp": 0.264,
+     "toi_per_gp_min": 13.4
+    },
+    {
      "id": 8476292,
      "name": "Ondrej Palat",
      "pos": "L",
@@ -3438,15 +3447,6 @@
      "known": true,
      "gs_per_gp": 0.292,
      "toi_per_gp_min": 13.3
-    },
-    {
-     "id": 8475231,
-     "name": "Casey Cizikas",
-     "pos": "C",
-     "gp": 163,
-     "known": true,
-     "gs_per_gp": 0.248,
-     "toi_per_gp_min": 12.4
     },
     {
      "id": 8485366,
@@ -4494,7 +4494,7 @@
    ]
   },
   "SJS": {
-   "prior_elo": 1465.1,
+   "prior_elo": 1465.0,
    "proj_points": 84.0,
    "proj_points_vs_mean": -9.2,
    "skater_gs": 605.0,
@@ -4878,7 +4878,7 @@
    ]
   },
   "TBL": {
-   "prior_elo": 1542.3,
+   "prior_elo": 1542.2,
    "proj_points": 104.4,
    "proj_points_vs_mean": 11.1,
    "skater_gs": 931.0,
@@ -6048,7 +6048,7 @@
    ]
   },
   "WSH": {
-   "prior_elo": 1531.0,
+   "prior_elo": 1530.9,
    "proj_points": 101.4,
    "proj_points_vs_mean": 8.2,
    "skater_gs": 877.3,
